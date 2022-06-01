@@ -1,11 +1,11 @@
-package recall;
+package back;
 
 import java.util.List;
 
 /**
- * https://leetcode.cn/problems/permutations/
+ * https://leetcode.cn/problems/subsets/
  *
- * @description：46. 全排列
+ * @description：78. 子集
  * @author: zhangxianglong
  * @date: 2022/5/21
  */

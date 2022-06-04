@@ -56,8 +56,8 @@ public class GetIntersectionNode {
         A3.next = A4;
 
 
-        ListNode bHead = new ListNode(2);
-        ListNode B1 = new ListNode(3);
+        ListNode bHead = new ListNode(7);
+        ListNode B1 = new ListNode(6);
         bHead.next = B1;
         B1.next = A3;
 

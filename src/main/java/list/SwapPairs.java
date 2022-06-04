@@ -34,11 +34,11 @@ public class SwapPairs {
             return head;
         }
 
-        ListNode subReverseResult = swapPairs(head.next.next);
+        ListNode reversHead = swapPairs(head.next.next);
 
         ListNode subHead = head.next;
         head.next.next = head;
-        head.next = subReverseResult;
+        head.next = reversHead;
 
         return subHead;
     }

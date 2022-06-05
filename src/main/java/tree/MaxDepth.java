@@ -1,5 +1,10 @@
 package tree;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
 /**
  * 104
  *
@@ -21,6 +26,42 @@ public class MaxDepth {
 
         return Math.max(leftHigh, rightHigh) + 1;
 
+    }
+
+    /**
+     * 二叉树层序遍历
+     *
+     * @param root
+     * @return
+     */
+    public static int maxDepthByLevel(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        List<List<Integer>> listAll = new ArrayList<>();
+
+        Queue<TreeNode> queue = new ArrayDeque<>();
+
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            int n = queue.size();
+            List<Integer> list = new ArrayList<>();
+
+            for (int i = 0; i < n; i++) {
+                TreeNode treeNode = queue.poll();
+                list.add(treeNode.val);
+                if (treeNode.left != null) {
+                    queue.add(treeNode.left);
+                }
+                if (treeNode.right != null) {
+                    queue.add(treeNode.right);
+                }
+            }
+            listAll.add(list);
+
+        }
+        return listAll.size();
     }
 
 

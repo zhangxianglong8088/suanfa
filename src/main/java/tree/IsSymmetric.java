@@ -15,19 +15,27 @@ public class IsSymmetric {
         return helper(root.left, root.right);
     }
 
-
+    /**
+     * 左的左不等于右的右
+     *
+     * @param left
+     * @param right
+     * @return
+     */
     public static boolean helper(TreeNode left, TreeNode right) {
         if (left == null && right == null) {
             return true;
         }
-
-        if (left == null || right == null) {
+        if (left == null) {
+            return false;
+        }
+        if (right == null) {
+            return false;
+        }
+        if (left.val != right.val) {
             return false;
         }
 
-        if ((left.val != right.val)) {
-            return false;
-        }
 
         return helper(left.left, right.right) && helper(left.right, right.left);
 

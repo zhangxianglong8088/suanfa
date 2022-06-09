@@ -9,13 +9,17 @@ package tree;
 public class InvertTree {
 
     /**
+     * 反转二叉树 看作是前序遍历 先处根节点
+     *
      * @param root
      * @return
      */
     public TreeNode invertTree(TreeNode root) {
+
         if (root == null) {
             return root;
         }
+
         TreeNode tmp = root.left;
         root.left = root.right;
         root.right = tmp;

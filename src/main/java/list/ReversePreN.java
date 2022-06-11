@@ -55,8 +55,45 @@ public class ReversePreN {
         node6.next = node7;
         node7.next = null;
 
-        ListNode head =   reverseN(node1, 3);
+        ListNode head = reverseN1(node1, 3);
 
 
     }
+
+    static ListNode reverseN1(ListNode head, int n) {
+
+        //找到链表的第n个结点
+        ListNode cur = head;
+        for (int i = 1; i < n; i++) {
+            cur = cur.next;
+        }
+        //保存N+1 个结点
+        ListNode half = cur.next;
+
+        //n.netx = null
+        cur.next = null;
+
+        //反转前n个结点
+
+        ListNode pre = null;
+        ListNode preCur = head;
+
+        while (preCur != null) {
+            ListNode next = preCur.next;
+            preCur.next = pre;
+            pre = preCur;
+            preCur = next;
+        }
+        //拼接反转后的n个结点和n+1个结点
+        ListNode newPre = pre;
+
+        while (pre.next != null) {
+            pre = pre.next;
+        }
+        pre.next = half;
+
+        return newPre;
+    }
+
+
 }

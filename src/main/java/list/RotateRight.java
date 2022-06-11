@@ -19,30 +19,34 @@ public class RotateRight {
     }
 
     /**
-     * 记录原链表的长度，将原链表闭合为环，再在指定位置断开
+     * * 记录原链表的长度，将原链表闭合为环，再在指定位置断开
+     * 断开的位置为 l-k k可以大于l 所以 断开的位置为 l-k%l
      *
      * @param head
+     * @param k
      * @return
      */
     public static ListNode rotateRight(ListNode head, int k) {
-        if (k == 0 || head == null || head.next == null) {
+        if (head == null) {
             return head;
         }
 
-        int l = 1;
+        //链表成环
         ListNode cur = head;
+        int l = 1;
         while (cur.next != null) {
-            l++;
             cur = cur.next;
+            l++;
         }
         cur.next = head;
-        //判断
-        for (int i = 1; i < l - k % l; i++) {
+
+        //head、headPre 往后走K步
+        for (int i = 1; i <= l - k % l; i++) {
             head = head.next;
+            cur = cur.next;
         }
-        ListNode pre = head.next;
-        head.next = null;
-        return pre;
+        cur.next = null;
+        return head;
     }
 
     public static void main(String[] args) {
@@ -59,6 +63,8 @@ public class RotateRight {
         node4.next = node5;
         node5.next = null;
 
-        rotateRight(node1, 1);
+        rotateRight(node1, 2);
     }
+
+
 }

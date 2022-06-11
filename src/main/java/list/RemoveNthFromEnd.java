@@ -39,18 +39,51 @@ public class RemoveNthFromEnd {
 
     public static void main(String[] args) {
         ListNode node1 = new ListNode(1);
-//        ListNode node2 = new ListNode(2);
-//        ListNode node3 = new ListNode(3);
-//        ListNode node4 = new ListNode(4);
-//        ListNode node5 = new ListNode(5);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(3);
+        ListNode node4 = new ListNode(4);
+        ListNode node5 = new ListNode(5);
 
-//        node1.next = node2;
-//        node2.next = node3;
-//        node3.next = node4;
-//        node4.next = node5;
-//        node5.next = null;
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = null;
 
-        removeNthFromEnd(node1, 1);
+        removeNthFromEnd2(node1, 3);
     }
 
+    /**
+     * 删除一个元素 cur.next = cur.next.next;
+     * 注意删除的倒数第一个元素的特殊情况，就是返回head.next
+     * @param head
+     * @param n
+     * @return
+     */
+    public static ListNode removeNthFromEnd2(ListNode head, int n) {
+        if (head == null) {
+            return head;
+        }
+
+        //1、获取链表的长度l
+        ListNode cur = head;
+        int l = 0;
+        while (cur != null) {
+            l++;
+            cur = cur.next;
+        }
+
+        //2、找到第l-n-1个元素
+        cur = head;
+        for (int i = 0; i < l - n - 1; i++) {
+            cur = cur.next;
+        }
+
+        //3、（l-n-1).next = next.next
+        cur.next = cur.next.next;
+
+        //4、return head
+        return head;
+
+    }
 }

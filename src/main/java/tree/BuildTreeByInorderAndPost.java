@@ -3,7 +3,7 @@ package tree;
 import java.util.HashMap;
 
 /**
- * @description：105. 中序、后序遍历序列构造二叉树
+ * @description：105. 前序和中序 遍历序列构造二叉树
  * https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  * @author: zhangxianglong
  * @date: 2022/5/19
@@ -19,7 +19,7 @@ public class BuildTreeByInorderAndPost {
      * @param postorder
      * @return
      */
-    public static TreeNode buildTree1(int[] inorder, int[] postorder) {
+    public static TreeNode buildTree(int[] inorder, int[] postorder) {
 
         for (int i = 0; i < inorder.length; i++) {
             valToIndex.put(inorder[i], i);
@@ -80,7 +80,7 @@ public class BuildTreeByInorderAndPost {
         int[] inorder = new int[]{5, 2, 6, 4, 7, 1, 8, 3, 9};
         int[] postorder = new int[]{5, 6, 7, 4, 2, 8, 9, 3, 1};
         //中序和后序
-        TreeNode result = buildTree1(inorder, postorder);
+        TreeNode result = buildTree(inorder, postorder);
 
     }
 }

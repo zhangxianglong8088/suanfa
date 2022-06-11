@@ -31,4 +31,20 @@ public class MergeTrees {
         return treeNode;
     }
 
+
+    public TreeNode mergeTrees2(TreeNode root1, TreeNode root2) {
+
+        if (root1 == null && root2 == null) {
+            return null;
+        }
+        int rootValue = (root1 == null ? 0 : root1.val) + (root2 == null ? 0 : root2.val);
+        TreeNode root = new TreeNode(rootValue);
+
+        root.left = mergeTrees2(root1 == null ? null : root1.left, root2 == null ? null : root2.left);
+
+        root.right = mergeTrees2(root1 == null ? null : root1.right, root2 == null ? null : root2.right);
+
+
+        return root;
+    }
 }

@@ -1,5 +1,8 @@
 package tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @description：114. 二叉树展开为链表
  * 给你二叉树的根结点 root ，请你将它展开为一个单链表：
@@ -64,9 +67,30 @@ public class Flatten {
         node5.right = node6;
 
 
-        flatten(node1);
+        flatten2(node1);
 
 
+    }
+
+    public static void flatten2(TreeNode root) {
+        List<TreeNode> list = new ArrayList();
+        pre(root, list);
+        for (int i = 0; i < list.size() - 1; i++) {
+            TreeNode node1 = list.get(i);
+            TreeNode node2 = list.get(i + 1);
+            node1.left = null;
+            node1.right = node2;
+        }
+    }
+
+    public static void pre(TreeNode root, List<TreeNode> list) {
+        if (root == null) {
+            return;
+        }
+
+        list.add(root);
+        pre(root.left, list);
+        pre(root.right, list);
     }
 
 }

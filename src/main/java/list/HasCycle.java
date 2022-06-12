@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @description：判断链表是否有环
+ * @description：判断链表是否有环 https://leetcode.cn/problems/linked-list-cycle/
  * @author: zhangxianglong
  * @date: 2022/5/15
  */

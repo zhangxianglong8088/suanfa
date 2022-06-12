@@ -42,6 +42,40 @@ public class GetIntersectionNode {
         return pA;
     }
 
+    /**
+     * 第二个思路
+     *
+     * @param headA
+     * @param headB
+     * @return
+     */
+    public static ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
+        if (headB == headA) {
+            return headB;
+        }
+
+        ListNode pA = headA;
+        ListNode pB = headB;
+
+        while (true) {
+            if (pA != null) {
+                pA = pA.next;
+            } else {
+                pA = headB;
+            }
+            if (pB != null) {
+                pB = pB.next;
+            } else {
+                pB = headA;
+            }
+
+            if (pA == pB) {
+                return pA;
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
 
         ListNode aHead = new ListNode(1);

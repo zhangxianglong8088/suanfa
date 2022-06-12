@@ -60,7 +60,45 @@ public class MergeTwoLists {
         node5.next = node6;
         node6.next = null;
 
-        mergeTwoLists(node1, node4);
+        mergeTwoLists1(node1, node4);
 
+    }
+
+    /**
+     * while条件
+     *
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public static ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+
+        ListNode pre = new ListNode(-1);
+        ListNode cur = pre;
+
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                cur.next = l1;
+                l1 = l1.next;
+            } else {
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+
+        if (l1 == null) {
+            cur.next = l2;
+        }
+        if (l2 == null) {
+            cur.next = l1;
+        }
+        return pre.next;
     }
 }

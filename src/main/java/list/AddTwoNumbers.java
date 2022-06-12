@@ -96,7 +96,72 @@ public class AddTwoNumbers {
         node6.next = node7;
         node7.next = null;
 
-        addTwoNumbers(node1, node5);
+        addTwoNumbers2(node1, node5);
 
+    }
+
+    public static ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        if(l1==null){
+            return l2;
+        }
+        if(l2==null){
+            return l1;
+        }
+        Stack<ListNode> s1 = new Stack();
+        Stack<ListNode> s2 = new Stack();
+
+        while (l1 != null) {
+            s1.add(l1);
+            l1 = l1.next;
+        }
+
+        while (l2 != null) {
+            s2.add(l2);
+            l2 = l2.next;
+        }
+
+        int jw = 0;
+        ListNode pre = new ListNode(-1);
+        ListNode cur = pre;
+        while (!s1.isEmpty() || !s2.isEmpty()) {
+            int sum = jw;
+            if (!s1.isEmpty()) {
+                ListNode node1 = s1.pop();
+                sum += node1.val;
+            }
+
+            if (!s2.isEmpty()) {
+                ListNode node2 = s2.pop();
+                sum += node2.val;
+            }
+            if (sum >= 10) {
+                jw = 1;
+                sum = sum - 10;
+            } else {
+                jw = 0;
+            }
+            cur.next = new ListNode(sum);
+            cur = cur.next;
+        }
+        if(jw==1){
+            ListNode node = new ListNode(1);
+            cur.next = node;
+        }
+
+        ListNode res =  reverselist(pre.next);
+        return  res;
+    }
+
+
+    public static  ListNode reverselist(ListNode l){
+        ListNode pre=null;
+        ListNode cur=l;
+        while(cur!=null){
+            ListNode temp=cur.next;
+            cur.next=pre;
+            pre=cur;
+            cur=temp;
+        }
+        return pre;
     }
 }

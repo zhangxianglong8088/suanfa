@@ -19,21 +19,25 @@ public class GetKthFromEnd {
 
 
     public static ListNode getKthFromEnd(ListNode head, int k) {
-        ListNode countCur = head;
-        int total = 0;
 
-        while (countCur != null) {
-            total++;
-            countCur = countCur.next;
-        }
-
+        //获取链表的长度
         ListNode cur = head;
-
-
-        for (int i = 0; i <= total - k - 1; i++) {
+        int l = 0;
+        while (cur != null) {
+            l++;
             cur = cur.next;
         }
-        return cur;
+        //如果k大于等于l 则返回head
+        if (l <= k) {
+            return head;
+        }
+
+        ListNode newCur = head;
+
+        for (int i = 0; i < l - k - 1; i++) {
+            newCur = newCur.next;
+        }
+        return newCur.next;
     }
 
     public static void main(String[] args) {

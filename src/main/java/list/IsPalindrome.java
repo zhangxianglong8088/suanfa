@@ -58,7 +58,7 @@ public class IsPalindrome {
 
         return Boolean.TRUE;
 
-}
+    }
 
     /**
      * 翻转链表
@@ -85,11 +85,45 @@ public class IsPalindrome {
 
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(2);
+        ListNode node4 = new ListNode(1);
 
         node1.next = node2;
-        node2.next = null;
+        node2.next = node3;
+        node3.next = node4;
 
-        isPalindrome(node1);
+        isPalindrome1(node1);
 
+    }
+
+    public static boolean isPalindrome1(ListNode head) {
+
+        //找到中间结点
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        ListNode cur = slow;
+        ListNode pre = null;
+
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        while (pre != null) {
+            if (head.val != pre.val) {
+                return false;
+            }
+            pre = pre.next;
+            head = head.next;
+        }
+        return true;
     }
 }

@@ -69,7 +69,42 @@ public class Partition {
         node5.next = node6;
         node6.next = null;
 
-        partition(node1, 3);
+        partition2(node1, 3);
+
+    }
+
+    /**
+     * 思路：先把原来的链表拆分为两个一大一小的链表 然后再拼接起来
+     * @param head
+     * @param x
+     * @return
+     */
+    public static ListNode partition2(ListNode head, int x) {
+
+        ListNode small = new ListNode(-1);
+        ListNode smallPre = small;
+
+        ListNode larger = new ListNode(-1);
+        ListNode largerPre = larger;
+
+        ListNode cur = head;
+
+        while (cur != null) {
+            if (cur.val < x) {
+                small.next = new ListNode(cur.val);
+                cur = cur.next;
+                small = small.next;
+
+            } else {
+                larger.next = new ListNode(cur.val);
+                cur = cur.next;
+                larger = larger.next;
+
+            }
+        }
+        small.next = largerPre.next;
+
+        return smallPre.next;
 
     }
 }

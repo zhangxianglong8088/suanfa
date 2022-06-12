@@ -7,7 +7,7 @@ package list;
  * @author: zhangxianglong
  * @date: 2022/5/17
  */
-public class RemoveElements {
+public class RemoveElementsXXX {
     static class ListNode {
         int val;
         ListNode next;
@@ -64,7 +64,20 @@ public class RemoveElements {
         node6.next = node7;
         node7.next = null;
 
-        ListNode head = removeElements(node1, 7);
+        ListNode head = removeElements2(node1, 7);
 
+    }
+
+    public static ListNode removeElements2(ListNode head, int val) {
+
+        ListNode cur = head;
+
+        while (cur != null && cur.next != null) {
+            if (cur.val == val) {
+                cur = cur.next;
+            }
+            cur = cur.next;
+        }
+        return head;
     }
 }

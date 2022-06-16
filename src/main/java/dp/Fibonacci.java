@@ -10,25 +10,25 @@ package dp;
 public class Fibonacci {
 
     public static int fibonacci(int n) {
-        //1 、定义DP数组
-        int[] arry = new int[n + 1];
+
         if (n <= 1) {
             return n;
         }
-        //2、初始化元素
-        arry[0] = 0;
-        arry[1] = 1;
+        //定义dp数组
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = 1;
 
-        //3、状态转移
-        for (int i = 2; i < arry.length; i++) {
-            arry[i] = arry[i - 1] + arry[i - 2];
+        //遍历dp数组
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
         }
 
-        //4、打印DP数组
-        return arry[n];
+        return dp[n];
     }
 
     public static void main(String[] args) {
         int result = fibonacci(0);
+        System.out.println(result);
     }
 }

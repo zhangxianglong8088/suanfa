@@ -22,6 +22,7 @@ public class CoinChange {
         // 数组大小为 amount + 1，初始值也为 amount + 1
         Arrays.fill(dp, amount + 1);
 
+
         dp[0] = 0;
         // 外层 for 循环在遍历所有状态的所有取值
         for (int i = 0; i < dp.length; i++) {
@@ -40,9 +41,9 @@ public class CoinChange {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{2};
+        int[] arr = new int[]{1, 2, 5};
 
-        int result = coinChange(arr, 3);
+        int result = coinChange(arr, 11);
 
         System.out.println(result);
     }

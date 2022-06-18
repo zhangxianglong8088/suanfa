@@ -19,9 +19,12 @@ public class IntegerBreak {
         dp[2] = 1;
         //i是要拆分的整数
         for (int i = 3; i <= n; i++) {
-            for (int j = 1; j <= i - j; j++) {
-                dp[i] = Math.max(dp[i], Math.max(j * (i - j), j * dp[i - j]));
+            int max = 0;
+            for (int j = 1; j < i; j++) {
+                //将i拆分成 j和i-j 两部分 再比较（i-j）拆和不拆的情况下哪个最大
+                max = Math.max(max, Math.max(j * (i - j), j * dp[i - j]));
             }
+            dp[i] = max;
         }
         return dp[n];
 

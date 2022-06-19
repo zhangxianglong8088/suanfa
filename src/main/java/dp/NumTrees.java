@@ -1,7 +1,9 @@
 package dp;
 
 /**
- * @description：
+ * 96. 不同的二叉搜索树
+ *
+ * @description：不同的二叉搜索树 https://leetcode.cn/problems/unique-binary-search-trees/
  * @author: zhangxianglong
  * @date: 2022/6/16
  */

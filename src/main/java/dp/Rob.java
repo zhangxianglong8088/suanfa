@@ -2,14 +2,23 @@ package dp;
 
 /**
  * @description：打家劫舍 https://leetcode.cn/problems/house-robber/
+ * 偷窃第 k 间房屋，那么就不能偷窃第 k-1 间房屋，偷窃总金额为前 k-2 间房屋的最高总金额与第 k 间房屋的金额之和。
+ * <p>
+ * 不偷窃第 k 间房屋，偷窃总金额为前 k-1 间房屋的最高总金额。
+ * <p>
+ * 作者：LeetCode-Solution
+ * 链接：https://leetcode.cn/problems/house-robber/solution/da-jia-jie-she-by-leetcode-solution/
+ * 来源：力扣（LeetCode）
+ * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  * @author: zhangxianglong
+ * https://leetcode.cn/problems/house-robber/solution/da-jia-jie-she-by-leetcode-solution/
  * @date: 2022/5/26
  */
 public class Rob {
 
 
     public static int rob(int[] nums) {
-        if(nums.length<=1){
+        if (nums.length <= 1) {
             return nums[0];
         }
 

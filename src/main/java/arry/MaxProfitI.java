@@ -6,7 +6,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/15
  */
-public class MaxProfit {
+public class MaxProfitI {
 
     /**
      * 暴力循环 超出时间限制

@@ -51,7 +51,7 @@ public class CanPartition {
         for (int i = 0; i < n; i++) {
             dp[i][0] = true;
         }
-        //遍历物品
+        //遍历物品 这里的关键是 i必须从1开始
         for (int i = 1; i <= n; i++) {
             //遍历背包重量
             for (int j = 1; j <= target; j++) {

@@ -1,7 +1,5 @@
 package dp;
 
-import java.util.Arrays;
-
 /**
  * 343. 整数拆分
  * https://programmercarl.com/0343.%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86.html#%E6%80%BB%E7%BB%93
@@ -10,7 +8,7 @@ import java.util.Arrays;
  * @author: zhangxianglong
  * @date: 2022/6/16
  */
-public class IntegerBreak {
+public class IntegerBreakXXX {
 
     public static int integerBreak(int n) {
         //定义dp数组 dp[i]的含义是值为i的整数拆分的乘积的最大值

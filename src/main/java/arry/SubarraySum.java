@@ -1,4 +1,4 @@
-package dp;
+package arry;
 
 /**
  * https://leetcode.cn/problems/subarray-sum-equals-k/

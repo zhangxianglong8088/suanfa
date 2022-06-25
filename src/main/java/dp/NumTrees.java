@@ -15,7 +15,11 @@ public class NumTrees {
         dp[1] = 1;
         dp[0] = 1;
         //递推公式 dp[i] =
-
+        /**
+         * 以j为头结点的树个数
+         * dp[j - 1] * dp[i - j];
+         * j不断增加，累加每一个j为头结点的搜索树个数
+         */
         for (int i = 2; i < n + 1; i++) {
             for (int j = 1; j < i + 1; j++) {
                 dp[i] += dp[j - 1] * dp[i - j];

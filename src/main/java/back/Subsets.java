@@ -1,8 +1,6 @@
 package back;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * https://leetcode.cn/problems/subsets/
@@ -15,33 +13,28 @@ public class Subsets {
 
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
-        LinkedList<Integer> path = new LinkedList<>();
-
-        if (nums.length == 0) {
-            return new ArrayList<>();
-        }
-        res.add(new LinkedList<>());
-        backTracking(res, path, nums, 0);
-
+        Deque<Integer> path = new ArrayDeque<>();
+        backtracking(nums, res, path, 0);
         return res;
     }
 
-
-    static void backTracking(List<List<Integer>> res, LinkedList<Integer> path, int[] nums, Integer index) {
-        //递归终止条件 剩余集合为空 终止
+    static void backtracking(int[] nums, List<List<Integer>> res, Deque<Integer> path, int index) {
+        //递归入口直接收集结果
+        res.add(new ArrayList<>(path));
+        //递归函数的终止条件
         if (index >= nums.length) {
             return;
         }
+
         for (int i = index; i < nums.length; i++) {
             path.add(nums[i]);
-            res.add(new LinkedList<>(path));
-            backTracking(res, path, nums, i + 1);
+            backtracking(nums, res, path, i + 1);
             path.removeLast();
         }
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3};
+        int[] nums = new int[]{1, 2, 2};
         List<List<Integer>> res = subsets(nums);
     }
 }

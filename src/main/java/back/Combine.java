@@ -29,7 +29,9 @@ public class Combine {
         }
 
         // 遍历可能的搜索起点
-        for (int i = begin; i <= n; i++) {
+        //如果不减枝 i<=n 就可以了
+        //如果优化算法进行减枝操作 这里缩小i的取值范围 i<=n-(k-path.size())+1
+        for (int i = begin; i <= n - (k - path.size()) + 1; i++) {
             // 向路径变量里添加一个数
             path.addLast(i);
             // 下一轮搜索，设置的搜索起点要加 1，因为组合数理不允许出现重复的元素

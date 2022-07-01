@@ -3,18 +3,17 @@ package tree;
 import java.util.HashMap;
 
 /**
- * @description：105. 前序和中序 遍历序列构造二叉树
+ * 通过中序和后序遍历构造二叉树
  * https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+ *
  * @author: zhangxianglong
  * @date: 2022/5/19
  */
-public class BuildTreeByInorderAndPost {
+public class ConstructFromInPost {
 
     static HashMap<Integer, Integer> valToIndex = new HashMap<>();
 
     /**
-     * 通过中序和后序遍历构造二叉树
-     *
      * @param inorder
      * @param postorder
      * @return

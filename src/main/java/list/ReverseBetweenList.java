@@ -1,5 +1,7 @@
 package list;
 
+import java.util.List;
+
 /**
  * https://leetcode.cn/problems/reverse-linked-list-ii/
  * 92
@@ -10,48 +12,6 @@ package list;
  */
 public class ReverseBetweenList {
 
-    static class ListNode {
-        int val;
-        ListNode next = null;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
-
-
-    /**
-     * 反转指定位置的链表
-     *
-     * @param head
-     * @return
-     */
-    public static ListNode reverseBetween(ListNode head, int m, int n) {
-        //1、设置虚拟头节点
-        ListNode dummyNode = new ListNode(-1);
-
-        //2、虚拟头节点的next指向head
-        dummyNode.next = head;
-
-        //3、pre 指向m位置节点的前一个节点 pre 是中间链表的起始节点
-        ListNode pre = dummyNode;
-
-        for (int i = 0; i < m - 1; i++) {
-            pre = pre.next;
-        }
-
-        ListNode cur = pre.next;
-        ListNode currNext;
-
-        for (int i = 0; i < n - m; i++) {
-            currNext = cur.next;
-            cur.next = currNext.next;
-            currNext.next = pre.next;
-            pre.next = currNext;
-        }
-
-        return dummyNode;
-    }
 
     /**
      * 思路
@@ -108,6 +68,39 @@ public class ReverseBetweenList {
         node5.next = node6;
         node6.next = null;
 
-        ListNode node = reverseBetween2(node1, 3, 5);
+        ListNode node = reverseBetween3(node1, 3, 5);
+    }
+
+    /**
+     * 头插法
+     *
+     * @param head
+     * @param left
+     * @param right
+     * @return
+     */
+    public static ListNode reverseBetween3(ListNode head, int left, int right) {
+        //定义虚拟结点 用于返回链表
+        ListNode dummyNode = new ListNode(-1);
+        dummyNode.next = head;
+
+        //定义前驱结点
+        ListNode pre = dummyNode;
+        //1 、找到pre指针 pre.next 指向待反转部分的第一个结点
+        for (int i = 0; i < left - 1; i++) {
+            pre = pre.next;
+        }
+        //2、定义cur结点 指向pre的下一个指针
+        ListNode cur = pre.next;
+        ListNode next;
+
+        for (int i = 0; i < right - left; i++) {
+            next = cur.next;
+            cur.next = next.next;
+            next.next = pre.next;
+            pre.next = next;
+        }
+
+        return dummyNode.next;
     }
 }

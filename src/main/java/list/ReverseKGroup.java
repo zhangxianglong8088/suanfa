@@ -66,6 +66,43 @@ public class ReverseKGroup {
         node5.next = node6;
         node6.next = null;
 
-        ListNode node = reverseKGroup(node1, 3);
+        ListNode node = reverseKGroup3(node1, 2);
+    }
+
+    public static ListNode reverseKGroup3(ListNode head, int k) {
+        if (head == null) {
+            return head;
+        }
+        //1、找到k个一组的头结点和尾结点
+        ListNode end = head;
+
+        for (int i = 0; i < k - 1; i++) {
+            end = end.next;
+            if (end == null) {
+                return head;
+            }
+        }
+
+        //2、记录下一个待反转的头结点
+        ListNode nextHead = end.next;
+
+        //3、反转K个一组的链表
+        ListNode newHead = reverseListNode2(head, end);
+
+        //4、递归调用reverseKGroup方法
+        head.next = reverseKGroup3(nextHead, k);
+
+        return newHead;
+    }
+
+    static ListNode reverseListNode2(ListNode cur, ListNode end) {
+        ListNode pre = null;
+        while (pre != end) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
     }
 }

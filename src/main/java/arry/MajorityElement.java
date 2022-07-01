@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * @description：剑指 Offer 39. 数组中出现次数超过一半的数字
+ * https://leetcode.cn/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/
  * 思路：对数排序，半数以上的数字在中间
  * @author: zhangxianglong
  * @date: 2022/5/16
@@ -56,6 +57,9 @@ public class MajorityElement {
             }
         }
 
+        /**
+         * 验证是否为众数
+         */
         int x = 0;
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == cadidate) {
@@ -67,7 +71,7 @@ public class MajorityElement {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 2};
+        int[] nums = new int[]{3, 2, 3};
         System.out.println(majorityElement2(nums));
     }
 }

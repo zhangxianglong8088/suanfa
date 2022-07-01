@@ -1,8 +1,6 @@
 package arry;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @description：最接近的三数之和 nums = [-1,2,1,-4], target = 1
@@ -12,79 +10,46 @@ import java.util.Map;
  */
 public class ThreeSumClosest {
 
+
     /**
-     * 通过三层循环
+     * 排序+双指针
      *
-     * @param arr
+     * @param nums
      * @param target
      * @return
      */
-    public static int threeSumClosest1(int[] arr, int target) {
+    static int threeSumClosest(int[] nums, int target) {
+        int closestNums = nums[0] + nums[1] + nums[2];
 
-        Map<Integer, Integer> map = new HashMap<>();
-
-        int min = Integer.MAX_VALUE;
-        int p = 0;
-
-        for (int i = 0; i < arr.length - 2; i++) {
-
-            for (int j = i + 1; j <= arr.length - 1; j++) {
-
-                for (int m = j + 1; m <= arr.length - 1; m++) {
-
-                    int tmp = Math.abs(target - (arr[i] + arr[j] + arr[m]));
-
-                    if (tmp < min) {
-                        min = Math.min(min, tmp);
-                        map.put(min, (arr[i] + arr[j] + arr[m]));
-                    }
-
-                }
-            }
-        }
-        return map.get(min);
-    }
-
-
-    /**
-     * 排序
-     *
-     * @param arr
-     * @param target
-     * @return
-     */
-    static int threeSumClosest2(int[] arr, int target) {
-        //nums = [-4,-1,1,2]
-        Arrays.sort(arr);
-
-        int ans = Integer.MAX_VALUE;
-        int result = 0;
-        int sum = 0;
-
-        for (int i = 0; i < arr.length - 2; i++) {
+        for (int i = 0; i < nums.length; i++) {
             int left = i + 1;
-            int right = arr.length - 1;
-            while (left < right) {
-                sum = arr[i] + arr[left] + arr[right];
-                if (Math.abs(target - sum) < ans) {
-                    ans = Math.abs(target - sum);
-                    result = sum;
-                }
-                if (sum > target) {
-                    right--;
+            int right = nums.length - 1;
+
+            while (right < nums.length - 1) {
+                int sum = nums[i] + nums[left] + nums[right];
+                //说明sum 更接近target
+                if (Math.abs(sum - target) < Math.abs(closestNums - target)) {
+                    closestNums = sum;
                 }
                 if (sum < target) {
                     left++;
                 }
+                if (sum > target) {
+                    right--;
+                }
+                if (sum == target) {
+                    return sum;
+                }
+
             }
         }
-        return result;
+        return closestNums;
     }
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{-1,2,1,-4,10000};
-       System.out.println(threeSumClosest2(nums, 1));
+        int[] nums = new int[]{-1, 2, 1, -4, 10000};
+        System.out.println(threeSumClosest(nums, 1));
 
     }
 }

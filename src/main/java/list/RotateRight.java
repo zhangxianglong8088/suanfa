@@ -63,7 +63,29 @@ public class RotateRight {
         node4.next = node5;
         node5.next = null;
 
-        rotateRight(node1, 2);
+        rotateRight2(node1, 2);
+    }
+
+    public static ListNode rotateRight2(ListNode head, int k) {
+        if (head == null) {
+            return head;
+        }
+        //1、链表成环 获取链表的长度
+        int n = 1;
+        ListNode cur = head;
+        while (cur.next != null) {
+            cur = cur.next;
+            n++;
+        }
+        cur.next = head;
+
+        //2、头结点 移动(k%n+1)
+        for (int i = 1; i < n - k % n; i++) {
+            head = head.next;
+        }
+        ListNode res = head.next;
+        head.next = null;
+        return res;
     }
 
 

@@ -10,31 +10,38 @@ import java.util.Set;
  */
 public class MaxLength {
 
-
+    /**
+     * 滑动窗口
+     *
+     * @param arr
+     * @return
+     */
     static int maxLength(int[] arr) {
+        //滑动窗口
+        int left = 0;
+        int right = 0;
+        int len = arr.length;
 
         Set<Integer> set = new HashSet<>();
-        int i = 0;
-        int j = 0;
         int max = Integer.MIN_VALUE;
 
-        while (j < arr.length) {
-            //集合中不包含当前数 ，直接加入集合
-            if (!set.contains(arr[j])) {
-                set.add(arr[j]);
-                j++;
-                max = Math.max(set.size(), max);
+        while (right < len) {
+            //如果集合中j不存在 直接加入
+            if (!set.contains(arr[right])) {
+                set.add(arr[right]);
+                right++;
             } else {
-                //集合中包含要加入的值，删除下标为i的值
-                set.remove(arr[i]);
-                i++;
+                //如果集合中存在right则删除left 下次循环把right再加进去
+                set.remove(arr[left]);
+                left++;
             }
+            max = Math.max(set.size(), max);
         }
         return max;
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 4, 1, 99, 6};
+        int[] nums = new int[]{2, 2, 3, 4, 3};
         int maxLength = maxLength(nums);
         System.out.println(maxLength);
     }

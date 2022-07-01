@@ -1,5 +1,6 @@
 package list;
 
+
 /**
  * @description：160. 相交链表
  * https://leetcode.cn/problems/intersection-of-two-linked-lists/
@@ -79,23 +80,20 @@ public class GetIntersectionNode {
     public static void main(String[] args) {
 
         ListNode aHead = new ListNode(1);
-        ListNode A1 = new ListNode(2);
-        ListNode A2 = new ListNode(3);
-        ListNode A3 = new ListNode(4);
-        ListNode A4 = new ListNode(5);
+        ListNode A1 = new ListNode(3);
+        ListNode A2 = new ListNode(4);
+        ListNode A3 = new ListNode(9);
 
         aHead.next = A1;
         A1.next = A2;
         A2.next = A3;
-        A3.next = A4;
+        A3.next = null;
 
 
-        ListNode bHead = new ListNode(7);
-        ListNode B1 = new ListNode(6);
+        ListNode bHead = new ListNode(2);
+        ListNode B1 = new ListNode(5);
         bHead.next = B1;
-        B1.next = A3;
-
-
+        B1.next = A2;
         getIntersectionNode(aHead, bHead);
     }
 }

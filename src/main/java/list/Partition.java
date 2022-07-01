@@ -15,15 +15,6 @@ package list;
  */
 public class Partition {
 
-    static class ListNode {
-        int val;
-        ListNode next = null;
-
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
-
     /**
      * @param head
      * @param x
@@ -75,36 +66,36 @@ public class Partition {
 
     /**
      * 思路：先把原来的链表拆分为两个一大一小的链表 然后再拼接起来
+     *
      * @param head
      * @param x
      * @return
      */
+
     public static ListNode partition2(ListNode head, int x) {
 
-        ListNode small = new ListNode(-1);
-        ListNode smallPre = small;
+        ListNode samallPre = new ListNode(-1);
+        ListNode samallCur = samallPre;
 
-        ListNode larger = new ListNode(-1);
-        ListNode largerPre = larger;
+        ListNode largerPre = new ListNode(-1);
+        ListNode largerCur = largerPre;
+
 
         ListNode cur = head;
 
         while (cur != null) {
             if (cur.val < x) {
-                small.next = new ListNode(cur.val);
+                samallCur.next = new ListNode(cur.val);
+                samallCur = samallCur.next;
                 cur = cur.next;
-                small = small.next;
-
             } else {
-                larger.next = new ListNode(cur.val);
+                largerCur.next = new ListNode(cur.val);
+                largerCur = largerCur.next;
                 cur = cur.next;
-                larger = larger.next;
-
             }
         }
-        small.next = largerPre.next;
 
-        return smallPre.next;
-
+        samallCur.next = largerPre.next;
+        return samallPre.next;
     }
 }

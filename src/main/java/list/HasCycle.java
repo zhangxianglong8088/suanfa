@@ -10,15 +10,6 @@ import java.util.Set;
  */
 public class HasCycle {
 
-    static class ListNode {
-        int val;
-        ListNode next;
-
-        public ListNode(int val) {
-            this.val = val;
-        }
-    }
-
     /**
      * 通过set判断
      *

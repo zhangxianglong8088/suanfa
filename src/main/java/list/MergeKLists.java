@@ -47,35 +47,59 @@ public class MergeKLists {
         ListNode node1 = new ListNode(-2);
         ListNode node2 = new ListNode(-1);
         ListNode node3 = new ListNode(-1);
-        ListNode node4 = new ListNode(-1);
 
-//        ListNode node4 = new ListNode(2);
-        ListNode node5 = null;
-//        ListNode node6 = new ListNode(8);
+        ListNode node = null;
+
+        ListNode node4 = new ListNode(2);
+        ListNode node5 = new ListNode(3);
+        ListNode node6 = new ListNode(8);
 //
 //
-//        ListNode node7 = new ListNode(3);
-//        ListNode node8 = new ListNode(6);
-//        ListNode node9 = new ListNode(9);
+        ListNode node7 = new ListNode(3);
+        ListNode node8 = new ListNode(6);
+        ListNode node9 = new ListNode(9);
 
         node1.next = node2;
         node2.next = node3;
-        node3.next = node4;
-        node4.next = null;
+        node3.next = null;
 
-//        node.next = null;
 
-//        node4.next = node5;
-//        node5.next = node6;
-//        node6.next = null;
-//
-//        node7.next = node8;
-//        node8.next = node9;
-//        node9.next = null;
+        node4.next = node5;
+        node5.next = node6;
+        node6.next = null;
 
-        ListNode[] list = new ListNode[]{node1, node5};
+        node7.next = node8;
+        node8.next = node9;
+        node9.next = null;
 
-        mergeKLists(list);
+        ListNode[] list = new ListNode[]{node1, node};
 
+        mergeKLists3(list);
+
+    }
+
+    public static ListNode mergeKLists3(ListNode[] lists) {
+        //小顶堆
+        Queue<ListNode> queue = new PriorityQueue<>((node1, node2) -> (node1.val - node2.val));
+
+        for (ListNode node : lists) {
+            if (node == null) {
+                continue;
+            }
+            while (node != null) {
+                queue.offer(node);
+                node = node.next;
+            }
+        }
+        ListNode pre = new ListNode(-1);
+        ListNode cur = pre;
+
+        while (!queue.isEmpty()) {
+            ListNode tmp = queue.poll();
+            tmp.next = null;
+            cur.next = tmp;
+            cur = cur.next;
+        }
+        return pre.next;
     }
 }

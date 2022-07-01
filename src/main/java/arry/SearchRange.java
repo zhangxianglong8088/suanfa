@@ -14,33 +14,8 @@ package arry;
  */
 public class SearchRange {
 
+
     public static int[] searchRange(int[] nums, int target) {
-
-        int left = 0;
-        int right = nums.length - 1;
-        int[] result = new int[2];
-
-        while (left >= 0 && left <= right) {
-            if (nums[left] == target) {
-                result[0] = left;
-                break;
-            }
-            left++;
-        }
-
-        while (right <= nums.length - 1 && right >= left) {
-            if (nums[right] == target) {
-                result[1] = right;
-                break;
-            }
-            right--;
-        }
-
-        return result;
-    }
-
-
-    public static int[] searchRange2(int[] nums, int target) {
 
         int[] result = new int[2];
         int start = -1;
@@ -68,6 +43,6 @@ public class SearchRange {
 
     public static void main(String[] args) {
         int[] nums = new int[]{5, 7, 7, 8, 8, 10};
-        int[] result = searchRange2(nums, 8);
+        int[] result = searchRange(nums, 8);
     }
 }

@@ -5,7 +5,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/24
  */
-public class MaxArea {
+public class MaxAreaXXX {
 
     /**
      * 暴力解法
@@ -35,7 +35,6 @@ public class MaxArea {
     public static int maxArea2(int[] height) {
         int squar = Integer.MIN_VALUE;
 
-
         int left = 0;
         int right = height.length - 1;
 
@@ -57,6 +56,6 @@ public class MaxArea {
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7};
-        int result = maxArea2(nums);
+        int result = maxArea(nums);
     }
 }

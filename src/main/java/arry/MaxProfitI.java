@@ -14,7 +14,7 @@ public class MaxProfitI {
      * @param prices
      * @return
      */
-    public static int maxProfit(int[] prices) {
+    public static int maxProfit1(int[] prices) {
         int ans = 0;
 
         for (int i = 0; i < prices.length - 1; i++) {

@@ -8,16 +8,6 @@ package list;
  */
 public class GetKthFromEnd {
 
-    static class ListNode {
-        int value;
-        ListNode next;
-
-        public ListNode(int value) {
-            this.value = value;
-        }
-    }
-
-
     public static ListNode getKthFromEnd(ListNode head, int k) {
 
         //获取链表的长度

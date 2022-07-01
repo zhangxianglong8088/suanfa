@@ -1,9 +1,10 @@
 package list;
 
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
- * @description：
+ * @description：链表排序 https://leetcode.cn/problems/7WHec2/
  * @author: zhangxianglong
  * @date: 2022/5/26
  */
@@ -36,28 +37,6 @@ public class SortList {
 
     }
 
-
-    public static ListNode sortList2(ListNode head) {
-        if(head==null){
-            return  head;
-        }
-        PriorityQueue<ListNode> queue = new PriorityQueue<>((p1, p2) -> (p1.val - p2.val));
-
-        while (head != null) {
-            queue.offer(head);
-            head = head.next;
-        }
-        ListNode pre = new ListNode(-1);
-        ListNode cur = pre;
-        while (!queue.isEmpty()) {
-            ListNode nodeValue = queue.poll();
-            nodeValue.next = null;
-            cur.next = nodeValue;
-            cur = cur.next;
-        }
-        return pre.next;
-    }
-
     public static void main(String[] args) {
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(5);
@@ -78,4 +57,26 @@ public class SortList {
         ListNode head = sortList2(node1);
     }
 
+    public static ListNode sortList2(ListNode head) {
+
+
+        Queue<ListNode> queue = new PriorityQueue<>((node1, node2) -> (node1.val - node2.val));
+
+        while (head != null) {
+            queue.add(head);
+            head = head.next;
+        }
+        ListNode pre = new ListNode(-1);
+        ListNode cur = pre;
+
+
+        while (!queue.isEmpty()) {
+            ListNode tmp = queue.poll();
+            tmp.next = null;
+            cur.next = tmp;
+            cur = cur.next;
+        }
+
+        return pre.next;
+    }
 }

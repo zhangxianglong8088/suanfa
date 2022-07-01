@@ -32,8 +32,33 @@ public class Exchange {
         return result;
     }
 
+    /**
+     * 双指针 分别从头 从尾开始遍历，如果l<r 前提下 l位置为奇数 l++，如果r位置为偶数 r--
+     *
+     * @param nums
+     * @return
+     */
+    public static int[] exchange2(int[] nums) {
+        int l = 0;
+        int r = nums.length - 1;
+
+        while (l < r) {
+            while (l < r && nums[l] % 2 == 1) {
+                l++;
+            }
+            while (l < r && nums[r] % 2 == 0) {
+                r--;
+            }
+            //交换l和r
+            int tmp = nums[l];
+            nums[l] = nums[r];
+            nums[r] = tmp;
+        }
+        return nums;
+    }
+
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 3, 4, 5, 6};
-        exchange(nums);
+        int[] res = exchange2(nums);
     }
 }

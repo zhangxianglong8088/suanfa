@@ -6,7 +6,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/23
  */
-public class MaxSlidingWindow {
+public class MaxSlidingWindowXXX {
 //    public int[] maxSlidingWindow(int[] nums, int k) {
 //
 //    }

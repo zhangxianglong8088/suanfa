@@ -7,7 +7,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/15
  */
-public class MaxProfitII {
+public class MaxProfitIIXXX {
     /**
      * @param prices
      * @return

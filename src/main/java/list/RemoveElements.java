@@ -7,7 +7,7 @@ package list;
  * @author: zhangxianglong
  * @date: 2022/5/17
  */
-public class RemoveElementsXXX {
+public class RemoveElements {
     static class ListNode {
         int val;
         ListNode next;
@@ -46,6 +46,35 @@ public class RemoveElementsXXX {
         return pre.next;
     }
 
+    /**
+     * 借助 head和cur两个指针的思路
+     *
+     * @param head
+     * @param val
+     * @return
+     */
+    public static ListNode removeElements1(ListNode head, int val) {
+        if (head == null) {
+            return head;
+        }
+        ListNode pre = new ListNode(-1);
+        pre.next = head;
+        ListNode cur = pre;
+
+        while (head != null) {
+            if (head.val == val) {
+                cur.next = head.next;
+                head = head.next;
+            } else {
+                cur = cur.next;
+                head = head.next;
+            }
+        }
+
+        return pre.next;
+    }
+
+
     public static void main(String[] args) {
 
         ListNode node1 = new ListNode(7);
@@ -64,20 +93,7 @@ public class RemoveElementsXXX {
         node6.next = node7;
         node7.next = null;
 
-        ListNode head = removeElements2(node1, 7);
+        ListNode head = removeElements1(node1, 7);
 
-    }
-
-    public static ListNode removeElements2(ListNode head, int val) {
-
-        ListNode cur = head;
-
-        while (cur != null && cur.next != null) {
-            if (cur.val == val) {
-                cur = cur.next;
-            }
-            cur = cur.next;
-        }
-        return head;
     }
 }

@@ -10,7 +10,7 @@ import java.util.Set;
  * @author: zhangxianglong
  * @date: 2022/6/11
  */
-public class DetectCycle {
+public class DetectCycleXXX {
 
     /**
      * detectCycle
@@ -18,7 +18,7 @@ public class DetectCycle {
      * @param head
      * @return
      */
-    public ListNode detectCycle(ListNode head) {
+    public static ListNode detectCycle(ListNode head) {
         if (head == null) {
             return null;
         }
@@ -30,6 +30,7 @@ public class DetectCycle {
             } else {
                 return null;
             }
+            //当 slow 与 fast 相遇时，我们再额外使用一个指针 ptr。起始，它指向链表头部；随后，它和 slow 每次向后移动一个位置。最终，它们会在入环点相遇。
             if (fast == slow) {
                 ListNode ptr = head;
                 while (ptr != slow) {
@@ -59,5 +60,21 @@ public class DetectCycle {
             head = head.next;
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+//        ListNode node3 = new ListNode(0);
+//        ListNode node4 = new ListNode(-4);
+
+        node1.next = node2;
+        node2.next = node1;
+//        node3.next = node1;
+//        node4.next = node2;
+
+        ListNode res = detectCycle(node1);
+
     }
 }

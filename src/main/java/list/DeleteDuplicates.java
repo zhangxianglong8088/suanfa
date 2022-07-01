@@ -1,6 +1,7 @@
 package list;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,19 +12,7 @@ import java.util.Set;
  * @date: 2022/5/17
  */
 public class DeleteDuplicates {
-    static class ListNode {
-        int val;
-        ListNode next;
 
-        public ListNode(int val) {
-            this.val = val;
-        }
-
-        public ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     /**
      * 链表是排序好的，那么重复的元素是相邻的
@@ -46,6 +35,45 @@ public class DeleteDuplicates {
         }
 
         return head;
+    }
+
+
+    public static void main(String[] args) {
+
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(1);
+        ListNode node3 = new ListNode(2);
+        ListNode node4 = new ListNode(3);
+        ListNode node5 = new ListNode(4);
+
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = null;
+
+        deleteDuplicates2(node1);
+    }
+
+    /**
+     * 虚拟指针解法
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode deleteDuplicates2(ListNode head) {
+        ListNode pre = new ListNode(-1);
+        ListNode cur = head;
+        pre.next = cur;
+
+        while (cur != null && cur.next != null) {
+            if (cur.val == cur.next.val) {
+                cur.next = cur.next.next;
+            } else {
+                cur = cur.next;
+            }
+        }
+        return pre.next;
     }
 
 
@@ -76,20 +104,4 @@ public class DeleteDuplicates {
         return head;
     }
 
-    public static void main(String[] args) {
-
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(1);
-        ListNode node3 = new ListNode(2);
-        ListNode node4 = new ListNode(3);
-        ListNode node5 = new ListNode(4);
-
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node5;
-        node5.next = null;
-
-        deleteDuplicates(node1);
-    }
 }

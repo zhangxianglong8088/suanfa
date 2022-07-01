@@ -14,22 +14,23 @@ public class FindKthLargest {
 
     public static int findKthLargest(int[] nums, int k) {
         //定义大顶堆
-        Queue<Integer> queue = new PriorityQueue<>((v1, v2) -> v2 - v1);
-
+        Queue<Integer> queue = new PriorityQueue<>((v1, v2) -> (v2 - v1));
         for (int i = 0; i < nums.length; i++) {
             queue.offer(nums[i]);
         }
-        //执行K-1次删除栈顶元素
-        for (int i = 1; i <= k - 1; i++) {
-            queue.poll();
+
+        for (int i = 0; i < k; i++) {
+            if (i == k - 1) {
+                return queue.poll();
+            } else {
+                queue.poll();
+            }
         }
-
-        return queue.peek();
-
+        return -1;
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{3, 2, 3, 1, 2, 4, 5, 5, 6};
-        System.out.println(findKthLargest(nums, 4));
+        int[] nums = new int[]{1, 2, 3, 3, 5, 5, 7, 8};
+        System.out.println(findKthLargest(nums, 5));
     }
 }

@@ -62,4 +62,21 @@ public class SwapPairs {
         ListNode head = swapPairs(node1);
 
     }
+
+
+    public ListNode swapPairs2(ListNode head) {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode reversHead = swapPairs2(head.next.next);
+
+        ListNode subHead = head.next;
+
+        head.next.next = head;
+        head.next = reversHead;
+
+        return subHead;
+    }
 }

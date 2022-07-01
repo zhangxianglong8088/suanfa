@@ -9,35 +9,34 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/14
  */
-public class RemoveDuplicates {
+public class RemoveDuplicatesXXX {
 
     /**
-     * 有序数组删除重复元素
+     * 删除数
      *
-     * @param arr
-     * @return
+     * @param args
      */
-    static int removeDuplicates(int[] arr) {
-
-        if (arr == null || arr.length == 0) {
-            return 0;
-        }
-
-        int slow = 0;
-        int fast = slow + 1;
-
-        while (fast <= arr.length - 1) {
-            if (arr[slow] != arr[fast]) {
-                arr[slow + 1] = arr[fast];
-                slow++;
-            }
-            fast++;
-        }
-        return slow + 1;
-    }
 
     public static void main(String[] args) {
         int[] arr = new int[]{1, 1, 2};
         int result = removeDuplicates(arr);
     }
+
+    public static int removeDuplicates(int[] nums) {
+        int left = 0;
+        int right = 1;
+
+        while (right < nums.length) {
+            //如果nums[left] 和nums[right] 相等 让right往后走，
+            //往后走的过程中，找一个和nums[left]不相等的数，覆盖right原来的位置，也就是left++的位置
+            if (nums[left] != nums[right]) {
+                left++;
+                nums[left] = nums[right];
+            }
+            right++;
+        }
+        return left + 1;
+    }
 }
+
+

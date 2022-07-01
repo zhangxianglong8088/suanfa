@@ -6,7 +6,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/6/3
  */
-public class SsortedSquares {
+public class SortedSquares {
 
     public static int[] sortedSquares(int[] nums) {
 

@@ -56,9 +56,28 @@ public class GetLeastNumbers {
         return res;
     }
 
+    /**
+     * 小根堆实现
+     *
+     * @param arr
+     * @param k
+     * @return
+     */
+    public static int[] getLeastNumbers2(int[] arr, int k) {
+        Queue<Integer> queue = new PriorityQueue<>(Comparator.comparingInt(v -> v));
+        for (int i = 0; i < arr.length; i++) {
+            queue.offer(arr[i]);
+        }
+        int[] nums = new int[k];
+        for (int i = 0; i < k; i++) {
+            nums[i] = queue.poll();
+        }
+        return nums;
+    }
+
     public static void main(String[] args) {
-        int[] nums = new int[]{0, 0, 0, 2, 0, 5};
+        int[] nums = new int[]{1, 2, 3, 4, 5, 6};
         int k = 2;
-        int[] result = getLeastNumbers(nums, k);
+        int[] result = getLeastNumbers2(nums, k);
     }
 }

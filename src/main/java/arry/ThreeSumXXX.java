@@ -1,31 +1,8 @@
 package arry;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-public class ThreeSum {
-    /**
-     * 求两数之和为11的两个数组元素
-     *
-     * @param target
-     */
-    public static List<int[]> threeSum(Integer[] nums, Integer target) {
-
-        List<int[]> list = new ArrayList<>();
-
-        for (int i = 0; i <= nums.length - 1; i++) {
-            for (int j = i + 1; j <= nums.length - 1; j++) {
-                for (int m = j + 1; m <= nums.length - 1; m++) {
-                    if (nums[i] + nums[j] + nums[m] == target) {
-                        list.add(new int[]{nums[i], nums[j], nums[m]});
-                    }
-                }
-            }
-        }
-        return list;
-    }
+public class ThreeSumXXX {
 
     /**
      * 排序+双指针
@@ -35,16 +12,13 @@ public class ThreeSum {
      * <p>
      * 第三重循环枚举到的元素不小于当前第二重循环枚举到的元素。
      * <p>
-     * 作者：LeetCode-Solution
      * 链接：https://leetcode.cn/problems/3sum/solution/san-shu-zhi-he-by-leetcode-solution/
-     * 来源：力扣（LeetCode）
-     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      *
      * @param nums
      * @param target
      * @return
      */
-    public static List<List<Integer>> threeSum2(Integer[] nums, Integer target) {
+    public static List<List<Integer>> threeSum(Integer[] nums, Integer target) {
         //定义一个结果集
         List<List<Integer>> res = new ArrayList<>();
         //数组的长度
@@ -78,11 +52,11 @@ public class ThreeSum {
                     res.add(Arrays.asList(nums[i], nums[l], nums[r]));
                     //在将左指针和右指针移动的时候，先对左右指针的值，进行判断
                     //如果重复，直接跳过。
-                    //去重，因为 i 不变，当此时 l取的数的值与前一个数相同，所以不用在计算，直接跳
+                    //去重，因为 i 不变，当此时 l取的数的值与前一个数相同，所以不用再计算，直接跳
                     while (l < r && Objects.equals(nums[l], nums[l + 1])) {
                         l++;
                     }
-                    //去重，因为 i不变，当此时 r 取的数的值与前一个相同，所以不用在计算
+                    //去重，因为 i不变，当此时 r 取的数的值与前一个相同，所以不用再计算
                     while (l < r && Objects.equals(nums[r], nums[r - 1])) {
                         r--;
                     }
@@ -104,8 +78,6 @@ public class ThreeSum {
 
     public static void main(String[] args) {
         Integer[] arr = new Integer[]{-1, 0, 1, 2, -1, -4};
-
-        List<List<Integer>> result = threeSum2(arr, 0);
-
+        List<List<Integer>> result = threeSum(arr, 0);
     }
 }

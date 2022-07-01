@@ -1,5 +1,7 @@
 package list;
 
+import java.util.List;
+
 /**
  * https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/
  *
@@ -60,7 +62,7 @@ public class MergeTwoLists {
         node5.next = node6;
         node6.next = null;
 
-        mergeTwoLists1(node1, node4);
+        mergeTwoLists(node1, node4);
 
     }
 

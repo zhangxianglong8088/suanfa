@@ -10,7 +10,7 @@ import tree.TreeNode;
  * @author: zhangxianglong
  * @date: 2022/6/12
  */
-public class SsortedListToBST {
+public class SortedListToBST {
 
     public TreeNode sortedListToBST(ListNode head) {
         return null;

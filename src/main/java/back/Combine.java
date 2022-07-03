@@ -42,6 +42,41 @@ public class Combine {
     }
 
     public static void main(String[] args) {
-        List<List<Integer>> result = combine(4, 2);
+        List<List<Integer>> result = combine3(4, 2);
+    }
+
+    public static List<List<Integer>> combine3(int n, int k) {
+
+        List<List<Integer>> res = new ArrayList();
+
+        Deque<Integer> path = new ArrayDeque();
+
+        backtracing3(res, path, n, 1, k);
+
+        return res;
+
+
+    }
+
+    static void backtracing3(List<List<Integer>> res, Deque<Integer> path, int n, int index, int k) {
+        //递归终止条件
+        if (path.size() == k) {
+            res.add(new ArrayList(path));
+            return;
+        }
+
+        //单层递归逻辑
+        for (int i = index; i <= n; i++) {
+
+            path.add(i);
+
+            //递归
+            backtracing3(res, path, n, i + 1, k);
+
+            //回溯
+            path.removeLast();
+
+        }
+
     }
 }

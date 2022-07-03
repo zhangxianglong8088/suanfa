@@ -5,6 +5,7 @@ import java.util.*;
 /**
  * 39. 组合总和
  * https://leetcode.cn/problems/combination-sum/
+ * 元素可以重复使用
  *
  * @description：
  * @author: zhangxianglong
@@ -12,9 +13,13 @@ import java.util.*;
  */
 public class CombinationSum {
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
+
         List<List<Integer>> res = new ArrayList<>();
+
         Arrays.sort(candidates);
+
         Deque<Integer> path = new ArrayDeque<>();
+
         backTracking(res, path, candidates, 0, 0, target);
 
         return res;
@@ -40,14 +45,16 @@ public class CombinationSum {
 
         //单层递归逻辑
         for (int i = index; i < candidates.length; i++) {
-            if (sum + candidates[i] > target) {
+            sum = sum + candidates[i];
+            if (sum > target) {
                 break;
             }
             path.add(candidates[i]);
             //因为选取元素可以重复 这里index还是从i开始
-            backTracking(res, path, candidates, i, sum + candidates[i], target);
+            backTracking(res, path, candidates, i, sum, target);
             //开始回溯 弹出最右一个元素
             if (path.size() > 0) {
+                sum = sum - candidates[i];
                 path.removeLast();
             }
         }

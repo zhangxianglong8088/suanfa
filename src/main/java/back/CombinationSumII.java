@@ -3,7 +3,11 @@ package back;
 import java.util.*;
 
 /**
- * @description：
+ * 40. 组合总和 II
+ * 不可以重复使用元素
+ * 难点：对结果集如何去重
+ *
+ * @description： https://leetcode.cn/problems/combination-sum-ii/
  * @author: zhangxianglong
  * @date: 2022/6/26
  */
@@ -32,7 +36,7 @@ public class CombinationSumII {
             return;
         }
         for (int i = index; i < arr.length && arr[i] + sum <= target; i++) {
-            //出现重复节点，同层的第一个节点已经被访问过，所以直接跳过
+            //*** 组合的去重复 固定相同的元素在排列中的相对位置  如果前面的相邻相等元素没有用过，则跳过
             if (i > 0 && arr[i] == arr[i - 1] && !flag[i - 1]) {
                 continue;
             }

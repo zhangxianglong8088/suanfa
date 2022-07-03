@@ -1,8 +1,6 @@
 package back;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * https://leetcode.cn/problems/permutations-ii/
@@ -13,48 +11,44 @@ import java.util.List;
  * @date: 2022/6/26
  */
 public class PermuteUnique {
-
-    //存放结果
-    static List<List<Integer>> result = new ArrayList<>();
-    //暂存结果
-    static List<Integer> path = new ArrayList<>();
+    static boolean[] used;
 
     public static List<List<Integer>> permuteUnique(int[] nums) {
-        boolean[] used = new boolean[nums.length];
-        Arrays.fill(used, false);
+        List<List<Integer>> res = new ArrayList<>();
+        Deque<Integer> path = new ArrayDeque<>();
         Arrays.sort(nums);
-        backTrack(nums, used);
-        return result;
+        used = new boolean[nums.length];
+        backtrack(res, path, nums);
+        return res;
     }
 
-    static void backTrack(int[] nums, boolean[] used) {
+    static void backtrack(List<List<Integer>> res, Deque<Integer> path, int[] nums) {
+        //递归终止条件
         if (path.size() == nums.length) {
-            result.add(new ArrayList<>(path));
+            res.add(new ArrayList<>(path));
             return;
         }
+
+        //单层递归逻辑
         for (int i = 0; i < nums.length; i++) {
-            // used[i - 1] == true，说明同⼀树⽀nums[i - 1]使⽤过
-            // used[i - 1] == false，说明同⼀树层nums[i - 1]使⽤过
-            // 如果同⼀树层nums[i - 1]使⽤过则直接跳过
-            if (i > 0 && nums[i] == nums[i - 1] && used[i - 1] == false) {
+            if (used[i]) {
                 continue;
             }
-            //如果同⼀树⽀nums[i]没使⽤过开始处理
-            if (used[i] == false) {
-                //标记同⼀树⽀nums[i]使⽤过，防止同一树枝重复使用
-                used[i] = true;
-                path.add(nums[i]);
-                backTrack(nums, used);
-                //回溯，说明同⼀树层nums[i]使⽤过，防止下一树层重复
-                path.remove(path.size() - 1);
-                //回溯
-                used[i] = false;
+            // *** 重点 剪枝逻辑，值相同的相邻树枝，只遍历第一条
+            //全排列的去重复 固定相同的元素在排列中的相对位置  如果前面的相邻相等元素没有用过，则跳过
+            if (i > 0 && nums[i] == nums[i - 1] && used[i - 1]) {
+                continue;
             }
+            path.add(nums[i]);
+            used[i] = true;
+            backtrack(res, path, nums);
+            path.removeLast();
+            used[i] = false;
         }
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 1, 2};
-        List<List<Integer>> list  =  permuteUnique(nums);
+        int[] nums = new int[]{1, 1, 3};
+        List<List<Integer>> list = permuteUnique(nums);
     }
 }

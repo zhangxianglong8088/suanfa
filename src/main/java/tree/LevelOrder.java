@@ -1,9 +1,6 @@
 package tree;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 二叉树层序遍历
@@ -12,7 +9,7 @@ import java.util.Queue;
  * @author: zhangxianglong
  * @date: 2022/5/24
  */
-public class LevelOrderXXX {
+public class LevelOrder {
 
     public static List<List<Integer>> levelOrder(TreeNode root) {
 

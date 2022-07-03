@@ -29,7 +29,7 @@ public class MaxDepth {
     }
 
     /**
-     * 二叉树层序遍历
+     * 二叉树层序遍历解法
      *
      * @param root
      * @return

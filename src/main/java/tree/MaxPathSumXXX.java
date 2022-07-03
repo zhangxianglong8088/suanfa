@@ -17,5 +17,5 @@ package tree;
  * @author: zhangxianglong
  * @date: 2022/5/20
  */
-public class MaxPathSum {
+public class MaxPathSumXXX {
 }

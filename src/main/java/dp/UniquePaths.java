@@ -10,7 +10,7 @@ package dp;
  * <p>
  * 那么很自然，dp[i][j] = dp[i - 1][j] + dp[i][j - 1]，因为dp[i][j]只有这两个方向过来。
  *
- * @description：https://leetcode.cn/problems/unique-paths/
+ * @description： https://leetcode.cn/problems/unique-paths/
  * @author: zhangxianglong
  * @date: 2022/5/26
  */

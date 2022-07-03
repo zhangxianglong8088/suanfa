@@ -12,7 +12,7 @@ package dp;
  * <p>
  * 即：dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
  *
- * @description：https://leetcode.cn/problems/longest-common-subsequence/
+ * @description：  https://leetcode.cn/problems/longest-common-subsequence/
  * @author: zhangxianglong
  * @date: 2022/5/26
  */

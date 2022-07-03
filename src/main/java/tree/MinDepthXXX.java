@@ -11,7 +11,34 @@ import java.util.Queue;
  * @author: zhangxianglong
  * @date: 2022/6/5
  */
-public class MinDepth {
+public class MinDepthXXX {
+
+    /**
+     * 这个解法64%可以借鉴
+     *
+     * @param root
+     * @return
+     */
+    public int minDepth1(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+
+        int min_depth = Integer.MAX_VALUE;
+        if (root.left != null) {
+            min_depth = Math.min(minDepth1(root.left), min_depth);
+        }
+        if (root.right != null) {
+            min_depth = Math.min(minDepth1(root.right), min_depth);
+        }
+
+        return min_depth + 1;
+    }
+
     /**
      * DFS
      *

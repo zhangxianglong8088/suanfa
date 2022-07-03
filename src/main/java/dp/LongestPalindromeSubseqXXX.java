@@ -8,7 +8,7 @@ package dp;
  * @author: zhangxianglong
  * @date: 2022/5/26
  */
-public class LongestPalindromeSubseq {
+public class LongestPalindromeSubseqXXX {
 
     public static int longestPalindromeSubseq(String s) {
         int len = s.length();

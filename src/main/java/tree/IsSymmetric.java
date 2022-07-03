@@ -64,7 +64,31 @@ public class IsSymmetric {
         node2.left = node5;
         node2.right = node6;
 
-        Boolean result = isSymmetric(node0);
+        Boolean result = isSymmetric2(node0);
 
+    }
+
+
+    public static boolean isSymmetric2(TreeNode root) {
+        return helper2(root.left, root.right);
+
+    }
+
+    public static boolean helper2(TreeNode left, TreeNode right) {
+
+        if (left == null && right == null) {
+            return true;
+        }
+
+        if (left == null) {
+            return false;
+        }
+
+        if (right == null) {
+            return false;
+        }
+
+
+        return helper2(left.left, right.right) && helper(left.right, right.left);
     }
 }

@@ -5,15 +5,17 @@ import java.util.Arrays;
 /**
  * 300. 最长递增子序列
  *
- * @description：https://leetcode.cn/problems/longest-increasing-subsequence/
+ * @description： https://leetcode.cn/problems/longest-increasing-subsequence/
  * @author: zhangxianglong
  * @date: 2022/5/25
  */
 public class LengthOfLIS {
 
     static int lengthOfLIS(int[] nums) {
+
         // 定义：dp[i] 表示以从0号位置到i号位置这个闭区间的最长递增子序列的长度
         int[] dp = new int[nums.length];
+
         // base case：dp 数组全都初始化为 1
         Arrays.fill(dp, 1);
 

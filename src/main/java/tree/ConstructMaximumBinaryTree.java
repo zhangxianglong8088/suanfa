@@ -2,6 +2,7 @@ package tree;
 
 /**
  * 654. 最大二叉树 通过数组构造一个最大二叉树
+ * 每次找到数组区间最大的值，最为根结点，递归构建左子树和右子树
  *
  * @description：https://leetcode.cn/problems/maximum-binary-tree/
  * @author: zhangxianglong
@@ -11,7 +12,6 @@ public class ConstructMaximumBinaryTree {
 
     public static TreeNode constructMaximumBinaryTree(int[] nums) {
         return build(nums, 0, nums.length - 1);
-
     }
 
     static TreeNode build(int[] nums, int lo, int hi) {
@@ -41,6 +41,6 @@ public class ConstructMaximumBinaryTree {
 
     public static void main(String[] args) {
         int[] nums = new int[]{3, 2, 1, 6, 0, 5};
-        constructMaximumBinaryTree(nums);
+        TreeNode root = constructMaximumBinaryTree(nums);
     }
 }

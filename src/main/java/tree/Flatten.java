@@ -93,4 +93,26 @@ public class Flatten {
         pre(root.right, list);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

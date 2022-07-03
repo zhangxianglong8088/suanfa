@@ -8,7 +8,7 @@ package dp;
  * @author: zhangxianglong
  * @date: 2022/6/16
  */
-public class IntegerBreakXXX {
+public class IntegerBreak {
 
     public static int integerBreak(int n) {
         //定义dp数组 dp[i]的含义是值为i的整数拆分的乘积的最大值

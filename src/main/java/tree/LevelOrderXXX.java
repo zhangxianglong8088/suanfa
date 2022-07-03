@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * @description：
+ * 二叉树层序遍历
+ *
+ * @description：https://leetcode.cn/problems/binary-tree-level-order-traversal/
  * @author: zhangxianglong
  * @date: 2022/5/24
  */
-public class LevelOrder {
+public class LevelOrderXXX {
 
     public static List<List<Integer>> levelOrder(TreeNode root) {
 

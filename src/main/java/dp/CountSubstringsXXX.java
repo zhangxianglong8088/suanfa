@@ -8,7 +8,7 @@ package dp;
  * @author: zhangxianglong
  * @date: 2022/6/25
  */
-public class CountSubstrings {
+public class CountSubstringsXXX {
     public static int countSubstrings(String s) {
         //定义dp数组
         int len = s.length();

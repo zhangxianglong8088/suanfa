@@ -30,7 +30,29 @@ public class ClimbStairs {
     }
 
     public static void main(String[] args) {
-        int result = climbStairs(45);
+        int result = climbStairs2(3);
         System.out.println(result);
+    }
+
+    public static  int climbStairs2(int n) {
+        if (n <= 2) {
+            return n;
+        }
+
+        //定义dp数组
+        int[] dp = new int[n+1];
+
+        //初始化dp数组
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 2;
+
+        //遍历dp数组
+        for (int i = 3; i <= dp.length-1; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+
+        return dp[n];
+
     }
 }

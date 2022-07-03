@@ -2,6 +2,7 @@ package dp;
 
 /**
  * @description：152. 乘积最大子数组
+ * https://leetcode.cn/problems/maximum-product-subarray/
  * @author: zhangxianglong
  * @date: 2022/5/23
  */

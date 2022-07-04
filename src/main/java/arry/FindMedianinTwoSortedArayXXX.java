@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @author: zhangxianglong
  * @date: 2022/5/15
  */
-public class FindMedianinTwoSortedAray {
+public class FindMedianinTwoSortedArayXXX {
     /**
      * https://www.nowcoder.com/practice/6fbe70f3a51d44fa9395cfc49694404f?tpId=196&tqId=37141&rp=1&ru=/exam/oj&qru=/exam/oj&sourceUrl=%2Fexam%2Foj%3Fpage%3D1%26pageSize%3D50%26search%3D%26tab%3D%25E7%25AE%2597%25E6%25B3%2595%25E7%25AF%2587%26topicId%3D196&difficulty=undefined&judgeStatus=undefined&tags=578&title=
      * 两个数组合并为一个新的数组，再排序后，取中间位置的数

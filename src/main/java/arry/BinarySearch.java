@@ -3,7 +3,7 @@ package arry;
 /**
  * https://leetcode.cn/problems/binary-search/submissions/
  *
- * @description：二分查找
+ * @description： 二分查找
  * @author: zhangxianglong
  * @date: 2022/5/21
  */
@@ -11,6 +11,7 @@ public class BinarySearch {
 
 
     static int binarySearch(int[] nums, int target) {
+
         int left = 0;
         int right = nums.length - 1;
 

@@ -1,4 +1,4 @@
-package arry;
+package sliding;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -41,8 +41,27 @@ public class MaxLength {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2, 2, 3, 4, 3};
-        int maxLength = maxLength(nums);
+        int[] nums = new int[]{2};
+        int maxLength = maxLength2(nums);
         System.out.println(maxLength);
+    }
+
+    static int maxLength2(int[] nums) {
+
+        int left = 0;
+        int right = 0;
+        int maxLen = Integer.MIN_VALUE;
+        Set<Integer> set = new HashSet<>();
+
+        while (right < nums.length) {
+            while (set.contains(nums[right])) {
+                set.remove(nums[left]);
+                left++;
+            }
+            set.add(nums[right]);
+            maxLen = Math.max(maxLen, set.size());
+            right++;
+        }
+        return maxLen;
     }
 }

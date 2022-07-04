@@ -71,7 +71,7 @@ public class MajorityElement {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{3, 2, 3};
+        int[] nums = new int[]{1, 2, 3, 2, 2, 2, 5, 4, 2};
         System.out.println(majorityElement2(nums));
     }
 }

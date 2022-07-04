@@ -4,7 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * @description：
+ * 128. 最长连续序列
+ *
+ * @description：https://leetcode.cn/problems/longest-consecutive-sequence/
  * @author: zhangxianglong
  * @date: 2022/5/24
  */

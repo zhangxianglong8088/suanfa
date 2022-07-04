@@ -9,19 +9,8 @@ import java.util.*;
  */
 public class GetLeastNumbers {
 
-//    public int[] getLeastNumbers(int[] arr, int k) {
-//        Arrays.sort(arr);
-//        int[] result = new int[k];
-//        Set<Integer> set = new HashSet<>();
-//        for (int i = 0; i < arr.length; i++) {
-//            set.add(arr[i]);
-//            if (set.size() == k) {
-//                break;
-//            }
-//        }
-//    }
-
     /**
+     * 通过大根堆
      * 求top k 最小的K个数 的算法，
      * 如果求一堆数中最小的前K个数，通过da顶堆，如果加进来的数，比da顶堆的顶还小，则替换，如果比小顶堆的顶大，则忽略
      * <p>

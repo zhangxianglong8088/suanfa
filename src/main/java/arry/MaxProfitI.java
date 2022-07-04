@@ -49,7 +49,21 @@ public class MaxProfitI {
     }
 
     public static void main(String[] args) {
-        int[] prices = new int[]{7, 1, 5, 3, 6, 4};
-        int maxProfit = maxProfit2(prices);
+        int[] prices = new int[]{7, 6, 4, 3, 1};
+        int maxProfit = maxProfit3(prices);
+    }
+
+    public static int maxProfit3(int[] prices) {
+
+        int minPrice = Integer.MAX_VALUE;
+
+        int maxPrifit = 0;
+
+        for (int i = 0; i < prices.length; i++) {
+            minPrice = Integer.min(prices[i], minPrice);
+            maxPrifit = Math.max(maxPrifit, prices[i] - minPrice);
+
+        }
+        return maxPrifit;
     }
 }

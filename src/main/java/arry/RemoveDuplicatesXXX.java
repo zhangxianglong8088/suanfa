@@ -18,8 +18,8 @@ public class RemoveDuplicatesXXX {
      */
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 1, 2};
-        int result = removeDuplicates(arr);
+        int[] arr = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+        int result = removeDuplicates3(arr);
     }
 
     public static int removeDuplicates(int[] nums) {
@@ -37,6 +37,39 @@ public class RemoveDuplicatesXXX {
         }
         return left + 1;
     }
+
+
+    /**
+     * 自己理解的思路
+     *
+     * @param nums
+     * @return
+     */
+    public static int removeDuplicates3(int[] nums) {
+        int left = 0;
+        int right = 1;
+
+        while (right < nums.length) {
+
+            //如果left和right的值不相同，left和right同时往后走
+            if (nums[left] != nums[right]) {
+                left++;
+                right++;
+            } else {
+                while (right < nums.length) {
+                    //如果相同，right去后面找一个数和left不相同，赋值给left++的位置，然后left和right同时往后走
+                    if (nums[left] != nums[right]) {
+                        left++;
+                        nums[left] = nums[right];
+                    }
+                    right++;
+                }
+            }
+        }
+        return left + 1;
+    }
+
+
 }
 
 

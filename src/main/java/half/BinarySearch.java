@@ -1,4 +1,4 @@
-package arry;
+package half;
 
 /**
  * https://leetcode.cn/problems/binary-search/submissions/

@@ -2,7 +2,7 @@ package arry;
 
 import java.util.*;
 
-public class ThreeSumXXX {
+public class ThreeSum {
 
     /**
      * 排序+双指针
@@ -15,16 +15,15 @@ public class ThreeSumXXX {
      * 链接：https://leetcode.cn/problems/3sum/solution/san-shu-zhi-he-by-leetcode-solution/
      *
      * @param nums
-     * @param target
      * @return
      */
-    public static List<List<Integer>> threeSum(Integer[] nums, Integer target) {
+    public static List<List<Integer>> threeSum(Integer[] nums) {
         //定义一个结果集
         List<List<Integer>> res = new ArrayList<>();
         //数组的长度
         int len = nums.length;
         //当前数组的长度为空，或者长度小于3时，直接退出
-        if (nums == null || len < 3) {
+        if (len < 3) {
             return res;
         }
         //将数组进行排序
@@ -78,6 +77,6 @@ public class ThreeSumXXX {
 
     public static void main(String[] args) {
         Integer[] arr = new Integer[]{-1, 0, 1, 2, -1, -4};
-        List<List<Integer>> result = threeSum(arr, 0);
+        List<List<Integer>> result = threeSum(arr);
     }
 }

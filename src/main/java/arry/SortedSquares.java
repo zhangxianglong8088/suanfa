@@ -14,6 +14,7 @@ public class SortedSquares {
         int right = nums.length - 1;
 
         int j = nums.length - 1;
+
         int[] arr = new int[nums.length];
         /**
          * 双指针 left 和 right 绝对值大的放到j的位置
@@ -33,6 +34,6 @@ public class SortedSquares {
 
     public static void main(String[] args) {
         int[] nums = new int[]{-4, -1, 0, 3, 10};
-        sortedSquares(nums);
+        int[] res = sortedSquares(nums);
     }
 }

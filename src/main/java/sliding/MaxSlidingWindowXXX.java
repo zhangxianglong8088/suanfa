@@ -1,4 +1,4 @@
-package arry;
+package sliding;
 
 /**
  * @description：239. 滑动窗口最大值

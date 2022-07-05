@@ -43,6 +43,32 @@ public class SearchRange {
 
     public static void main(String[] args) {
         int[] nums = new int[]{5, 7, 7, 8, 8, 10};
-        int[] result = searchRange(nums, 8);
+        int[] result = searchRange3(nums, 6);
+    }
+
+    public static int[] searchRange3(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        int[] res = new int[]{-1, -1};
+
+
+        while (left < nums.length) {
+            if (nums[left] == target) {
+                res[0] = left;
+                break;
+            }
+            left++;
+        }
+
+        while (right >= 0) {
+            if (nums[right] == target) {
+                res[1] = right;
+                break;
+            }
+            right--;
+        }
+
+        return res;
+
     }
 }

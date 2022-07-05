@@ -12,10 +12,6 @@ import java.util.*;
  */
 public class TopKFrequent {
 
-    public static void main(String[] args) {
-        int[] nums = new int[]{1, 1, 1, 2, 2, 3};
-        topKFrequent(nums, 2);
-    }
 
     /**
      * @param nums
@@ -45,6 +41,38 @@ public class TopKFrequent {
         }
 
         return res;
+    }
+
+    public static int[] topKFrequent4(int[] nums, int k) {
+        //出现次数放到map
+        Map<Integer, Integer> timeMap = new HashMap();
+
+        for (int i = 0; i < nums.length; i++) {
+            Integer n = timeMap.get(nums[i]);
+            if (n != null) {
+                n = n + 1;
+            } else {
+                n = 1;
+            }
+            timeMap.put(nums[i], n);
+        }
+        Queue<Integer[]> queue = new PriorityQueue<>((n1, n2) -> (n2[1] - n1[1]));
+
+        //遍历map 将nums[i] 和出现次数封装位一个数组 放到优先级队列(大顶堆)
+        for (Map.Entry<Integer, Integer> entry : timeMap.entrySet()) {
+            queue.add(new Integer[]{entry.getKey(), entry.getValue()});
+        }
+
+        int[] res = new int[k];
+        for (int i = 0; i < k; i++) {
+            res[i] = queue.poll()[0];
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{1};
+        topKFrequent4(nums, 1);
     }
 
 }

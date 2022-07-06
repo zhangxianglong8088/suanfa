@@ -9,40 +9,13 @@ package list;
 
 
 public class ReverseList {
-    static class ListNode {
-        int value;
-        ListNode next;
-
-        public ListNode(int value) {
-            this.value = value;
-        }
-    }
-
-    public static void main(String[] args) {
-        ListNode node1 = new ListNode(1);
-
-        ListNode node2 = new ListNode(2);
-
-        ListNode node3 = new ListNode(3);
-
-        ListNode node4 = new ListNode(4);
-
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = null;
-
-        ListNode pre = reverse2(node1);
-    }
-
-
     /**
      * 迭代法-反转链表
      *
      * @param head
      * @return
      */
-    public static ListNode reverse(ListNode head) {
+    public static ListNode reverse1(ListNode head) {
         //null->1->2->3->4->5->6->7->8
         ListNode pre = null;
         ListNode cur = head;
@@ -83,24 +56,20 @@ public class ReverseList {
         return reverseHead;
     }
 
+    public static void main(String[] args) {
+        ListNode node1 = new ListNode(1);
 
+        ListNode node2 = new ListNode(2);
 
+        ListNode node3 = new ListNode(3);
 
+        ListNode node4 = new ListNode(4);
 
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = null;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        ListNode pre = reverse2(node1);
+    }
 }

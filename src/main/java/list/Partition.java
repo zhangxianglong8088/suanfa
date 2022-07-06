@@ -15,33 +15,42 @@ package list;
  */
 public class Partition {
 
+
     /**
+     * 思路：先把原来的链表拆分为两个一大一小的链表 然后再拼接起来
+     *
      * @param head
      * @param x
      * @return
      */
+
     public static ListNode partition(ListNode head, int x) {
 
-        ListNode samll = new ListNode(-1);
-        ListNode preSamall = samll;
+        ListNode largerPre = new ListNode(-1);
+        ListNode largerCur = largerPre;
 
-        ListNode larager = new ListNode(-2);
-        ListNode preLarager = larager;
+        ListNode smalllerPre = new ListNode(-1);
+        ListNode smalllerCur = smalllerPre;
 
-        ListNode curr = head;
-        while (curr != null) {
-            if (curr.val < x) {
-                samll.next = curr;
-                samll = samll.next;
+        ListNode cur = head;
+
+        while (cur != null) {
+            if (cur.val < x) {
+                //这种case必需要新建结点，否则乱七八糟
+                smalllerCur.next = new ListNode(cur.val);
+                smalllerCur = smalllerCur.next;
+                cur = cur.next;
             } else {
-                larager.next = curr;
-                larager = larager.next;
+                largerCur.next = new ListNode(cur.val);
+                largerCur = largerCur.next;
+                cur = cur.next;
             }
-            curr = curr.next;
         }
-        larager.next = null;
-        samll.next = preLarager.next;
-        return preSamall.next;
+
+        smalllerCur.next = largerPre.next;
+
+        return smalllerPre.next;
+
     }
 
     public static void main(String[] args) {
@@ -60,42 +69,9 @@ public class Partition {
         node5.next = node6;
         node6.next = null;
 
-        partition2(node1, 3);
+        partition(node1, 3);
 
     }
 
-    /**
-     * 思路：先把原来的链表拆分为两个一大一小的链表 然后再拼接起来
-     *
-     * @param head
-     * @param x
-     * @return
-     */
 
-    public static ListNode partition2(ListNode head, int x) {
-
-        ListNode samallPre = new ListNode(-1);
-        ListNode samallCur = samallPre;
-
-        ListNode largerPre = new ListNode(-1);
-        ListNode largerCur = largerPre;
-
-
-        ListNode cur = head;
-
-        while (cur != null) {
-            if (cur.val < x) {
-                samallCur.next = new ListNode(cur.val);
-                samallCur = samallCur.next;
-                cur = cur.next;
-            } else {
-                largerCur.next = new ListNode(cur.val);
-                largerCur = largerCur.next;
-                cur = cur.next;
-            }
-        }
-
-        samallCur.next = largerPre.next;
-        return samallPre.next;
-    }
 }

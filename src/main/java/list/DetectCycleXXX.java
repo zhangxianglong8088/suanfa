@@ -65,16 +65,45 @@ public class DetectCycleXXX {
     public static void main(String[] args) {
 
         ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
+//        ListNode node2 = new ListNode(2);
 //        ListNode node3 = new ListNode(0);
 //        ListNode node4 = new ListNode(-4);
 
-        node1.next = node2;
-        node2.next = node1;
-//        node3.next = node1;
+//        node1.next = node2;
+//        node2.next = node1;
+//        node3.next = node4;
 //        node4.next = node2;
 
-        ListNode res = detectCycle(node1);
+        ListNode res = detectCycle3(node1);
 
     }
+
+    public static ListNode detectCycle3(ListNode head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (slow == fast) {
+                ListNode ptr = head;
+                while (slow != ptr) {
+                    ptr = ptr.next;
+                    slow = slow.next;
+                    if (slow == ptr) {
+                        return slow;
+                    }
+                }
+            }
+        }
+
+        return null;
+
+    }
+
 }

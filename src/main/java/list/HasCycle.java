@@ -1,6 +1,7 @@
 package list;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -82,8 +83,22 @@ public class HasCycle {
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
-        node4.next = node2;
+        node4.next = null;
 
-        System.out.println(hasCycle2(node1));
+        System.out.println(hasCycle3(node1));
+    }
+
+    static Boolean hasCycle3(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
     }
 }

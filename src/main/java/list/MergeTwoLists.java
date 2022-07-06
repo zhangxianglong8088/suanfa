@@ -1,7 +1,5 @@
 package list;
 
-import java.util.List;
-
 /**
  * https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/
  *
@@ -47,12 +45,12 @@ public class MergeTwoLists {
     public static void main(String[] args) {
 
         ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(3);
+        ListNode node2 = new ListNode(2);
         ListNode node3 = new ListNode(4);
 
-        ListNode node4 = new ListNode(2);
-        ListNode node5 = new ListNode(5);
-        ListNode node6 = new ListNode(6);
+        ListNode node4 = new ListNode(1);
+        ListNode node5 = new ListNode(3);
+        ListNode node6 = new ListNode(4);
 
         node1.next = node2;
         node2.next = node3;
@@ -62,7 +60,7 @@ public class MergeTwoLists {
         node5.next = node6;
         node6.next = null;
 
-        mergeTwoLists(node1, node4);
+        mergeTwoLists4(node1, node4);
 
     }
 
@@ -100,6 +98,36 @@ public class MergeTwoLists {
         }
         if (l2 == null) {
             cur.next = l1;
+        }
+        return pre.next;
+    }
+
+
+    public static ListNode mergeTwoLists4(ListNode l1, ListNode l2) {
+        ListNode p1 = l1;
+        ListNode p2 = l2;
+        ListNode pre = new ListNode(-1);
+        ListNode cur = pre;
+
+        while (p1 != null || p2 != null) {
+            if (p1 != null && p2 != null) {
+                if (p1.val <= p2.val) {
+                    cur.next = p1;
+                    p1 = p1.next;
+                    cur = cur.next;
+                } else {
+                    cur.next = p2;
+                    p2 = p2.next;
+                    cur = cur.next;
+                }
+            } else if (p1 == null) {
+                cur.next = p2;
+                break;
+            } else {
+                cur.next = p1;
+                break;
+            }
+
         }
         return pre.next;
     }

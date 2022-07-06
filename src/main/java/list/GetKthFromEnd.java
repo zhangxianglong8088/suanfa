@@ -44,7 +44,23 @@ public class GetKthFromEnd {
         node5.next = null;
 
 
-        getKthFromEnd(node1, 0);
+        getKthFromEnd4(node1, 1);
 
+    }
+
+    public static ListNode getKthFromEnd4(ListNode head, int k) {
+        //计算链表的长度
+        int len = 0;
+        ListNode cur = head;
+
+        while (cur != null) {
+            cur = cur.next;
+            len++;
+        }
+        ListNode kNode = head;
+        for (int i = 0; i < len - k; i++) {
+            kNode = kNode.next;
+        }
+        return kNode;
     }
 }

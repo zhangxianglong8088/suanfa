@@ -20,55 +20,19 @@ public class DeleteDuplicates {
      * @param head
      * @return
      */
-    public ListNode deleteDuplicates1(ListNode head) {
-        if (head == null) {
-            return head;
-        }
-
-        ListNode cur = head;
-        while (cur.next != null) {
-            if (cur.val == cur.next.val) {
-                cur.next = cur.next.next;
-            } else {
-                cur = cur.next;
-            }
-        }
-
-        return head;
-    }
-
-
-    public static void main(String[] args) {
-
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(1);
-        ListNode node3 = new ListNode(2);
-        ListNode node4 = new ListNode(3);
-        ListNode node5 = new ListNode(4);
-
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node5;
-        node5.next = null;
-
-        deleteDuplicates2(node1);
-    }
-
-    /**
-     * 虚拟指针解法
-     *
-     * @param head
-     * @return
-     */
-    public static ListNode deleteDuplicates2(ListNode head) {
+    public static ListNode deleteDuplicates1(ListNode head) {
         ListNode pre = new ListNode(-1);
-        ListNode cur = head;
-        pre.next = cur;
+        pre.next = head;
+        //注意当前指针的定义 如果是删除相邻重复的元素，则cur = pre.next
+        //如果是删除指定的元素，cur = pre
+
+        ListNode cur = pre.next;
 
         while (cur != null && cur.next != null) {
+
             if (cur.val == cur.next.val) {
                 cur.next = cur.next.next;
+
             } else {
                 cur = cur.next;
             }
@@ -102,6 +66,24 @@ public class DeleteDuplicates {
             }
         }
         return head;
+    }
+
+
+    public static void main(String[] args) {
+
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(1);
+        ListNode node3 = new ListNode(2);
+        ListNode node4 = new ListNode(3);
+        ListNode node5 = new ListNode(4);
+
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = null;
+
+        deleteDuplicates1(node1);
     }
 
 }

@@ -28,49 +28,19 @@ public class RemoveElements {
      * @return
      */
     public static ListNode removeElements(ListNode head, int val) {
-        if (head == null) {
-            return null;
-        }
-
         ListNode pre = new ListNode(-1);
         pre.next = head;
-        ListNode curr = pre;
-
-        while (curr.next != null) {
-            if (curr.next.val == val) {
-                curr.next = curr.next.next;
-            } else {
-                curr = curr.next;
-            }
-        }
-        return pre.next;
-    }
-
-    /**
-     * 借助 head和cur两个指针的思路
-     *
-     * @param head
-     * @param val
-     * @return
-     */
-    public static ListNode removeElements1(ListNode head, int val) {
-        if (head == null) {
-            return head;
-        }
-        ListNode pre = new ListNode(-1);
-        pre.next = head;
+        //删除指定元素这里cur = pre
         ListNode cur = pre;
 
-        while (head != null) {
-            if (head.val == val) {
-                cur.next = head.next;
-                head = head.next;
+
+        while (cur.next != null) {
+            if (cur.next.val == val) {
+                cur.next = cur.next.next;
             } else {
                 cur = cur.next;
-                head = head.next;
             }
         }
-
         return pre.next;
     }
 
@@ -93,7 +63,7 @@ public class RemoveElements {
         node6.next = node7;
         node7.next = null;
 
-        ListNode head = removeElements1(node1, 7);
+        ListNode head = removeElements(node1, 7);
 
     }
 }

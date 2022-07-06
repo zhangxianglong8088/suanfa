@@ -1,5 +1,6 @@
 package list;
 
+
 /**
  * @description：https://leetcode.cn/problems/odd-even-linked-list/ 328. 奇偶链表
  * @author: zhangxianglong
@@ -7,29 +8,34 @@ package list;
  */
 public class OddEvenListXXX {
 
+
     public static ListNode oddEvenList(ListNode head) {
-
-        ListNode pre1 = new ListNode(-1);
-        ListNode cur1 = head;
-        pre1.next = cur1;
-
-        ListNode pre2 = new ListNode(-1);
-        ListNode cur2 = head.next;
-        pre2.next = cur2;
-
-
-        while (cur1 != null && cur1.next != null) {
-            cur1.next = cur1.next.next;
+        if (head == null || head.next == null) {
+            return head;
         }
-        while (cur2 != null && cur2.next != null) {
-            cur2.next = cur2.next.next;
-        }
-        cur1.next = pre2.next;
+        // oHead 为奇链表头结点，oTail 为奇链表尾节点
+        ListNode oHead = head;
+        ListNode oTail = head;
 
-        return pre1.next;
+        // eHead 为偶链表头结点 eTail 为偶链表尾节点
+        ListNode eHead = head.next;
+        ListNode eTail = head.next;
+
+        while (oTail.next != null && eTail.next != null) {
+            oTail.next = eTail.next;
+            oTail = oTail.next;
+
+            eTail.next = oTail.next;
+            eTail = eTail.next;
+        }
+
+        oTail.next = eHead;
+
+        return oHead;
     }
 
     public static void main(String[] args) {
+
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
         ListNode node3 = new ListNode(3);

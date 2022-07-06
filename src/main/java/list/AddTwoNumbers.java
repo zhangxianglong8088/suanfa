@@ -19,60 +19,68 @@ public class AddTwoNumbers {
      */
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
-        Stack<ListNode> s1 = new Stack<>();
-        Stack<ListNode> s2 = new Stack<>();
+        Stack<Integer> stack1 = new Stack<>();
+
+        Stack<Integer> stack2 = new Stack<>();
+
+        ListNode pre = new ListNode(-1);
+
+        ListNode cur = pre;
+
         while (l1 != null) {
-            s1.add(l1);
+            stack1.add(l1.val);
             l1 = l1.next;
         }
 
         while (l2 != null) {
-            s2.add(l2);
+            stack2.add(l2.val);
             l2 = l2.next;
         }
+
         int carry = 0;
         int sum;
-        int val;
-        ListNode ans = null;
-        while (!s1.empty() || !s2.empty()) {
-            if (!s1.isEmpty() && !s2.isEmpty()) {
-                sum = carry + s1.pop().val + s2.pop().val;
-            } else if (!s1.empty() && s2.isEmpty()) {
-                sum = carry + s1.pop().val;
+        while (!stack1.isEmpty() || !stack2.isEmpty()) {
+            if (!stack1.isEmpty() && !stack2.isEmpty()) {
+                int value1 = stack1.pop();
+                int value2 = stack2.pop();
+                sum = carry + value1 + value2;
+            } else if (stack1.isEmpty()) {
+                int value2 = stack2.pop();
+                sum = carry + value2;
             } else {
-                sum = carry + s2.pop().val;
+                int value1 = stack1.pop();
+                sum = carry + value1;
+
             }
             if (sum >= 10) {
-                val = sum - 10;
                 carry = 1;
+                sum = sum - 10;
             } else {
-                val = sum;
                 carry = 0;
             }
-            ListNode cur = new ListNode(val);
-            cur.next = ans;
-            ans = cur;
+            cur.next = new ListNode(sum);
+            cur = cur.next;
         }
+
         if (carry == 1) {
-            ListNode cur = new ListNode(1);
-            cur.next = ans;
-            ans = cur;
+            sum = carry;
+            cur.next = new ListNode(sum);
         }
-        return ans;
+
+        //反转pre.next 链表
+        ListNode newCur = pre.next;
+        ListNode newPre = null;
+
+        while (newCur != null) {
+            ListNode next = newCur.next;
+            newCur.next = newPre;
+            newPre = newCur;
+            newCur = next;
+        }
+
+        return newPre;
     }
 
-
-    public static ListNode reverselist(ListNode l) {
-        ListNode pre = null;
-        ListNode cur = l;
-        while (cur != null) {
-            ListNode temp = cur.next;
-            cur.next = pre;
-            pre = cur;
-            cur = temp;
-        }
-        return pre;
-    }
 
     public static void main(String[] args) {
 
@@ -96,81 +104,7 @@ public class AddTwoNumbers {
         node6.next = node7;
         node7.next = null;
 
-        ListNode res = addTwoNumbers1(node1, node5);
+        ListNode res = addTwoNumbers(node1, node5);
 
-    }
-
-    public static ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
-
-        Stack<Integer> stack1 = new Stack<>();
-        Stack<Integer> stack2 = new Stack<>();
-
-        //1、list1 和list2 分别压入stack1和stack2
-        while (l1 != null) {
-            stack1.add(l1.val);
-            l1 = l1.next;
-        }
-
-        while (l2 != null) {
-            stack2.add(l2.val);
-            l2 = l2.next;
-        }
-
-        int carry = 0;
-        ListNode pre = new ListNode(-1);
-        ListNode cur = pre;
-        int nodeValue;
-        int sum;
-
-
-        //stack1和stack2都不为空
-        while (!stack1.isEmpty() && !stack2.isEmpty()) {
-            sum = carry + stack1.pop() + stack2.pop();
-            if (sum >= 10) {
-                carry = 1;
-                nodeValue = sum - 10;
-            } else {
-                nodeValue = sum;
-                carry = 0;
-            }
-            ListNode node = new ListNode(nodeValue);
-            cur.next = node;
-            cur = cur.next;
-        }
-
-        while (!stack2.isEmpty() && stack1.isEmpty()) {
-            sum = stack2.pop() + carry;
-            if (sum >= 10) {
-                nodeValue = sum - 10;
-                carry = 1;
-            } else {
-                nodeValue = sum;
-                carry = 0;
-            }
-            ListNode node = new ListNode(nodeValue);
-            cur.next = node;
-            cur = cur.next;
-
-        }
-
-        while (stack2.isEmpty() && !stack1.isEmpty()) {
-            sum = stack1.pop() + carry;
-            if (sum >= 10) {
-                nodeValue = sum - 10;
-                carry = 1;
-            } else {
-                nodeValue = sum;
-                carry = 0;
-            }
-            ListNode node = new ListNode(nodeValue);
-            cur.next = node;
-            cur = cur.next;
-        }
-
-        if (carry == 1) {
-            cur.next = new ListNode(1);
-
-        }
-        return reverselist(pre.next);
     }
 }

@@ -55,7 +55,7 @@ public class ReversePreN {
         node6.next = node7;
         node7.next = null;
 
-        ListNode head = reverseN1(node1, 3);
+        ListNode head = reverseN14(node1, 3);
 
 
     }
@@ -95,5 +95,22 @@ public class ReversePreN {
         return newPre;
     }
 
+    static ListNode reverseN14(ListNode head, int n) {
+
+        ListNode pre = new ListNode(-1);
+        pre.next = head;
+        ListNode cur = head;
+        ListNode next;
+
+
+        for (int i = 0; i < n - 1; i++) {
+            next = cur.next;
+            cur.next = next.next;
+            next.next = pre.next;
+            pre.next = next;
+        }
+
+        return pre.next;
+    }
 
 }

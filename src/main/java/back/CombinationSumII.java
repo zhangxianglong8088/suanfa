@@ -14,7 +14,7 @@ import java.util.*;
 public class CombinationSumII {
     public static void main(String[] args) {
         int[] arr = new int[]{10, 1, 2, 7, 6, 1, 5};
-        List<List<Integer>> res = combinationSum(arr, 8);
+        List<List<Integer>> res = combinationSum2(arr, 8);
     }
 
     static List<List<Integer>> lists = new ArrayList<>();
@@ -48,6 +48,42 @@ public class CombinationSumII {
             int temp = deque.pop();
             flag[i] = false;
             sum -= temp;
+        }
+    }
+
+
+    public static List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> res = new ArrayList();
+        Deque<Integer> path = new ArrayDeque();
+        boolean[] used = new boolean[candidates.length];
+        backtracing(res, path, candidates, 0, 0, target, used);
+        return res;
+    }
+
+
+    static void backtracing(List<List<Integer>> res, Deque<Integer> path, int[] candidates, int index, int sum, int target, boolean[] used) {
+
+        //递归终止条件
+        if (sum == target) {
+            res.add(new ArrayList(path));
+            return;
+        }
+
+        //单层递归的逻辑
+        for (int i = index; i < candidates.length; i++) {
+            if (sum + candidates[i] > target && !used[i] && candidates[i - 1] == candidates[i - 1]) {
+                continue;
+            }
+
+            used[i] = true;
+            path.add(candidates[i]);
+
+            backtracing(res, path, candidates, i + 1, sum += candidates[i], target, used);
+
+            //回溯
+            path.removeLast();
+            sum = sum - candidates[i];
+            used[i] = false;
         }
     }
 }

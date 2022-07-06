@@ -12,34 +12,35 @@ import java.util.List;
  */
 public class LetterCombinations {
 
-    static List<String> res = new ArrayList<>();
-    static StringBuilder temp = new StringBuilder();
 
     public static List<String> letterCombinations(String digits) {
         String[] numString = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
-        if (digits == null || digits.length() == 0) {
-            return res;
+        if (digits.isEmpty()) {
+            return new ArrayList();
         }
-        backTracking(digits, numString, 0);
+        List<String> res = new ArrayList<>();
+        StringBuilder path = new StringBuilder();
+
+        backTracking(res, path, digits, numString, 0);
         return res;
     }
 
     //递归方法
-    static void backTracking(String digits, String[] numString, int n) {
+    static void backTracking(List<String> res, StringBuilder path, String digits, String[] numString, int n) {
 
         //1、确定递归终止条件
-        if (temp.length() == digits.length()) {
-            res.add(temp.toString());
+        if (path.length() == digits.length()) {
+            res.add(path.toString());
             return;
         }
 
         String str = numString[digits.charAt(n) - '0'];
 
         for (int i = 0; i < str.length(); i++) {
-            temp.append(str.charAt(i));
-            backTracking(digits, numString, n + 1);
-            temp.deleteCharAt(temp.length() - 1);
+            path.append(str.charAt(i));
+            backTracking(res, path, digits, numString, n + 1);
+            path.deleteCharAt(path.length() - 1);
         }
     }
 

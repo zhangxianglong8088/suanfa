@@ -45,35 +45,6 @@ public class Permute {
 
     public static void main(String[] args) {
         int[] nms = new int[]{1, 2, 3};
-        List<List<Integer>> res = permute3(nms);
-    }
-
-    public static List<List<Integer>> permute3(int[] nums) {
-
-        List<List<Integer>> res = new ArrayList();
-
-        Deque<Integer> path = new ArrayDeque();
-
-        backtracing3(res, path, nums);
-
-        return res;
-
-    }
-
-    static void backtracing3(List<List<Integer>> res, Deque<Integer> path, int[] nums) {
-        //递归的终止条件
-        if (path.size() == nums.length) {
-            res.add(new ArrayList(path));
-            return;
-        }
-        //如果是组合 i是从0开始 再判断是否重复
-        for (int i = 0; i < nums.length; i++) {
-            if (path.contains(nums[i])) {
-                continue;
-            }
-            path.add(nums[i]);
-            backtracing3(res, path, nums);
-            path.removeLast();
-        }
+        List<List<Integer>> res = permute(nms);
     }
 }

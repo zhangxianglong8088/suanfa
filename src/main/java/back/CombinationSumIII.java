@@ -43,7 +43,7 @@ public class CombinationSumIII {
     public static void main(String[] args) {
         int k = 3;
         int n = 7;
-        List<List<Integer>> list = combinationSum34(k, n);
+        List<List<Integer>> list = combinationSum4(k, n);
     }
 
     /**
@@ -51,7 +51,7 @@ public class CombinationSumIII {
      * @param n
      * @return
      */
-    public static List<List<Integer>> combinationSum34(int k, int n) {
+    public static List<List<Integer>> combinationSum4(int k, int n) {
         List<List<Integer>> res = new ArrayList();
         Deque<Integer> path = new ArrayDeque();
         backtracing4(res, path, 1, n, 0, k);

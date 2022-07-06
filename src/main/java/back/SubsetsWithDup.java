@@ -21,34 +21,33 @@ public class SubsetsWithDup {
 
 
     public static List<List<Integer>> subsetsWithDup(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-        Deque<Integer> path = new ArrayDeque<>();
-        // 先排序，让相同的元素靠在一起
+        List<List<Integer>> res = new ArrayList();
+        Deque<Integer> path = new ArrayDeque();
+        boolean[] used = new boolean[nums.length];
         Arrays.sort(nums);
-
-        backtrack(res, path, nums, 0);
-
+        backtracing(res, path, nums, 0, used);
         return res;
     }
 
-    static void backtrack(List<List<Integer>> res, Deque<Integer> path, int[] nums, int index) {
-        res.add(new ArrayList(path));
+
+    static void backtracing(List<List<Integer>> res, Deque<Integer> path, int[] nums, int index, boolean[] used) {
         //递归终止条件
+        res.add(new ArrayList(path));
         if (index >= nums.length) {
             return;
         }
 
-        //单层递归逻辑
+
         for (int i = index; i < nums.length; i++) {
-            // *** 子集的去重 值相同的相邻树枝，只遍历第一条
-            if (i > index && nums[i] == nums[i - 1]) {
+            if (i > index && nums[i] == nums[i - 1] && !used[i - 1]) {
                 continue;
             }
             path.add(nums[i]);
-
-            backtrack(res, path, nums, i + 1);
-
+            used[i] = true;
+            backtracing(res, path, nums, i + 1, used);
             path.removeLast();
+            used[i] = false;
         }
+
     }
 }

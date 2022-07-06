@@ -12,6 +12,7 @@ import java.util.*;
  */
 public class PermuteUnique {
     static boolean[] used;
+    static boolean[] flag;
 
     public static List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();

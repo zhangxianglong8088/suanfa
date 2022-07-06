@@ -10,37 +10,57 @@ package tree;
 public class IsBalanced {
 
 
-    public boolean isBalanced(TreeNode root) {
+    public static boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        //分别求出左右子树的高度
+        int leftDepth = depth(root.left);
 
-        int res = helper(root);
-        if (res == -1) {
+        int rightDepth = depth(root.right);
+
+        if (Math.abs(leftDepth - rightDepth) > 1) {
             return false;
         }
-        return true;
+
+        return isBalanced(root.left) && isBalanced(root.right);
     }
 
-
-    public int helper(TreeNode root) {
-
+    /**
+     * 求一个结点的高度
+     *
+     * @param root
+     * @return
+     */
+    public static int depth(TreeNode root) {
         if (root == null) {
             return 0;
         }
+        return Math.max(depth(root.left), depth(root.right)) + 1;
+    }
 
-        int left = helper(root.left);
-        if (left == -1) {
-            return -1;
-        }
 
-        int right = helper(root.right);
+    public static void main(String[] args) {
 
-        if (right == -1) {
-            return -1;
-        }
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(7);
 
-        if (Math.abs(left - right) > 1) {
-            return -1;
-        } else {
-            return Math.max(left, right) + 1;
-        }
+        node1.left = node2;
+        node1.right = node3;
+
+        node2.left = node4;
+        node2.right = node5;
+
+        node4.left = node6;
+        node4.right = node7;
+
+
+        boolean result = isBalanced(node1);
+
     }
 }

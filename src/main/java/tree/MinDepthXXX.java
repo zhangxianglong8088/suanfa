@@ -116,8 +116,17 @@ public class MinDepthXXX {
         node1.left = node0;
         node1.right = node8;
 
-        int maxDepth = minDepth2(node3);
+        int maxDepth = minDepth4(node3);
 
         System.out.println(maxDepth);
+    }
+
+    public static int minDepth4(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        return Math.max(minDepth(root.left), minDepth(root.right)) + 1;
+
     }
 }

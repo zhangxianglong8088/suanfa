@@ -16,7 +16,7 @@ import java.util.List;
  * @author: zhangxianglong
  * @date: 2022/5/19
  */
-public class Flatten {
+public class FlattenXXX {
 
     /**
      * @param root
@@ -72,6 +72,11 @@ public class Flatten {
 
     }
 
+    /**
+     * 前序遍历思路
+     *
+     * @param root
+     */
     public static void flatten2(TreeNode root) {
         List<TreeNode> list = new ArrayList();
         pre(root, list);
@@ -92,27 +97,5 @@ public class Flatten {
         pre(root.left, list);
         pre(root.right, list);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

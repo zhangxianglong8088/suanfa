@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class PrintZ {
 
-    public static List<List<Integer>> print(TreeNode pRoot) {
+    public static List<List<Integer>> printZ(TreeNode pRoot) {
 
         List<List<Integer>> res = new ArrayList<>();
         //如果是空，则直接返回空list
@@ -79,7 +79,7 @@ public class PrintZ {
         node1.right = node8;
 
 
-        List<List<Integer>> list = print(node3);
+        List<List<Integer>> list = printZ(node3);
 
     }
 }

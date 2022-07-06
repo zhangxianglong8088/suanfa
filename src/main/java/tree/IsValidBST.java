@@ -58,7 +58,7 @@ public class IsValidBST {
 
         node2.left = node1;
 
-        Boolean result = isValidBST3(node5);
+        Boolean result = isValidBST(node5);
     }
 
     /**
@@ -76,41 +76,5 @@ public class IsValidBST {
 
         return isValidBST2(root.left) && isValidBST(root.right);
 
-    }
-
-    /**
-     * 中序遍历解法
-     *
-     * @param root
-     * @return
-     */
-    public static boolean isValidBST3(TreeNode root) {
-
-        List<TreeNode> list = new ArrayList<>();
-        inorder(root, list);
-
-        for (int i = 1; i < list.size(); i++) {
-            if (list.get(i - 1).val >= list.get(i).val) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * 中序遍历
-     *
-     * @param root
-     * @param list
-     */
-    static void inorder(TreeNode root, List<TreeNode> list) {
-        if (root == null) {
-            return;
-        }
-        inorder(root.left, list);
-
-        list.add(root);
-
-        inorder(root.right, list);
     }
 }

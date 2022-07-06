@@ -9,6 +9,7 @@ package tree;
 public class InvertTree {
 
     /**
+     * 第一个解题思路
      * 反转二叉树 看作是前序遍历 先处根节点
      *
      * @param root
@@ -31,4 +32,27 @@ public class InvertTree {
 
         return root;
     }
+
+    /**
+     * 第二个解题思路
+     *
+     * @param root
+     * @return
+     */
+    public TreeNode invertTree2(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+
+
+        TreeNode left = invertTree2(root.left);
+
+        TreeNode right = invertTree2(root.right);
+
+        root.left = right;
+        root.right = left;
+
+        return root;
+    }
+
 }

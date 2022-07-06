@@ -57,7 +57,45 @@ public class ConstructFromPreIn {
         int[] preOrder = new int[]{1, 2, 5, 4, 6, 7, 3, 8, 9};
         int[] inorder = new int[]{5, 2, 6, 4, 7, 1, 8, 3, 9};
 
-        TreeNode root = buildTree(preOrder, inorder);
+        TreeNode root = buildTree2(preOrder, inorder);
 
+    }
+
+
+    public static TreeNode buildTree2(int[] preorder, int[] inorder) {
+        //将中序数组放到map中，key为nums[i] value为 i
+
+        for (int i = 0; i < inorder.length; i++) {
+            valToIndex.put(inorder[i], i);
+        }
+
+        TreeNode root = builder2(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
+
+        return root;
+
+    }
+
+
+    public static TreeNode builder2(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd) {
+
+        //1、递归终止条件
+        if (inStart > inEnd) {
+            return null;
+        }
+
+
+        //2、构造根结点
+        int rootValue = preorder[preStart];
+        TreeNode root = new TreeNode(rootValue);
+
+        int index = valToIndex.get(rootValue);
+        int leftSize = index - inStart;
+
+
+        root.left = builder2(preorder, preStart + 1, preStart + leftSize, inorder, inStart, index - 1);
+
+        root.right = builder2(preorder, preStart + leftSize + 1, preEnd, inorder, index + 1, inEnd);
+
+        return root;
     }
 }

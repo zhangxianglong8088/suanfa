@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * 104
+ * 104 二叉树的最大深度
  *
  * @description： https://leetcode.cn/problems/maximum-depth-of-binary-tree/
  * @author: zhangxianglong

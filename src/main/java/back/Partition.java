@@ -57,32 +57,10 @@ public class Partition {
     }
 
     public static void main(String[] args) {
-        String s = "aab";
+        String s = "aaa";
         List<List<String>> res = partition(s);
         System.out.println(res);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

@@ -2,6 +2,7 @@ package dp;
 
 /**
  * 96. 不同的二叉搜索树
+ * https://leetcode.cn/problems/unique-binary-search-trees/solution/bu-tong-de-er-cha-sou-suo-shu-by-leetcode-solution/
  *
  * @description：不同的二叉搜索树 https://leetcode.cn/problems/unique-binary-search-trees/
  * @author: zhangxianglong
@@ -19,6 +20,7 @@ public class NumTrees {
         3.初始化:dp[0]=1,dp[1]=dp[0]*dp[0]=1
         4.遍历顺序:正序
         5.返回形式:返回dp[n]
+
          */
         int[] dp = new int[n + 1];
         dp[0] = 1;

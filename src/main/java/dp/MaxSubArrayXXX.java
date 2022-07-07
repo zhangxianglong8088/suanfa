@@ -7,7 +7,7 @@ package dp;
  * @author: zhangxianglong
  * @date: 2022/5/21
  */
-public class MaxSubArray {
+public class MaxSubArrayXXX {
 
     public static int maxSubArray(int[] nums) {
         //0-i之间最最大和

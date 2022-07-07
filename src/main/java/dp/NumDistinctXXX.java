@@ -6,7 +6,7 @@ package dp;
  * @author: zhangxianglong
  * @date: 2022/6/25
  */
-public class NumDistinct {
+public class NumDistinctXXX {
     public int numDistinct(String s, String t) {
         return 0;
 

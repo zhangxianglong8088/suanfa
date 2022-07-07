@@ -4,7 +4,7 @@ package dp;
  * 343. 整数拆分
  * https://programmercarl.com/0343.%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86.html#%E6%80%BB%E7%BB%93
  *
- * @description：https://leetcode.cn/problems/integer-break/
+ * @description： https://leetcode.cn/problems/integer-break/
  * @author: zhangxianglong
  * @date: 2022/6/16
  */

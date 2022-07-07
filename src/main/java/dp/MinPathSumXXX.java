@@ -6,7 +6,7 @@ package dp;
  * @author: zhangxianglong
  * @date: 2022/5/26
  */
-public class MinPathSum {
+public class MinPathSumXXX {
 
     public int minPathSum(int[][] grid) {
         return 0;

@@ -12,37 +12,58 @@ package dp;
  * <p>
  * 即：dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
  *
- * @description：  https://leetcode.cn/problems/longest-common-subsequence/
+ * @description： https://leetcode.cn/problems/longest-common-subsequence/
  * @author: zhangxianglong
  * @date: 2022/5/26
  */
 public class LongestCommonSubsequence {
     public static void main(String[] args) {
         String text1 = "abcde";
-        String text2 = "ace";
-        int res = longestCommonSubsequence(text1, text2);
+        String text2 = "adcfe";
+        int res = longestCommonSubsequence3(text1, text2);
         System.out.println(res);
 
     }
 
     public static int longestCommonSubsequence(String text1, String text2) {
-
-        //定义dp数组
+        // 先对dp数组做初始化操作
         int[][] dp = new int[text1.length() + 1][text2.length() + 1];
-
-        //遍历dp数组
         for (int i = 1; i <= text1.length(); i++) {
-            char c1 = text1.charAt(i - 1);
-            for (int j = 1; j < text2.length(); j++) {
-                char c2 = text2.charAt(j - 1);
-                if (c1 == c2) {
+            char char1 = text1.charAt(i - 1);
+            for (int j = 1; j <= text2.length(); j++) {
+                char char2 = text2.charAt(j - 1);
+                // 开始列出状态转移方程
+                if (char1 == char2) {
                     dp[i][j] = dp[i - 1][j - 1] + 1;
                 } else {
                     dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
                 }
-
             }
         }
         return dp[text1.length()][text2.length()];
     }
+
+
+    public static int longestCommonSubsequence3(String text1, String text2) {
+        int n1 = text1.length();
+        int n2 = text2.length();
+
+        //定义dp数组
+        int[][] dp = new int[n1 + 1][n2 + 1];
+
+        for (int i = 1; i <= n1; i++) {
+            char t1 = text1.charAt(i - 1);
+            for (int j = 1; j <= n2; j++) {
+                char t2 = text2.charAt(j - 1);
+                if (t1 == t2) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i][j - 1], dp[i - 1][j]);
+                }
+
+            }
+        }
+        return dp[n1][n2];
+    }
+
 }

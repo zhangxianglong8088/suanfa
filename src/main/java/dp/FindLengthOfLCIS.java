@@ -13,8 +13,8 @@ import java.util.Arrays;
  */
 public class FindLengthOfLCIS {
     public static void main(String[] args) {
-        int[] nums = new int[]{2, 2, 2, 2, 2};
-        int res = findLengthOfLCIS(nums);
+        int[] nums = new int[]{1, 3, 5, 4, 7};
+        int res = findLengthOfLCIS5(nums);
         System.out.println(res);
     }
 
@@ -45,5 +45,28 @@ public class FindLengthOfLCIS {
         }
 
         return res;
+    }
+
+
+    public static int findLengthOfLCIS5(int[] nums) {
+        //以nums[i] 为结尾的连续递增数组的长
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+
+            if (nums[i] <= nums[i - 1]) {
+                dp[i] = 1;
+            } else {
+                dp[i] = dp[i - 1] + 1;
+            }
+        }
+
+        int max = 0;
+
+        for (int i = 0; i < dp.length; i++) {
+            max = Math.max(max, dp[i]);
+        }
+        return max;
     }
 }

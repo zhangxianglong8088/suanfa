@@ -8,15 +8,17 @@
         Set<Integer> set = new HashSet<>();
 
         while (right < nums.length) {
+            //条件满足的情况下，不断加大窗口的大小 并且记录最大的长度
+                    set.add(nums[right]);
+                    maxLen = Math.max(maxLen, set.size());
+                    right++;
+
             //条件不满足的情况下，缩小窗口大小
             while (set.contains(nums[right])) {
                 set.remove(nums[left]);
                 left++;
             }
-            //条件满足的情况下，不断加大窗口的大小 并且记录最大的长度
-            set.add(nums[right]);
-            maxLen = Math.max(maxLen, set.size());
-            right++;
+
         }
         return maxLen;
     }

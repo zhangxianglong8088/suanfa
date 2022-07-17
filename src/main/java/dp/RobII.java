@@ -63,4 +63,49 @@ public class RobII {
         }
         return max;
     }
+
+
+
+
+    public static int rob4(int[] nums,int start,int end) {
+        if (nums.length <= 1) {
+            return nums[0];
+        }
+        int[] dp = new int[nums.length];
+        int max;
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+
+        for (int i = 2; i < dp.length; i++) {
+            max = Math.max(dp[i - 2] + nums[i], dp[i - 1]);
+            dp[i] = max;
+        }
+
+        int maxValue = dp[0];
+        for (int i = 0; i < dp.length; i++) {
+            maxValue = Math.max(maxValue, dp[i]);
+        }
+
+        return maxValue;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

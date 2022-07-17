@@ -2,6 +2,7 @@ package dp;
 
 /**
  * https://leetcode.cn/problems/palindromic-substrings/
+ * 这个题是求回文子串的个数
  *
  * @description：647. 回文子串
  * @author: zhangxianglong

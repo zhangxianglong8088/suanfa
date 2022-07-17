@@ -2,6 +2,7 @@ package monotonoustack;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * @description：739. 每日温度
@@ -73,7 +74,7 @@ public class DailyTemperatures {
 
         int[] tem = new int[]{73, 74, 75, 71, 69, 72, 76, 73};
 
-        int[] result = dailyTemperatures2(tem);
+        int[] result = dailyTemperatures(tem);
 
     }
 }

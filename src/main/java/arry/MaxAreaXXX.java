@@ -1,5 +1,9 @@
 package arry;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 11. 盛最多水的容器
  *
@@ -66,7 +70,7 @@ public class MaxAreaXXX {
      * @param height
      * @return
      */
-    public int maxArea3(int[] height) {
+    public static int maxArea3(int[] height) {
 
         int max = 0;
         for (int i = 0, j = height.length - 1; i < j; ) {
@@ -77,8 +81,10 @@ public class MaxAreaXXX {
 
     }
 
+
     public static void main(String[] args) {
         int[] nums = new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7};
-        int result = maxArea(nums);
+        int result = maxArea3(nums);
+        System.out.println(result);
     }
 }

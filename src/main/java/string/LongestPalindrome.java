@@ -37,4 +37,47 @@ public class LongestPalindrome {
         // 返回以 s[l] 和 s[r] 为中心的最长回文串
         return s.substring(l + 1, r);
     }
+
+    /**
+     * 动态规划
+     *
+     * @param s
+     * @return
+     */
+    public static String longestPalindrome4(String s) {
+        int len = s.length();
+        boolean[][] dp = new boolean[len][len];
+
+        for (int i = 0; i < s.length(); i++) {
+            dp[i][i] = true;
+        }
+
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < i; j++) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    if (i - j <= 2) {
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i - 1][j + 1];
+                    }
+                }
+            }
+        }
+        int maxLen = 0;
+        String huinwe = "";
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j <= i; j++) {
+                if (dp[i][j] && (i - j + 1) > maxLen) {
+                    maxLen = i - j + 1;
+                    huinwe = s.substring(j, i + 1);
+                }
+            }
+        }
+        return huinwe;
+    }
+
+    public static void main(String[] args) {
+        longestPalindrome4("a");
+    }
+
 }

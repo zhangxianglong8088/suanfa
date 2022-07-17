@@ -45,6 +45,35 @@ public class LetterCombinations {
     }
 
     public static void main(String[] args) {
-        List<String> res = letterCombinations("");
+        List<String> res = letterCombinations3("23");
+    }
+
+    public static List<String> letterCombinations3(String digits) {
+        String[] numString = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        List<String> res = new ArrayList();
+        StringBuilder path = new StringBuilder();
+
+        backtracing(res, path, 0, numString, digits);
+
+        return res;
+    }
+
+    //递归函数
+    static void backtracing(List<String> res, StringBuilder path, int n, String[] numString, String digits) {
+
+        //递归函数终止条件
+        if (path.length() == digits.length()) {
+            res.add(path.toString());
+            return;
+        }
+
+        String str = numString[digits.charAt(n) - '0'];
+        //单层递归逻辑
+
+        for (int i = 0; i < str.length(); i++) {
+            path.append(str.charAt(i));
+            backtracing(res, path, n + 1, numString, digits);
+            path.deleteCharAt(path.length() - 1);
+        }
     }
 }

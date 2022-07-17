@@ -1,9 +1,6 @@
 package arry;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 448. 找到所有数组中消失的数字
@@ -34,7 +31,25 @@ public class FindDisappearedNumbers {
 
     public static void main(String[] args) {
 
-        int[] nums = new int[]{1, 1};
-        List<Integer> result = findDisappearedNumbers(nums);
+        int[] nums = new int[]{4, 3, 2, 7, 8, 2, 3, 1};
+        List<Integer> result = findDisappearedNumbers5(nums);
+    }
+
+    public static List<Integer> findDisappearedNumbers5(int[] nums) {
+        List<Integer> res = new ArrayList();
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int n : nums) {
+            map.put(n, 1);
+        }
+
+        int n = nums.length;
+        for (int i = 1; i <= n; i++) {
+            if (map.get(i) == null) {
+                res.add(i);
+            }
+        }
+        return res;
     }
 }

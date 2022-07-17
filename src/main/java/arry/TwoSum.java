@@ -1,9 +1,8 @@
 package arry;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * @description：两数和 https://leetcode.cn/problems/two-sum/submissions/
@@ -12,7 +11,7 @@ import java.util.List;
  */
 public class TwoSum {
     /**
-     * 求两数之和为11的两个数组元素
+     * 暴力求两数之和为11的两个数组元素
      *
      * @param target
      */
@@ -38,7 +37,7 @@ public class TwoSum {
 
 
     /**
-     * 求两数之和为 返回的是数组下表
+     * Hash 求两数之和为 返回的是数组下表
      *
      * @param target
      */
@@ -68,6 +67,7 @@ public class TwoSum {
     public static int[] twoSum3(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
+        Arrays.sort(nums);
 
         while (left < right) {
             if (nums[left] + nums[right] > target) {

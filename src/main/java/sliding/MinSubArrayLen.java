@@ -59,6 +59,27 @@ public class MinSubArrayLen {
 
     public static void main(String[] args) {
         int[] nums = new int[]{2, 3, 1, 2, 4, 3};
-        System.out.println(minSubArrayLen3(7, nums));
+        System.out.println(minSubArrayLen5(7, nums));
     }
+
+    public static int minSubArrayLen5(int target, int[] nums) {
+        int left = 0;
+        int right = 0;
+        int minLen = Integer.MAX_VALUE;
+        int sum = 0;
+
+        while (right < nums.length) {
+            sum += nums[right];
+            //缩小窗口
+            while (sum >= target) {
+                minLen = Math.min(right - left + 1, minLen);
+                sum = sum - nums[left];
+                left++;
+            }
+            right++;
+        }
+        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+    }
+
+
 }

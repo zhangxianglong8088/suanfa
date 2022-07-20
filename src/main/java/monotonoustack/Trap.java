@@ -53,9 +53,7 @@ public class Trap {
 
                         //当前雨水的量
                         int hold = h * w;
-                        if (hold > 0) {
-                            sum += hold;
-                        }
+                        sum += hold;
                     }
                 }
                 stack.push(i);

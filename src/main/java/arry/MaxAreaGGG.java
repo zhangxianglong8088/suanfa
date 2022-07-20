@@ -1,9 +1,5 @@
 package arry;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * 11. 盛最多水的容器
  *
@@ -11,7 +7,7 @@ import java.util.List;
  * @author: zhangxianglong
  * @date: 2022/5/24
  */
-public class MaxAreaXXX {
+public class MaxAreaGGG {
 
     /**
      * 暴力解法
@@ -43,8 +39,7 @@ public class MaxAreaXXX {
      * @return
      */
     public static int maxArea2(int[] height) {
-        int squar = Integer.MIN_VALUE;
-
+        int res = 0;
         int left = 0;
         int right = height.length - 1;
 
@@ -52,16 +47,17 @@ public class MaxAreaXXX {
             int leftValue = height[left];
             int rightValue = height[right];
 
-            squar = Math.max(Math.min(leftValue, rightValue) * Math.abs(right - left), squar);
+            int squar = Math.min(leftValue, rightValue) * (right - left);
+            res = Math.max(squar, res);
 
-            //leftValue小于rightValue  增大left 如果right小于left 则减小right
-            if (leftValue < rightValue) {
+            //*****leftValue小于rightValue  增大left 如果right小于left 则减小right
+            if (leftValue <= rightValue) {
                 left++;
             } else {
                 right--;
             }
         }
-        return squar;
+        return res;
     }
 
     /**
@@ -84,7 +80,7 @@ public class MaxAreaXXX {
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7};
-        int result = maxArea3(nums);
+        int result = maxArea(nums);
         System.out.println(result);
     }
 }

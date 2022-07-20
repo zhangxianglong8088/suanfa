@@ -9,7 +9,7 @@ import java.util.*;
  * @author: zhangxianglong
  * @date: 2022/5/21
  */
-public class Subsets {
+public class SubsetsGGG {
 
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();

@@ -2,7 +2,7 @@ package arry;
 
 import java.util.*;
 
-public class ThreeSum {
+public class ThreeSumGGG {
 
     /**
      * 排序+双指针
@@ -74,46 +74,8 @@ public class ThreeSum {
         return res;
     }
 
-
     public static void main(String[] args) {
-        Integer[] arr = new Integer[]{0, 0, 0, 0};
-        List<List<Integer>> result = threeSum5(arr);
-    }
-
-    public static List<List<Integer>> threeSum5(Integer[] nums) {
-        Arrays.sort(nums);
-        int n = nums.length;
-        List<List<Integer>> list = new ArrayList<>();
-
-        for (int i = 0; i < n; i++) {
-            int sum;
-            int left = i + 1;
-            int right = n - 1;
-
-            if (i > 0 && Objects.equals(nums[i - 1], nums[i])) {
-                continue;
-            }
-
-            while (left < right) {
-                sum = nums[i] + nums[left] + nums[right];
-
-                if (sum == 0) {
-                    list.add(Arrays.asList(nums[i], nums[left], nums[right]));
-                    while (left < right && Objects.equals(nums[left], nums[left + 1])) {
-                        left++;
-                    }
-                    while (left < right && Objects.equals(nums[right], nums[right - 1])) {
-                        right--;
-                    }
-                    left++;
-                    right--;
-                } else if (sum < 0) {
-                    left++;
-                } else {
-                    right--;
-                }
-            }
-        }
-        return list;
+        Integer[] arr = new Integer[]{-1, 0, 1, 2, -1, -4};
+        List<List<Integer>> result = threeSum(arr);
     }
 }

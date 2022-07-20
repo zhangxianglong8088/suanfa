@@ -9,7 +9,7 @@ import java.util.HashMap;
  * @author: zhangxianglong
  * @date: 2022/5/14
  */
-public class TwoSum {
+public class TwoSumGGG {
     /**
      * 暴力求两数之和为11的两个数组元素
      *

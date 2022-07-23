@@ -6,7 +6,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/18
  */
-public class SingleNumber {
+public class SingleNumberGGG {
     /**
      * 异或运算有以下三个性质。
      * <p>

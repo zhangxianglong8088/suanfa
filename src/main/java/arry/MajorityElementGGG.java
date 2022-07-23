@@ -10,7 +10,7 @@ import java.util.Map;
  * @author: zhangxianglong
  * @date: 2022/5/16
  */
-public class MajorityElement {
+public class MajorityElementGGG {
     /**
      * 通过hash 表
      *

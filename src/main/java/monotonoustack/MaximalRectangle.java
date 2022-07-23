@@ -1,16 +1,33 @@
 package monotonoustack;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 /**
- * 84. 柱状图中最大的矩形
- * https://leetcode.cn/problems/largest-rectangle-in-histogram/solution/dong-hua-yan-shi-dan-diao-zhan-84zhu-zhu-03w3/
- *
- * @description：https://leetcode.cn/problems/largest-rectangle-in-histogram/
+ * @description： 85. 最大矩形
+ * https://leetcode.cn/problems/maximal-rectangle/
  * @author: zhangxianglong
- * @date: 2022/6/27
+ * @date: 2022/7/21
  */
-public class LargestRectangleArea {
+public class MaximalRectangle {
+
+    public static int maximalRectangle(char[][] matrix) {
+        int row = matrix.length;
+        if (row == 0) {
+            return 0;
+        }
+        int col = matrix[0].length;
+        int[] heights = new int[col];
+        int res = 0;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                heights[j] = matrix[i][j] == '1' ? heights[j] + matrix[i][j] - '0' : 0;
+            }
+            res = Math.max(res, largestRectangleArea(Arrays.copyOf(heights, col + 1)));
+
+        }
+        return res;
+    }
 
     static int largestRectangleArea(int[] heights) {
 
@@ -40,14 +57,16 @@ public class LargestRectangleArea {
                 st.push(i);
             } else {
                 // 注意是while
-                while (heights[i] < heights[st.peek()]) {
+                while (!st.isEmpty() && heights[i] < heights[st.peek()]) {
                     int mid = st.peek();
                     st.pop();
-                    int left = st.peek();
-                    int right = i;
-                    int w = right - left - 1;
-                    int h = heights[mid];
-                    result = Math.max(result, w * h);
+                    if (!st.isEmpty()) {
+                        int left = st.peek();
+                        int right = i;
+                        int w = right - left - 1;
+                        int h = heights[mid];
+                        result = Math.max(result, w * h);
+                    }
                 }
                 st.push(i);
             }
@@ -56,9 +75,8 @@ public class LargestRectangleArea {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2, 1, 5, 6, 2, 3,};
-        int res = largestRectangleArea(nums);
+        char[][] nums = new char[][]{{'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
+        int res = maximalRectangle(nums);
         System.out.println(res);
-
     }
 }

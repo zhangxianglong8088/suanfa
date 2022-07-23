@@ -1,13 +1,13 @@
-package arry;
+package dp;
 
 /**
  * @description： 122. 买卖股票的最佳时机 II
- * 一只股票可以多次买入和卖出
+ * 交易次数不限制 k为无穷大（可以转为二维数组）
  * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/
  * @author: zhangxianglong
  * @date: 2022/5/15
  */
-public class MaxProfitIIXXX {
+public class MaxProfitII {
     /**
      * @param prices
      * @return
@@ -24,6 +24,28 @@ public class MaxProfitIIXXX {
             }
         }
         return maxProfit;
+    }
+
+    /**
+     * 动态规划思想
+     *
+     * @param prices
+     * @return
+     */
+    public int maxProfit2(int[] prices) {
+        //定义dp数组
+        int n = prices.length;
+        int[][] dp = new int[n][2];
+        //i表示第几天
+        dp[0][0] = 0;
+        dp[0][1] = -prices[0];
+        for (int i = 1; i < n; i++) {
+            //j表示持有或者不持有股票
+            dp[i][0] = Math.max(dp[i - 1][1] + prices[i], dp[i - 1][0]);
+            //注意这里和121的区别
+            dp[i][1] = Math.max(dp[i - 1][0] - prices[i], dp[i - 1][1]);
+        }
+        return dp[n - 1][0];
     }
 
     public static void main(String[] args) {

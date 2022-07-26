@@ -11,7 +11,7 @@ import java.util.List;
  * @author: zhangxianglong
  * @date: 2022/5/24
  */
-public class IsValidBSTXXX {
+public class IsValidBSTGGG {
 
     public static boolean isValidBST1(TreeNode root) {
         List<TreeNode> list = new ArrayList<>();

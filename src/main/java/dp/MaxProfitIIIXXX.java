@@ -7,7 +7,7 @@ package dp;
  * @author: zhangxianglong
  * @date: 2022/5/15
  */
-public class MaxProfitIII {
+public class MaxProfitIIIXXX {
 
     /**
      * @param prices

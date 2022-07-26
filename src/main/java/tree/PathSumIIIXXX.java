@@ -2,6 +2,9 @@ package tree;
 
 import common.TreeNode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 437. 路径总和 III
  *
@@ -56,6 +59,41 @@ public class PathSumIIIXXX {
         }
         if (root.right != null) {
             dfs2(root.right, val + root.right.val);
+        }
+    }
+
+
+    /**
+     * 前缀和思路
+     */
+    static Map<Long, Integer> map = new HashMap<>();
+    static int res = 0;
+
+    public static int pathSum3(TreeNode root, int targetSum) {
+        map.put(0L, 1);
+        dfs(root, 0, targetSum);
+        return res;
+    }
+
+    public static void dfs(TreeNode root, long preSum, int targetSum) {
+        if (root == null) {
+            return;
+        }
+        preSum += root.val;
+
+        res += map.getOrDefault(preSum - targetSum, 0);
+
+        map.put(preSum, map.getOrDefault(preSum, 0) + 1);
+
+        dfs(root.left, preSum, targetSum);
+
+        dfs(root.right, preSum, targetSum);
+
+        //回溯
+        if (map.get(preSum) == 1) {
+            map.remove(preSum);
+        } else {
+            map.put(preSum, map.get(preSum) - 1);
         }
     }
 }

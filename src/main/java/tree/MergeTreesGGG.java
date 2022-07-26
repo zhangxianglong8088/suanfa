@@ -53,6 +53,7 @@ public class MergeTreesGGG {
         merged.left = mergeTrees2(t1.left, t2.left);
 
         merged.right = mergeTrees2(t1.right, t2.right);
+
         return merged;
 
     }

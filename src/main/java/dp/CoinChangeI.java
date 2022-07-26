@@ -1,6 +1,6 @@
 package dp;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * * https://www.bilibili.com/video/BV13f4y1e7vL?spm_id_from=333.337.search-card.all.click
@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @author: zhangxianglong
  * @date: 2022/5/21
  */
-public class CoinChange {
+public class CoinChangeI {
 
     /**
      * @param coins

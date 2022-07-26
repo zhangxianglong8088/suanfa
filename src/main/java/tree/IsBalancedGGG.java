@@ -12,6 +12,12 @@ import common.TreeNode;
 public class IsBalancedGGG {
 
 
+    /**
+     * 前序遍历
+     *
+     * @param root
+     * @return
+     */
     public static boolean isBalanced(TreeNode root) {
         if (root == null) {
             return true;

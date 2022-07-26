@@ -7,7 +7,7 @@ package list;
  * @author: zhangxianglong
  * @date: 2022/5/17
  */
-public class RemoveElementsGGG {
+public class DeleteDuplicatesIII {
 
     /**
      * 第一个思路

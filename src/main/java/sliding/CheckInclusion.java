@@ -64,7 +64,7 @@ public class CheckInclusion {
 
         String s1 = "ab";
         String s2 = "eidboaoo";
-
+        StringBuilder s =new StringBuilder();
         System.out.println(checkInclusion2(s1, s2));
     }
 

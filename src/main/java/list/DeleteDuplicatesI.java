@@ -4,13 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 83. 删除排序链表中的重复元素
+ * 83. 删除排序链表中的重复元素(1 2,2,3,4, ----> 1,2,3,4)
  *
  * @description：https://leetcode.cn/problems/remove-duplicates-from-sorted-list/
  * @author: zhangxianglong
  * @date: 2022/5/17
  */
-public class DeleteDuplicatesGGG {
+public class DeleteDuplicatesI {
 
 
     /**

@@ -13,7 +13,7 @@ import java.util.Queue;
  * @author: zhangxianglong
  * @date: 2022/6/5
  */
-public class MinDepthXXX {
+public class MinDepthGGG {
 
     /**
      * 这个解法64%可以借鉴
@@ -31,6 +31,7 @@ public class MinDepthXXX {
         }
 
         int min_depth = Integer.MAX_VALUE;
+
         if (root.left != null) {
             min_depth = Math.min(minDepth1(root.left), min_depth);
         }

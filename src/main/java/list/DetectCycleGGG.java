@@ -64,6 +64,30 @@ public class DetectCycleGGG {
         return null;
     }
 
+    public ListNode detectCycle3(ListNode head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+
+        ListNode fast = head;
+        ListNode slow = head;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                break;
+            }
+        }
+
+        ListNode cur = head;
+        while (cur != slow && slow != null) {
+            cur = cur.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
     public static void main(String[] args) {
 
         ListNode node1 = new ListNode(1);

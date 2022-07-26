@@ -75,7 +75,57 @@ public class ThreeSumGGG {
     }
 
     public static void main(String[] args) {
-        Integer[] arr = new Integer[]{-1, 0, 1, 2, -1, -4};
-        List<List<Integer>> result = threeSum(arr);
+        int[] arr = new int[]{-1, 0, 1, 2, -1, -4};
+        ArrayList<ArrayList<Integer>> result = threeSum5(arr);
+    }
+
+    public static ArrayList<ArrayList<Integer>> threeSum5(int[] num) {
+
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        //排序
+        Arrays.sort(num);
+
+        for (int i = 0; i < num.length; i++) {
+
+            int left = i + 1;
+            int rigth = num.length - 1;
+
+            if (i > 0 && num[i - 1] == num[i]) {
+                continue;
+            }
+
+            while (left < rigth) {
+
+                int sum = num[i] + num[left] + num[rigth];
+                if (sum == 0) {
+
+                    ArrayList<Integer> subList = new ArrayList<>();
+                    subList.add((num[i]));
+                    subList.add(num[left]);
+                    subList.add(num[rigth]);
+
+                    res.add(subList);
+
+                    while (left < rigth && num[left] == num[left + 1]) {
+                        left++;
+                    }
+
+                    while (left < rigth && num[rigth] == num[rigth - 1]) {
+                        rigth--;
+                    }
+
+                    left++;
+                    rigth--;
+
+                } else if (sum < 0) {
+                    left++;
+                } else {
+                    rigth--;
+                }
+
+            }
+        }
+
+        return res;
     }
 }

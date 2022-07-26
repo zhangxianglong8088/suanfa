@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * https://leetcode.cn/problems/subsets/
+ * 不包含重复元素
  *
  * @description：78. 子集
  * @author: zhangxianglong

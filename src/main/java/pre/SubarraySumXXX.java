@@ -1,6 +1,9 @@
-package arry;
+package pre;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
 
 /**
  * https://leetcode.cn/problems/subarray-sum-equals-k/
@@ -70,11 +73,6 @@ public class SubarraySumXXX {
         return count;
     }
 
-    public static void main(String[] args) {
-        int[] nums = new int[]{1, 1, 1};
-        int res = subarraySum2(nums, 2);
-    }
-
 
     /**
      * 这个题无法用回溯算法作，因为不是组合问题，是连续子数组，如果是组合问题的话，无法排除重复
@@ -119,5 +117,38 @@ public class SubarraySumXXX {
             sum = sum - nums[i];
             used[i] = false;
         }
+    }
+
+    public static int subarraySum6(int[] nums, int k) {
+        int count = 0;
+
+        //推倒出前缀和数组
+        int[] preSum = new int[nums.length + 1];
+
+        preSum[0] = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            preSum[i + 1] = preSum[i] + nums[i];
+        }
+
+
+        for (int i = 0; i < preSum.length; i++) {
+
+            for (int j = i + 1; j < preSum.length; j++) {
+                if (preSum[j] - preSum[i] == k) {
+                    count++;
+                }
+
+
+            }
+        }
+        return count;
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{1, 1, 1};
+        int res = subarraySum6(nums, 2);
+        System.out.println(res);
     }
 }

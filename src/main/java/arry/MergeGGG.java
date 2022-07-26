@@ -12,7 +12,7 @@ import java.util.List;
  * @author: zhangxianglong
  * @date: 2022/7/20
  */
-public class Merge {
+public class MergeGGG {
 
     public static int[][] merge(int[][] intervals) {
         //对二维数组排序
@@ -22,6 +22,7 @@ public class Merge {
                 return o1[0] - o2[0];
             }
         });
+
         List<int[]> outputs = new ArrayList<>();
 
         for (int i = 0; i < intervals.length; i++) {
@@ -45,7 +46,7 @@ public class Merge {
     }
 
     public static void main(String[] args) {
-        int[][] nums = new int[][]{{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+        int[][] nums = new int[][]{{1, 3}, {8, 10}, {2, 6}, {15, 18}};
         int[][] res = merge(nums);
         System.out.println(res);
     }

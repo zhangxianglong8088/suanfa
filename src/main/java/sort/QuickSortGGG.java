@@ -5,7 +5,7 @@ package sort;
  * @author: zhangxianglong
  * @date: 2022/6/29
  */
-public class QuickSort {
+public class QuickSortGGG {
 
     static void quickSort(int[] nums, int start, int end) {
         if (start > end) {
@@ -32,7 +32,7 @@ public class QuickSort {
             }
         }
         swap(nums, start, i);
-        quickSort(nums, start, j - 1);
+        quickSort(nums, start, i - 1);
         quickSort(nums, j + 1, end);
     }
 
@@ -50,7 +50,7 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 6, 3, 0, 9, 1, 5, 2, 10};
+        int[] nums = new int[]{1, 3, 5, 3, 1};
         quickSort(nums, 0, nums.length - 1);
     }
 }

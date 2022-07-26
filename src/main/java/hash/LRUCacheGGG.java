@@ -8,14 +8,14 @@ import java.util.Map;
  * @author: zhangxianglong
  * @date: 2022/7/5
  */
-public class LRUCache {
+public class LRUCacheGGG {
     Entry head, tail;
     int capacity;
     int size;
     Map<Integer, Entry> cache;
 
 
-    public LRUCache(int capacity) {
+    public LRUCacheGGG(int capacity) {
         this.capacity = capacity;
         // 初始化链表
         initLinkedList();
@@ -120,7 +120,7 @@ public class LRUCache {
 
     public static void main(String[] args) {
 
-        LRUCache cache = new LRUCache(2);
+        LRUCacheGGG cache = new LRUCacheGGG(2);
 
         cache.put(1, 1);
         cache.put(2, 2);
@@ -129,5 +129,25 @@ public class LRUCache {
         System.out.println(cache.get(2));
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

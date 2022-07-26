@@ -15,20 +15,23 @@ public class MinSubArrayLen {
      * @param nums
      * @return
      */
-    public static int minSubArrayLen(int target, int[] nums) {
+
+
+    public static int minSubArrayLen1(int target, int[] nums) {
+
         int left = 0;
         int right = 0;
         int sum = 0;
         int minLen = Integer.MAX_VALUE;
 
         while (right < nums.length) {
+
             sum = sum + nums[right];
+
             while (sum >= target) {
-                //条件满足，缩小窗口
-                minLen = Math.min(minLen, right - left + 1);
-                //总和减去满足条件的最近一个值
+                //满足条件的情况下 不断缩小窗口
+                minLen = Math.min(right - left + 1, minLen);
                 sum = sum - nums[left];
-                //窗口缩小
                 left++;
             }
             right++;
@@ -37,49 +40,48 @@ public class MinSubArrayLen {
     }
 
 
-    public static int minSubArrayLen3(int target, int[] nums) {
+    /**
+     * 自己理解的思路
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int minSubarray2(int[] nums, int target) {
+
 
         int left = 0;
         int right = 0;
-        int sum = 0;
-        int minLen = Integer.MAX_VALUE;
 
-        while (right < nums.length) {
-            sum = sum + nums[right];
-            while (sum >= target) {
-                minLen = Math.min(right - left + 1, minLen);
-                sum = sum - nums[left];
-                left++;
+        int n = nums.length;
+        int sum = 0;
+        int res = Integer.MAX_VALUE;
+
+
+        while (right < n) {
+            sum += nums[right];
+            if (sum >= target) {
+                res = Math.min(res, right - left + 1);
             }
+
+            while (sum > target) {
+                sum = sum - nums[left];
+                if (sum >= target) {
+                    left++;
+                    res = Math.min(res, right - left + 1);
+                } else {
+                    left++;
+                }
+            }
+
             right++;
         }
-        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+        return res == Integer.MAX_VALUE ? 0 : res;
     }
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2, 3, 1, 2, 4, 3};
-        System.out.println(minSubArrayLen5(7, nums));
+        int[] nums = new int[]{1, 2, 3, 4, 5};
+        System.out.println(minSubarray2(nums, 15));
     }
-
-    public static int minSubArrayLen5(int target, int[] nums) {
-        int left = 0;
-        int right = 0;
-        int minLen = Integer.MAX_VALUE;
-        int sum = 0;
-
-        while (right < nums.length) {
-            sum += nums[right];
-            //缩小窗口
-            while (sum >= target) {
-                minLen = Math.min(right - left + 1, minLen);
-                sum = sum - nums[left];
-                left++;
-            }
-            right++;
-        }
-        return minLen == Integer.MAX_VALUE ? 0 : minLen;
-    }
-
-
 }

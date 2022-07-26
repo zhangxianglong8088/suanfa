@@ -70,7 +70,9 @@ public class Trap {
      */
     public int trap2(int[] height) {
         int length = height.length;
-        if (length <= 2) return 0;
+        if (length <= 2) {
+            return 0;
+        }
         int[] maxLeft = new int[length];
         int[] maxRight = new int[length];
 

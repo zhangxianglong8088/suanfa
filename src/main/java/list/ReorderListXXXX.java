@@ -35,9 +35,11 @@ public class ReorderListXXXX {
             next2 = head2.next;
 
             head1.next = head2;
+            //head1 往后移动
             head1 = next1;
 
             head2.next = head1;
+            //head2 往后移动
             head2 = next2;
         }
     }

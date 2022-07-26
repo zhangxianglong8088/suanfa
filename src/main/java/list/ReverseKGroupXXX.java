@@ -39,16 +39,6 @@ public class ReverseKGroupXXX {
         return newHead;
     }
 
-    static ListNode reverseListNode(ListNode start, ListNode end) {
-        ListNode tmp = null;
-        while (tmp != end) {
-            ListNode next = start.next;
-            start.next = tmp;
-            tmp = start;
-            start = next;
-        }
-        return tmp;
-    }
 
     public static void main(String[] args) {
 
@@ -63,7 +53,31 @@ public class ReverseKGroupXXX {
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
+        node5.next = node6;
 
         ListNode node = reverseKGroup(node1, 2);
     }
+
+    /**
+     * 头插法反转一个链表的区间
+     *
+     * @param start
+     * @param end
+     * @return
+     */
+    static ListNode reverseListNode(ListNode start, ListNode end) {
+        end.next = null;
+        ListNode pre = new ListNode(-1);
+        pre.next = start;
+        ListNode next;
+        while (start.next != null) {
+            next = start.next;
+            start.next = next.next;
+            next.next = pre.next;
+            pre.next = next;
+
+        }
+        return pre.next;
+    }
+
 }

@@ -12,7 +12,6 @@ import java.util.*;
  */
 public class PermuteUnique {
     static boolean[] used;
-    static boolean[] flag;
 
     public static List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
@@ -37,7 +36,7 @@ public class PermuteUnique {
             }
             // *** 重点 剪枝逻辑，值相同的相邻树枝，只遍历第一条
             //全排列的去重复 固定相同的元素在排列中的相对位置  如果前面的相邻相等元素没有用过，则跳过
-            if (i > 0 && nums[i] == nums[i - 1] && used[i - 1]) {
+            if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
                 continue;
             }
             path.add(nums[i]);
@@ -49,7 +48,7 @@ public class PermuteUnique {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 1, 3};
+        int[] nums = new int[]{1, 2, 1};
         List<List<Integer>> list = permuteUnique(nums);
     }
 }

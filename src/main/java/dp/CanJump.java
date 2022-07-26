@@ -39,24 +39,16 @@ public class CanJump {
      * @return
      */
     public static boolean canJump2(int[] nums) {
-
-        //如果长度为1 直接到终点返回true
-        if (nums.length == 1) {
-            return true;
-        }
-        //可以覆盖的最大距离
-        int cover = nums[0];
-
-        for (int i = 0; i <= cover; i++) {
-            //当前覆盖距离cover和当前位置加能条约的距离中取一个较大者
-            cover = Math.max(cover, i + nums[i]);
-            if (cover >= nums.length - 1) {
-                //覆盖距离超过或者等于nums.length-1 说明能到达终点
-                return true;
+        int y = 0;
+        for (int x = 0; x < nums.length; x++) {
+            //如果当前索引位置大于可以跳跃的最大长度 说明不可能到最后一个位置
+            if (x > y) {
+                return false;
             }
+            // 更新最大可以跳跃位置
+            y = Math.max(y, x + nums[x]);
         }
-        //循环完成 还没返回true 就是不能到达终点
-        return false;
+        return true;
     }
 
 

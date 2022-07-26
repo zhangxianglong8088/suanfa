@@ -7,7 +7,7 @@ import java.util.*;
  * @author: zhangxianglong
  * @date: 2022/5/16
  */
-public class GetLeastNumbers {
+public class GetLeastNumbersGGG {
 
     /**
      * 通过大根堆
@@ -64,9 +64,66 @@ public class GetLeastNumbers {
         return nums;
     }
 
+
+    /**
+     * 快速排序
+     */
+    static int[] getLeastNumbers3(int[] arr, int k) {
+        quickSort(arr, 0, arr.length - 1);
+
+        int[] res = new int[k];
+        for (int i = 0; i < k; i++) {
+            res[i] = arr[i];
+        }
+        return res;
+    }
+
+    static void quickSort(int[] nums, int start, int end) {
+        if (start > end) {
+            return;
+        }
+        int i = start;
+        int j = end;
+        int pivot = nums[start];
+
+        while (i < j) {
+            /**
+             * 注意这里的序号一定是先判断j 再判断i否则出错
+             */
+            while (i < j && nums[j] >= pivot) {
+                j--;
+            }
+            while (i < j && nums[i] <= pivot) {
+                i++;
+            }
+
+            if (i < j) {
+                //交换num[i] nums[j]
+                swap(nums, i, j);
+            }
+        }
+        swap(nums, start, i);
+        quickSort(nums, start, i - 1);
+        quickSort(nums, j + 1, end);
+    }
+
+    /**
+     * 交换num[i] nums[j] 的值
+     *
+     * @param nums
+     * @param i
+     * @param j
+     */
+    public static void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+
+
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 3, 4, 5, 6};
         int k = 2;
-        int[] result = getLeastNumbers2(nums, k);
+        int[] result = getLeastNumbers3(nums, k);
     }
 }

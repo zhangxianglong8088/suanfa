@@ -8,7 +8,7 @@ import java.util.Set;
  * @author: zhangxianglong
  * @date: 2022/5/15
  */
-public class MaxLength {
+public class MaxLengthXXX {
 
     /**
      * 滑动窗口
@@ -41,7 +41,7 @@ public class MaxLength {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2};
+        int[] nums = new int[]{2, 3, 4, 5};
         int maxLength = maxLength2(nums);
         System.out.println(maxLength);
     }

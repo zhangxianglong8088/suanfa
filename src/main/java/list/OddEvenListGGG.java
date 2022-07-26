@@ -21,24 +21,32 @@ public class OddEvenListGGG {
         ListNode evenPre = new ListNode(-1);
         ListNode evenCur = evenPre;
 
+
         int n = 1;
+
+
         while (head != null) {
-            ListNode node = new ListNode(head.val);
-            //奇数位置元素
+
             if (n % 2 == 1) {
-                oddCur.next = node;
+                oddCur.next = head;
+                head = head.next;
                 oddCur = oddCur.next;
-                head = head.next;
             } else {
-                evenCur.next = node;
-                evenCur = evenCur.next;
+                evenCur.next = head;
                 head = head.next;
+                evenCur = evenCur.next;
+                //这里判断一下 如果偶数位置为倒数第二个，则下一个结点致空
+                if (head != null && head.next == null) {
+                    evenCur.next = null;
+                }
             }
+
             n++;
         }
-
         oddCur.next = evenPre.next;
         return oddPre.next;
+
+
     }
 
     /**
@@ -80,16 +88,15 @@ public class OddEvenListGGG {
         ListNode node4 = new ListNode(4);
         ListNode node5 = new ListNode(5);
         ListNode node6 = new ListNode(6);
+        ListNode node7 = new ListNode(7);
 
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
         node5.next = node6;
-        node6.next = null;
 
 
         ListNode res = oddEvenList1(node1);
     }
-
 }

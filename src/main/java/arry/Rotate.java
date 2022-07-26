@@ -22,8 +22,9 @@ public class Rotate {
             }
         }
 
-        //2、对角线置换 思考为什么不是 nums[i][j]  和nums[i-1][j+1]
+        //2、对角线置换
         for (int i = 0; i < len; i++) {
+            //注意这里j<i
             for (int j = 0; j < i; j++) {
                 int tmp = matrix[i][j];
                 matrix[i][j] = matrix[j][i];
@@ -33,8 +34,9 @@ public class Rotate {
     }
 
     public static void main(String[] args) {
-        int[][] nums = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        int[][] nums = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}};
         rotate(nums);
         System.out.println(nums);
     }
+
 }

@@ -14,7 +14,7 @@ package dp;
  * @author: zhangxianglong
  * @date: 2022/5/26
  */
-public class UniquePaths {
+public class UniquePathsGGG {
 
     public static int uniquePaths(int m, int n) {
         //定义dp数组

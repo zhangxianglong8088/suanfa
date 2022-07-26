@@ -8,7 +8,7 @@ import common.TreeNode;
  * @author: zhangxianglong
  * @date: 2022/5/24
  */
-public class IsSymmetric {
+public class IsSymmetricXXX {
 
     public static boolean isSymmetric(TreeNode root) {
         if (root == null) {

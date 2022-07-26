@@ -7,7 +7,7 @@ package dp;
  * @author: zhangxianglong
  * @date: 2022/5/15
  */
-public class MaxProfitI {
+public class MaxProfitIGGG {
 
     /**
      * 暴力循环 超出时间限制
@@ -52,7 +52,6 @@ public class MaxProfitI {
     /**
      * 动态规划
      * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/solution/121-mai-mai-gu-piao-de-zui-jia-shi-ji-by-leetcode-/
-     * 一次遍历的过程中记录，历史的最小值，用当前值减去最小值就是
      *
      * @return
      */
@@ -73,7 +72,7 @@ public class MaxProfitI {
 
 
     public static void main(String[] args) {
-        int[] prices = new int[]{7, 1, 5, 3, 6, 4};
+        int[] prices = new int[]{8, 9, 2, 5, 4, 7, 1};
         int maxProfit = maxProfit3(prices);
         System.out.println(maxProfit);
     }

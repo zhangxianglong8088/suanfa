@@ -4,7 +4,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * @description：
+ * https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/
+ *
+ * @description：116. 填充每个节点的下一个右侧节点指针
  * @author: zhangxianglong
  * @date: 2022/7/16
  */
@@ -69,6 +71,4 @@ public class ConnectGGG {
             next = _next;
         }
     }
-
-    ;
 }

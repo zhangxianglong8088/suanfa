@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class LengthOfLIS {
 
-    static int lengthOfLIS(int[] nums) {
+    static int lengthOfLIS1(int[] nums) {
 
         // 定义：dp[i] 表示以从0号位置到i号位置这个闭区间的最长递增子序列的长度
         int[] dp = new int[nums.length];
@@ -40,16 +40,19 @@ public class LengthOfLIS {
 
     public static void main(String[] args) {
         int[] nums = new int[]{10, 9, 2, 5, 3, 7, 101, 18};
-        System.out.println(lengthOfLIS4(nums));
+        System.out.println(lengthOfLIS2(nums));
     }
 
-    public static int lengthOfLIS4(int[] nums) {
+    public static int lengthOfLIS2(int[] nums) {
 
-        //dp表示以nums[i] 为结尾的递增序列的长度
-        int[] dp = new int[nums.length];
+        int n = nums.length;
+
+        //以nums[i] 为结尾的最长的递增子序列的长度
+        int[] dp = new int[n];
+
         Arrays.fill(dp, 1);
 
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 1; i < n; i++) {
             int max = Integer.MIN_VALUE;
             for (int j = 0; j < i; j++) {
                 if (nums[j] < nums[i]) {
@@ -59,11 +62,10 @@ public class LengthOfLIS {
             }
         }
 
-        int max = 0;
+        int res = 0;
         for (int i = 0; i < dp.length; i++) {
-            max = Math.max(max, dp[i]);
+            res = Math.max(res, dp[i]);
         }
-        return max;
-
+        return res;
     }
 }

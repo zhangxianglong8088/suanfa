@@ -5,9 +5,10 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/7/22
  */
-public class ProductExceptSelf {
+public class ProductExceptSelfGGG {
 
     public static int[] productExceptSelf(int[] nums) {
+
         int length = nums.length;
 
         int[] L = new int[nums.length];

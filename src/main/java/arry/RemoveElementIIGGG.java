@@ -8,7 +8,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/14
  */
-public class RemoveElement {
+public class RemoveElementIIGGG {
 
     /**
      * @param nums

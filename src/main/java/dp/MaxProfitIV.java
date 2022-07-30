@@ -1,7 +1,7 @@
 package dp;
 
 /**
- 188. 买卖股票的最佳时机 IV
+ * 188. 买卖股票的最佳时机 IV
  * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/
  *
  * @description：
@@ -37,7 +37,7 @@ public class MaxProfitIV {
         for (int i = 1; i < n; i++) {
             //j表示持有或者不持有股票
             for (int j = 1; j <= maxK - 1; j++) {
-                //第i天不持有股票
+                //第i天不持有股票 *** 这里买入一次和卖出一次算一次交易，选择在卖出的时候减去交易次数
                 dp[i][j][0] = Math.max(dp[i - 1][j][1] + prices[i], dp[i - 1][j][0]);
                 //第i天持有股票
                 dp[i][j][1] = Math.max(dp[i - 1][j - 1][0] - prices[i], dp[i - 1][j][1]);

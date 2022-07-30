@@ -18,7 +18,7 @@ public class TopKFrequent {
      * @param k
      * @return
      */
-    public static int[] topKFrequent(int[] nums, int k) {
+    public static int[] topKFrequent1(int[] nums, int k) {
         //遍历数组 将数组中的元素放到Map中，key表示该元素，value表示元素出现的次数
         Map<Integer, Integer> map = new HashMap<>();
 
@@ -43,7 +43,7 @@ public class TopKFrequent {
         return res;
     }
 
-    public static int[] topKFrequent4(int[] nums, int k) {
+    public static int[] topKFrequent2(int[] nums, int k) {
         //出现次数放到map
         Map<Integer, Integer> timeMap = new HashMap();
 
@@ -71,8 +71,7 @@ public class TopKFrequent {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1};
-        topKFrequent4(nums, 1);
+        int[] nums = new int[]{4, 1, -1, 2, -1, 2, 3};
+        topKFrequent1(nums, 2);
     }
-
 }

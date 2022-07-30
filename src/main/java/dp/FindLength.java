@@ -35,10 +35,56 @@ public class FindLength {
 
     public static void main(String[] args) {
 
-        int[] nums1 = new int[]{1, 2, 3, 2, 1};
-        int[] nums2 = new int[]{3, 2, 1, 1, 4};
+        int[] nums1 = new int[]{1, 2, 3, 2, 8};
+        int[] nums2 = new int[]{5, 6, 1, 4, 7};
 
-        findLength(nums1, nums2);
+        findLength2(nums1, nums2);
 
+    }
+
+    /**
+     * 这也是一个思路 但是效率不高 问题：这个思路是在推倒dp数组 思路一是直接求了最大值
+     *
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public static int findLength2(int[] nums1, int[] nums2) {
+
+        int n1 = nums1.length;
+        int n2 = nums2.length;
+
+        int[][] dp = new int[n1][n2];
+        int max = 0;
+
+        for (int i = 0; i < n2; i++) {
+            if (nums1[0] == nums2[i]) {
+                dp[0][i] = 1;
+            }
+        }
+
+        for (int i = 0; i < n1; i++) {
+            if (nums2[0] == nums1[i]) {
+                dp[i][0] = 1;
+            }
+        }
+
+        for (int i = 1; i < n1; i++) {
+            for (int j = 1; j < n2; j++) {
+                if (nums1[i] == nums2[j]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                    max = Math.max(max, dp[i][j]);
+                }
+            }
+        }
+
+        int res = 0;
+
+        for (int i = 0; i < dp.length; i++) {
+            for (int j = 0; j < dp[0].length; j++) {
+                res = Math.max(res, dp[i][j]);
+            }
+        }
+        return res;
     }
 }

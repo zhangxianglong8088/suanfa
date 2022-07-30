@@ -30,7 +30,7 @@ public class MaxProduct {
 
         for (int i = 1; i < nums.length; i++) {
             dpMax[i] = Math.max(dpMax[i - 1] * nums[i], Math.max(dpMin[i - 1] * nums[i], nums[i]));
-            dpMin[i] = Math.min(dpMin[i - 1] * nums[i], Math.min(dpMax[i - 1] * nums[i], nums[i]));
+            dpMin[i] = Math.min(dpMax[i - 1] * nums[i], Math.min(dpMin[i - 1] * nums[i], nums[i]));
             res = Math.max(res, dpMax[i]);
         }
         return res;
@@ -41,6 +41,7 @@ public class MaxProduct {
         int[] nums = new int[]{-1, 0, -3, -4};
 
         int res = maxProduct(nums);
+        System.out.println(res);
 
     }
 }

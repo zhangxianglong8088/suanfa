@@ -7,7 +7,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/7/26
  */
-public class MoveZeroes {
+public class MoveZeroesGGG {
 
     public static int[] moveZeroes(int[] nums) {
 
@@ -38,8 +38,36 @@ public class MoveZeroes {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{0, 0, 0, 1};
-        nums = moveZeroes(nums);
+        int[] nums = new int[]{1, 2, 3};
+        nums = moveZeroes3(nums);
 
+    }
+
+    public static int[] moveZeroes3(int[] nums) {
+        int n = nums.length;
+        int left = 0;
+        int right = 0;
+
+        while (right < n) {
+
+            if (nums[right] != 0) {
+                right++;
+                left++;
+            } else {
+                while (right < n && nums[right] == 0) {
+                    right++;
+                }
+                if (right < n) {
+
+                    int tmp = nums[left];
+                    nums[left] = nums[right];
+                    nums[right] = tmp;
+                    left++;
+                }
+
+            }
+        }
+
+        return nums;
     }
 }

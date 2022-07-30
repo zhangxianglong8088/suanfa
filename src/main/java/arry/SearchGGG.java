@@ -7,7 +7,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/16
  */
-public class Search {
+public class SearchGGG {
 
     public static int search(int[] nums, int target) {
         int result = 0;

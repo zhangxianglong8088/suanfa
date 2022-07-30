@@ -6,7 +6,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/16
  */
-public class MinArray {
+public class MinArrayGGG {
 
     public int minArray(int[] numbers) {
         for (int i = 0; i < numbers.length - 1; i++) {

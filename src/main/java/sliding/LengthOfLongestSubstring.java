@@ -17,81 +17,37 @@ public class LengthOfLongestSubstring {
      * @param s
      * @return
      */
-    public static int lengthOfLongestSubstring3(String s) {
-
-        if (Objects.equals(s, "")) {
-            return 0;
-        }
+    public static int lengthOfLongestSubstring(String s) {
+        // write code here
         int left = 0;
         int right = 0;
-        int curLen = 0;
+        int n = s.length();
         int maxLen = 0;
 
         Set<Character> set = new HashSet<>();
 
+        while (right < n) {
 
-        while (right < s.length()) {
-
-            if (!set.contains(s.charAt(right))) {
-                set.add(s.charAt(right));
-                curLen++;
-                maxLen = Math.max(curLen, maxLen);
-                right++;
-            } else {
-                while (set.contains(s.charAt(right))) {
-                    set.remove(s.charAt(left));
-                    left++;
-                    curLen--;
-                }
-                set.add(s.charAt(right));
-                curLen++;
-                right++;
-            }
-        }
-        return maxLen;
-    }
-
-    /**
-     * 第二个思路
-     *
-     * @param s
-     * @return
-     */
-    public static int lengthOfLongestSubstring(String s) {
-        if (Objects.equals(s, "")) {
-            return 0;
-        }
-        int left = 0;
-        int right = 0;
-        int length = Integer.MIN_VALUE;
-
-        Map<Character, Integer> map = new HashMap<>();
-
-        while (right < s.length()) {
-            char c = s.charAt(right);
-            right++;
-            map.put(c, map.getOrDefault(c, 0) + 1);
-
-            //是否需要缩短窗口
-            while (map.get(c) > 1) {
-                char d = s.charAt(left);
+            while (set.contains(s.charAt(right))) {
+                set.remove(s.charAt(left));
                 left++;
-                map.put(d, map.getOrDefault(d, 0) - 1);
+
             }
-
-            length = Math.max(right - left, length);
+            set.add(s.charAt(right));
+            right++;
+            maxLen = Math.max(maxLen, set.size());
         }
-        return length;
-    }
 
+        return maxLen;
+
+
+    }
 
     public static void main(String[] args) {
 
         String s = "pwwkew";
-        int length = lengthOfLongestSubstring3(s);
+        int length = lengthOfLongestSubstring(s);
         System.out.println(length);
 
     }
-
-
 }

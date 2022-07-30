@@ -52,5 +52,6 @@ public class QuickSortGGG {
     public static void main(String[] args) {
         int[] nums = new int[]{1, 3, 5, 3, 1};
         quickSort(nums, 0, nums.length - 1);
+        System.out.println(nums);
     }
 }

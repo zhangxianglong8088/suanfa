@@ -74,7 +74,33 @@ public class DailyTemperatures {
 
         int[] tem = new int[]{73, 74, 75, 71, 69, 72, 76, 73};
 
-        int[] result = dailyTemperatures(tem);
+        int[] result = temperatures(tem);
 
+    }
+
+    public static int[] temperatures(int[] dailyTemperatures) {
+        //定义单调栈
+
+        Stack<Integer> stack = new Stack<>();
+        int[] temp = new int[dailyTemperatures.length];
+
+        stack.push(0);
+
+        for (int i = 1; i < dailyTemperatures.length; i++) {
+            //当前元素小于栈顶元素 没法计算 直接入栈
+            if (dailyTemperatures[i] <= dailyTemperatures[stack.peek()]) {
+                stack.push(i);
+            } else {
+
+                //当前元素大与栈顶元素 说明当前元素就是栈顶元素最近的一个高温
+                while (!stack.isEmpty() && dailyTemperatures[i] > dailyTemperatures[stack.peek()]) {
+                    temp[stack.peek()] = i - stack.peek();
+                    stack.pop();
+                }
+                stack.push(i);
+            }
+        }
+
+        return temp;
     }
 }

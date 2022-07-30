@@ -14,31 +14,36 @@ import java.util.Queue;
  * @author: zhangxianglong
  * @date: 2022/7/25
  */
-public class IsCompleteTree {
+public class IsCompleteTreeGGG {
 
     public boolean isCompleteTree(TreeNode root) {
-        // write code here
-        //标记空节点
-        boolean left = true;
+
+        //标记第一次遇到了空节点
+        boolean left = false;
 
         if (root == null) {
             return true;
         }
+
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
+
         while (!queue.isEmpty()) {
             TreeNode nowNode = queue.poll();
             //说明当前节点是空节点
             if (nowNode == null) {
-                left = false;
-            } else {
-                // 遇到空节点直接返回false
-                if (!left) {
-                    return false;
-                }
-                queue.offer(nowNode.left);
-                queue.offer(nowNode.right);
+                //表示第一次遇到了空节点 则持续尝试队列后面的结点是不是全是空节点，如果是 则说明是完全二叉树，
+                //如果不是 则说明不是完全二叉树
+                left = true;
+                continue;
             }
+
+            // 遇到空节点直接返回false
+            if (left) {
+                return false;
+            }
+            queue.offer(nowNode.left);
+            queue.offer(nowNode.right);
         }
         return true;
     }

@@ -6,7 +6,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/16
  */
-public class Exchange {
+public class ExchangeGGG {
     /**
      * 定义双指针，开辟一个新数组，遍历原数组，偶数丛左开始放，奇数从右边开始放
      *

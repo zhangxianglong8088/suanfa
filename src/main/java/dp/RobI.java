@@ -14,7 +14,7 @@ package dp;
  * https://leetcode.cn/problems/house-robber/solution/da-jia-jie-she-by-leetcode-solution/
  * @date: 2022/5/26
  */
-public class RobIGGG {
+public class RobI {
 
     public static int rob(int[] nums) {
         if (nums.length <= 1) {

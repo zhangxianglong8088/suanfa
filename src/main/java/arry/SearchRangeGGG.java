@@ -12,7 +12,7 @@ public class SearchRangeGGG {
 
     public static void main(String[] args) {
         int[] nums = new int[]{5, 7, 7, 8, 8, 10};
-        int[] result = searchRange(nums, 6);
+        int[] result = searchRange3(nums, 6);
     }
 
     public static int[] searchRange(int[] nums, int target) {
@@ -35,6 +35,29 @@ public class SearchRangeGGG {
                 break;
             }
             right--;
+        }
+        return res;
+
+    }
+
+    public static int[] searchRange3(int[] nums, int target) {
+        int[] res = new int[2];
+        int n = nums.length;
+        int left = 0;
+        int right = n - 1;
+
+        while (left <= right) {
+
+            while (nums[left] != target) {
+                left++;
+            }
+            res[0] = left;
+
+            while (nums[right] != target) {
+                right--;
+            }
+            res[1] = right;
+            break;
         }
         return res;
 

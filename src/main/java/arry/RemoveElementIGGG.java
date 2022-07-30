@@ -9,7 +9,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/14
  */
-public class RemoveDuplicatesXXX {
+public class RemoveElementIGGG {
 
     /**
      * 删除数
@@ -17,10 +17,6 @@ public class RemoveDuplicatesXXX {
      * @param args
      */
 
-    public static void main(String[] args) {
-        int[] arr = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-        int result = removeDuplicates3(arr);
-    }
 
     public static int removeDuplicates(int[] nums) {
         int left = 0;
@@ -70,6 +66,45 @@ public class RemoveDuplicatesXXX {
     }
 
 
+    /**
+     * 自己理解的第二个思路
+     *
+     * @param nums
+     * @return
+     */
+    public static int removeDuplicates4(int[] nums) {
+
+        int n = nums.length;
+
+        int left = 0;
+        int right = 1;
+
+
+        while (right < n) {
+
+            if (nums[left] != nums[right]) {
+                left++;
+                right++;
+            } else {
+                while (right < n && nums[left] == nums[right]) {
+                    right++;
+                }
+                if (right < n) {
+                    nums[left + 1] = nums[right];
+                    left++;
+                }
+            }
+        }
+
+        return left + 1;
+
+
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{1, 1, 2, 3};
+        int result = removeDuplicates4(arr);
+    }
 }
 
 

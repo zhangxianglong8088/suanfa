@@ -7,10 +7,12 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/5/16
  */
-public class PrintNumbers {
+public class PrintNumbersGGG {
 
     public static int[] printNumbers(int n) {
+
         int end = (int) Math.pow(10, n) - 1;
+
         int[] result = new int[end];
 
         for (int i = 1; i <= end; i++) {

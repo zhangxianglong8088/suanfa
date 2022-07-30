@@ -10,7 +10,7 @@ import java.util.Map;
  * @author: zhangxianglong
  * @date: 2022/5/16
  */
-public class MissingNumber {
+public class MissingNumberXXX {
 
     /**
      * 通过位运算骚操作

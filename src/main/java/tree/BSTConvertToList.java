@@ -1,7 +1,6 @@
 package tree;
 
 import common.TreeNode;
-import list.ListNode;
 
 import java.util.ArrayList;
 import java.util.List;

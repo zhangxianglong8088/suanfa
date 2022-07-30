@@ -1,4 +1,4 @@
-package dp;
+package greed;
 
 /**
  * 55. 跳跃游戏
@@ -9,7 +9,7 @@ package dp;
  * @author: zhangxianglong
  * @date: 2022/7/20
  */
-public class CanJump {
+public class JumpI {
 
 
     public static boolean canJump(int[] grid) {
@@ -34,26 +34,30 @@ public class CanJump {
 
     /**
      * 贪心算法
+     * 每次移动取最大跳跃步数（得到最大的覆盖范围），每移动一个单位，就更新最大覆盖范围。
+     * 贪心算法局部最优解：每次取最大跳跃步数（取最大覆盖范围），整体最优解：最后得到整体最大覆盖范围，看是否能到终点。
      *
      * @param nums
      * @return
      */
     public static boolean canJump2(int[] nums) {
-        int y = 0;
-        for (int x = 0; x < nums.length; x++) {
+        //可以跳跃的最大位置
+        int cover = 0;
+
+        for (int x = 0; x < nums.length - 1; x++) {
             //如果当前索引位置大于可以跳跃的最大长度 说明不可能到最后一个位置
-            if (x > y) {
+            if (x > cover) {
                 return false;
             }
             // 更新最大可以跳跃位置
-            y = Math.max(y, x + nums[x]);
+            cover = Math.max(cover, x + nums[x]);
         }
         return true;
     }
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{3, 2, 1, 0, 4};
+        int[] nums = new int[]{2, 3, 1, 1, 4};
         boolean res = canJump2(nums);
         System.out.println(res);
     }

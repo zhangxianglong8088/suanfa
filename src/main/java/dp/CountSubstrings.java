@@ -47,7 +47,5 @@ public class CountSubstrings {
         String s = "aaaaa";
         int res = countSubstrings(s);
         System.out.println(res);
-
-
     }
 }

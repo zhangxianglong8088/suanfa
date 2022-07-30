@@ -9,7 +9,7 @@ import java.util.Set;
  * @author: zhangxianglong
  * @date: 2022/5/16
  */
-public class Duplicate {
+public class DuplicateGGG {
     /**
      * 通过hash set
      *

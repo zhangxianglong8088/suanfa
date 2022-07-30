@@ -1,7 +1,9 @@
 package dp;
 
 /**
- * 最大子数组和
+ * 53. 最大子数组和
+ * 进阶：如果求出连续和最大的数组
+ * https://www.nowcoder.com/practice/11662ff51a714bbd8de809a89c481e21?tpId=117&tqId=39302&rp=1&ru=/exam/oj&qru=/exam/oj&sourceUrl=%2Fexam%2Foj%3Fpage%3D4%26tab%3D%25E7%25AE%2597%25E6%25B3%2595%25E7%25AF%2587%26topicId%3D117&difficulty=undefined&judgeStatus=undefined&tags=&title=
  *
  * @description： https://leetcode.cn/problems/maximum-subarray/
  * @author: zhangxianglong
@@ -32,6 +34,7 @@ public class MaxSubArrayGGG {
         }
         return max;
     }
+
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, -2, 3, 10, -4, 7, 2, -5};

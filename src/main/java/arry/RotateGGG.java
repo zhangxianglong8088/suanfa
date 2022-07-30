@@ -7,7 +7,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/7/20
  */
-public class Rotate {
+public class RotateGGG {
 
     public static void rotate(int[][] matrix) {
         //1、数组水平反转
@@ -34,9 +34,8 @@ public class Rotate {
     }
 
     public static void main(String[] args) {
-        int[][] nums = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}};
+        int[][] nums = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         rotate(nums);
         System.out.println(nums);
     }
-
 }

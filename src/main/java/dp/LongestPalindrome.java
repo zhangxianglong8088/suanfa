@@ -77,8 +77,48 @@ public class LongestPalindrome {
     }
 
     public static void main(String[] args) {
-        String res = longestPalindrome2("a");
+        String res = longestPalindrome3("bb");
         System.out.println(res);
+    }
+
+    public static String longestPalindrome3(String s) {
+
+        int n = s.length();
+
+        //dp[i,j] 区间是否是一个回文子串
+        boolean[][] dp = new boolean[n][n];
+
+        for (int i = 0; i < s.length(); i++) {
+            dp[i][i] = true;
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j <= i; j++) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    if (i - j <= 2) {
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i - 1][j + 1];
+                    }
+                }
+            }
+        }
+        int max = 0;
+        int maxI = 0;
+        int maxJ = 0;
+        for (int i = 0; i < n; i++) {
+
+            for (int j = 0; j < i; j++) {
+                if (dp[i][j] && i - j > max) {
+                    max = i - j;
+                    maxI = i;
+                    maxJ = j;
+                }
+            }
+        }
+
+        return s.substring(maxJ, maxI + 1);
+
     }
 
 }

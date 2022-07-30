@@ -53,10 +53,11 @@ public class MergeArray {
 
     public static void main(String[] args) {
 
-        int[] nums1 = new int[]{1};
-        int[] nums2 = new int[]{};
+        int[] nums1 = new int[]{0};
 
-        merge1(nums1, 1, null, 0);
+        int[] nums2 = new int[]{1};
+
+        merge(nums1, 0, nums2, 1);
     }
 
 
@@ -101,6 +102,52 @@ public class MergeArray {
         for (int j = 0; j < merge.length; j++) {
             nums1[j] = merge[j];
         }
+    }
+
+
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+
+        for (int i = 0; i < n; ++i) {
+            nums1[m + i] = nums2[i];
+        }
+
+        quickSort(nums1, 0, nums1.length - 1);
+
+    }
+
+    static void quickSort(int[] nums, int start, int end) {
+        if (start > end) {
+            return;
+        }
+        int i = start;
+        int j = end;
+        int pivot = nums[start];
+
+        while (i < j) {
+            /**
+             * 注意这里的序号一定是先判断j 再判断i否则出错
+             */
+            while (i < j && nums[j] >= pivot) {
+                j--;
+            }
+            while (i < j && nums[i] <= pivot) {
+                i++;
+            }
+
+            if (i < j) {
+                //交换num[i] nums[j]
+                swap(nums, i, j);
+            }
+        }
+        swap(nums, start, i);
+        quickSort(nums, start, i - 1);
+        quickSort(nums, j + 1, end);
+    }
+
+    public static void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
     }
 
 }

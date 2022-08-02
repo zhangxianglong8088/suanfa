@@ -154,27 +154,116 @@ public class AddTwoNumbersGGG {
 
     public static void main(String[] args) {
 
-        ListNode node4 = new ListNode(7);
-        ListNode node3 = new ListNode(2);
-        ListNode node2 = new ListNode(4);
-        ListNode node1 = new ListNode(3);
+        ListNode node1 = new ListNode(0);
+//        ListNode node2 = new ListNode(2);
+//        ListNode node3 = new ListNode(4);
+//        ListNode node4 = new ListNode(3);
 
 
-        ListNode node7 = new ListNode(5);
-        ListNode node6 = new ListNode(6);
-        ListNode node5 = new ListNode(4);
-
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = null;
+        ListNode node5 = new ListNode(7);
+        ListNode node6 = new ListNode(3);
+//        ListNode node7 = new ListNode(4);
+//
+//        node1.next = node2;
+//        node2.next = node3;
+//        node3.next = node4;
+//        node4.next = null;
 
 
         node5.next = node6;
-        node6.next = node7;
-        node7.next = null;
+//        node6.next = node7;
+//        node7.next = null;
 
-        ListNode res = addTwoNumbers2(node1, node5);
+        ListNode res = addTwoNumbers3(node1, node5);
+
+    }
+
+
+    public static ListNode addTwoNumbers3(ListNode l1, ListNode l2) {
+        //1、反转两个链表
+        ListNode newL1 = reverse(l1);
+
+        ListNode newL2 = reverse(l2);
+
+
+        //2、链表相加
+        ListNode addRes = add(newL1, newL2);
+
+
+        //3、再次反转相加之后的链表
+
+        ListNode res = reverse(addRes);
+
+        return res;
+    }
+
+
+    static ListNode reverse(ListNode head) {
+
+        ListNode cur = head;
+        ListNode pre = null;
+        ListNode next;
+
+        while (cur != null) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
+    static ListNode add(ListNode l1, ListNode l2) {
+        ListNode pre = new ListNode(-1);
+        ListNode cur = pre;
+
+        int carry = 0;
+        int sum;
+
+        while (l1 != null || l2 != null) {
+
+            if (l1 != null && l2 != null) {
+                sum = l1.val + l2.val + carry;
+                if (sum >= 10) {
+                    sum = sum - 10;
+                    carry = 1;
+                } else {
+                    carry = 0;
+                }
+                l1 = l1.next;
+                l2 = l2.next;
+            } else if (l1 != null) {
+                sum = l1.val + carry;
+                if (sum >= 10) {
+                    sum = sum - 10;
+                    carry = 1;
+                } else {
+                    carry = 0;
+                }
+                l1 = l1.next;
+
+            } else {
+                sum = l2.val + carry;
+                if (sum >= 10) {
+                    sum = sum - 10;
+                    carry = 1;
+                } else {
+                    carry = 0;
+                }
+                l2 = l2.next;
+            }
+
+            ListNode node = new ListNode(sum);
+            cur.next = node;
+            cur = cur.next;
+        }
+
+        if (carry == 1) {
+            ListNode node = new ListNode(carry);
+            cur.next = node;
+        }
+
+        return pre.next;
 
     }
 }

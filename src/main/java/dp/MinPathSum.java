@@ -16,16 +16,16 @@ public class MinPathSum {
         int rows = grid.length;
         int columns = grid[0].length;
 
-
+        //定义dp数组：dp[i][j] 从左上角到grid[i][j] 位置的路径和的最小值
         int[][] dp = new int[rows][columns];
 
         //初始化dp数组
         dp[0][0] = grid[0][0];
-
+        //从左上角到左下角
         for (int i = 1; i < rows; i++) {
             dp[i][0] = dp[i - 1][0] + grid[i][0];
         }
-
+        //从左上角到右上角
         for (int j = 1; j < columns; j++) {
             dp[0][j] = dp[0][j - 1] + grid[0][j];
         }

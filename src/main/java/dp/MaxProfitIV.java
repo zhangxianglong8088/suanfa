@@ -2,7 +2,8 @@ package dp;
 
 /**
  * 188. 买卖股票的最佳时机 IV
- * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+ * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/
+ * K次交易
  *
  * @description：
  * @author: zhangxianglong

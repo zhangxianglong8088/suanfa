@@ -78,10 +78,44 @@ public class ConstructFromInPostGGG {
         node3.left = node8;
         node3.right = node9;
 
-        int[] inorder = new int[]{5, 2, 6, 4, 7, 1, 8, 3, 9};
-        int[] postorder = new int[]{5, 6, 7, 4, 2, 8, 9, 3, 1};
+        int[] inorder = new int[]{9, 3, 15, 20, 7};
+        int[] postorder = new int[]{9, 15, 7, 20, 3};
         //中序和后序
-        TreeNode result = buildTree(inorder, postorder);
+        TreeNode result = buildTree2(inorder, postorder);
+
+    }
+
+
+    public static TreeNode buildTree2(int[] inorder, int[] postorder) {
+        //映射中序遍历的结果和下标
+        for (int i = 0; i < inorder.length; i++) {
+            valToIndex.put(inorder[i], i);
+        }
+
+        TreeNode res = build2(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1);
+
+        return res;
+
+    }
+
+    public static TreeNode build2(int[] inorder, int inStart, int inEnd, int[] postorder, int pStart, int pEnd) {
+
+        if (inStart > inEnd) {
+            return null;
+        }
+
+        int index = valToIndex.get(postorder[postorder.length - 1]);
+
+        int rootValue = postorder[pEnd];
+        TreeNode root = new TreeNode(rootValue);
+
+        int leftSize = index - inStart;
+
+        root.left = build2(inorder, inStart, index - 1, postorder, pStart, pStart + leftSize);
+
+        root.right = build2(inorder, index + 1, inEnd, postorder, pStart + leftSize + 1, pEnd - 1);
+
+        return root;
 
     }
 }

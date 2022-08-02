@@ -6,7 +6,7 @@ import common.TreeNode;
  * 112. 路径总和
  * https://leetcode.cn/problems/path-sum/
  */
-public class PathSumI {
+public class PathSumIXXX {
 
     /**
      * 递归解法

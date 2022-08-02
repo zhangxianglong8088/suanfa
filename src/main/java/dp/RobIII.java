@@ -32,6 +32,7 @@ public class RobIII {
         }
 
         int[] left = robAction1(root.left);
+
         int[] right = robAction1(root.right);
         //不偷当前节点 我们可以选择偷左右字节点（左右字节点 又有 偷 和 不偷 两种选择）
         res[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);

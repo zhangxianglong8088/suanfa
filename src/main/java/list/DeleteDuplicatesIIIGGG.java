@@ -7,7 +7,7 @@ package list;
  * @author: zhangxianglong
  * @date: 2022/5/17
  */
-public class DeleteDuplicatesIII {
+public class DeleteDuplicatesIIIGGG {
 
     /**
      * 第一个思路
@@ -41,7 +41,7 @@ public class DeleteDuplicatesIII {
      * @return
      */
 
-    public static ListNode removeElements2(ListNode head, int val) {
+    public static ListNode removeElements(ListNode head, int val) {
         ListNode pre = new ListNode(-1);
         pre.next = head;
         ListNode cur = pre;
@@ -78,7 +78,7 @@ public class DeleteDuplicatesIII {
         node6.next = node7;
         node7.next = null;
 
-        ListNode head = removeElements1(node1, 6);
+        ListNode head = removeElements(node1, 6);
 
     }
 }

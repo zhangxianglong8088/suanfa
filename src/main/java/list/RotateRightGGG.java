@@ -55,6 +55,7 @@ public class RotateRightGGG {
         node4.next = node5;
         node5.next = null;
 
-        rotateRight(node1, 1);
+        ListNode res = rotateRight(node1, 2);
     }
+
 }

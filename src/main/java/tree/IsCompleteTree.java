@@ -14,12 +14,12 @@ import java.util.Queue;
  * @author: zhangxianglong
  * @date: 2022/7/25
  */
-public class IsCompleteTreeGGG {
+public class IsCompleteTree {
 
     public boolean isCompleteTree(TreeNode root) {
 
         //标记第一次遇到了空节点
-        boolean left = false;
+        boolean flag = false;
 
         if (root == null) {
             return true;
@@ -34,12 +34,12 @@ public class IsCompleteTreeGGG {
             if (nowNode == null) {
                 //表示第一次遇到了空节点 则持续尝试队列后面的结点是不是全是空节点，如果是 则说明是完全二叉树，
                 //如果不是 则说明不是完全二叉树
-                left = true;
+                flag = true;
                 continue;
             }
 
             // 遇到空节点直接返回false
-            if (left) {
+            if (flag) {
                 return false;
             }
             queue.offer(nowNode.left);

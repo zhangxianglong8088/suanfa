@@ -92,15 +92,36 @@ public class DetectCycleGGG {
 
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(0);
-        ListNode node4 = new ListNode(-4);
 
         node1.next = node2;
         node2.next = node1;
-        node3.next = node4;
-        node4.next = node2;
 
-        ListNode res = detectCycle(node1);
+        ListNode res = detectCycle5(node1);
+
+    }
+
+    public static ListNode detectCycle5(ListNode head) {
+        if (head == null || head.next == null) {
+            return null;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (fast == slow) {
+                break;
+            }
+        }
+
+        while (head != slow && slow != null) {
+            head = head.next;
+            slow = slow.next;
+        }
+        return slow;
 
     }
 }

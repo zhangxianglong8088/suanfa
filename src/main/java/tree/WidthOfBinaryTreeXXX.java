@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * @author: zhangxianglong
  * @date: 2022/7/27
  */
-public class WidthOfBinaryTree {
+public class WidthOfBinaryTreeXXX {
 
     public static int widthOfBinaryTree(TreeNode root) {
         int max = 1;

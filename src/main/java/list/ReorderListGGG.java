@@ -8,7 +8,7 @@ package list;
  * @author: zhangxianglong
  * @date: 2022/5/18
  */
-public class ReorderListXXXX {
+public class ReorderListGGG {
 
 
     public static void reorderList(ListNode head) {
@@ -93,7 +93,7 @@ public class ReorderListXXXX {
         node2.next = node3;
         node3.next = node4;
 
-        reorderList3(node1);
+        reorderList(node1);
 
     }
 
@@ -128,6 +128,32 @@ public class ReorderListXXXX {
 
             head2.next = head1;
 
+            head2 = next2;
+        }
+    }
+
+
+    public static void reorderList2(ListNode head) {
+
+        //找到链表的中间节点
+
+        ListNode half = findMid(head);
+
+        ListNode head1 = head;
+        ListNode head2 = reverse(half);
+
+        ListNode next1;
+        ListNode next2;
+
+        while (head1 != null && head2 != null) {
+
+            next1 = head1.next;
+            next2 = head2.next;
+
+            head1.next = head2;
+            head1 = next1;
+
+            head2.next = head1;
             head2 = next2;
         }
     }

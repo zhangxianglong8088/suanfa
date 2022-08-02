@@ -72,8 +72,8 @@ public class MaxProfitIGGG {
 
 
     public static void main(String[] args) {
-        int[] prices = new int[]{8, 9, 2, 5, 4, 7, 1};
-        int maxProfit = maxProfit3(prices);
+        int[] prices = new int[]{7, 1, 5, 3, 6, 4};
+        int maxProfit = maxProfit1(prices);
         System.out.println(maxProfit);
     }
 }

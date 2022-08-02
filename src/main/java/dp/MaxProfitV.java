@@ -12,6 +12,10 @@ public class MaxProfitV {
 
     public static int maxProfit(int[] prices) {
 
+        if (prices.length == 1) {
+            return 0;
+        }
+
         //定义dp数组
         int n = prices.length;
 
@@ -29,6 +33,7 @@ public class MaxProfitV {
             //j表示持有或者不持有股票
             dp[i][0] = Math.max(dp[i - 1][1] + prices[i], dp[i - 1][0]);
             //注意这里和121的区别
+            //解释：第 i 天选择 buy 的时候，要从 i-2 的状态转移，而不是 i-1 。
             dp[i][1] = Math.max(dp[i - 2][0] - prices[i], dp[i - 1][1]);
         }
 

@@ -72,4 +72,5 @@ public class CanPartition {
         boolean res = canPartition(nusm);
         System.out.println(res);
     }
+
 }

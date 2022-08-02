@@ -46,7 +46,7 @@ public class ReversePreNGGG {
         node6.next = node7;
         node7.next = null;
 
-        ListNode head = reverseN14(node1, 3);
+        ListNode head = reverseN6(node1, 3);
 
 
     }
@@ -104,4 +104,32 @@ public class ReversePreNGGG {
         return pre.next;
     }
 
+    /**
+     * 头插法
+     *
+     * @param head
+     * @param n
+     * @return
+     */
+    static ListNode reverseN6(ListNode head, int n) {
+
+        ListNode domy = new ListNode(-1);
+
+        ListNode pre = domy;
+
+        domy.next = head;
+
+        ListNode cur = head;
+
+        ListNode next;
+        for (int i = 0; i < n - 1; i++) {
+            next = cur.next;
+            cur.next = next.next;
+            next.next = pre.next;
+            pre.next = next;
+        }
+
+        return domy.next;
+
+    }
 }

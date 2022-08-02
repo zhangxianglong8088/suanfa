@@ -16,11 +16,12 @@ public class LengthOfLIS {
         // 定义：dp[i] 表示以从0号位置到i号位置这个闭区间的最长递增子序列的长度
         int[] dp = new int[nums.length];
 
-        // base case：dp 数组全都初始化为 1
+        // base case：dp 数组全都初始化为 1 初始化为1的原因是 最小的长度是1 比如递减的数组 5 4 3 2 1 最长的递增序列是1
         Arrays.fill(dp, 1);
         //注意这里，如果求的是连续的递增序列 通过一次for循环就可以
         //如果求的是非连续的递增序列，需要通过两次for循环，用j指针取探，然后比最大值
         for (int i = 0; i < nums.length; i++) {
+            //这里max也可以为1
             int max = Integer.MIN_VALUE;
             for (int j = 0; j < i; j++) {
                 if (nums[j] < nums[i]) {

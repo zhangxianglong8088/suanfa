@@ -7,7 +7,7 @@ import java.util.Arrays;
  * 给定一个未经排序的整数数组，找到最长且 连续递增的子序列，并返回该序列的长度。
  * 解法参考：https://leetcode.cn/problems/longest-continuous-increasing-subsequence/solution/tu-biao-si-lu-kan-bu-dong-ni-da-wo-ji-ba-7fr7/
  *
- * @description：674. 最长连续递增序列
+ * @description：674. 最长连续递增序列（子数组）
  * @author: zhangxianglong
  * @date: 2022/6/25
  */

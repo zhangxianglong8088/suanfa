@@ -22,7 +22,7 @@ import common.TreeNode;
  * @author: zhangxianglong
  * @date: 2022/5/20
  */
-public class PathSumIIGGG {
+public class PathSumIIXXX {
 
 
     int maxSum = Integer.MIN_VALUE;

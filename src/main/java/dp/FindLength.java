@@ -10,7 +10,7 @@ package dp;
  */
 public class FindLength {
 
-    public static int findLength(int[] nums1, int[] nums2) {
+    public static int findLength1(int[] nums1, int[] nums2) {
         //定义dp数组
 
         //dp[i][j] ：以下标i - 1为结尾的A，和以下标j - 1为结尾的B，最长重复子数组长度为dp[i][j]。
@@ -35,10 +35,10 @@ public class FindLength {
 
     public static void main(String[] args) {
 
-        int[] nums1 = new int[]{1, 2, 3, 2, 8};
-        int[] nums2 = new int[]{5, 6, 1, 4, 7};
+        int[] nums1 = new int[]{1, 2, 3, 2, 1};
+        int[] nums2 = new int[]{3, 2, 1, 4, 7};
 
-        findLength2(nums1, nums2);
+        System.out.println(findLength1(nums1, nums2));
 
     }
 
@@ -86,5 +86,28 @@ public class FindLength {
             }
         }
         return res;
+    }
+
+
+    public static int findLength3(int[] nums1, int[] nums2) {
+
+        //nums1 的i nums2 的j 重复子数组的长度
+        int[][] dp = new int[nums1.length + 1][nums2.length];
+
+        for (int i = 1; i < nums1.length; i++) {
+
+            for (int j = 1; j < nums2.length; j++) {
+
+                if (nums1[i - 1] == nums2[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = dp[i - 1][j - 1];
+                }
+
+            }
+        }
+
+        return 0;
+
     }
 }

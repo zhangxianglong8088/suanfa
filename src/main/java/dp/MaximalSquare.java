@@ -75,7 +75,6 @@ public class MaximalSquare {
             for (int j = 1; j < colums; j++) {
                 if (matrix[i][j] == '1') {
                     dp[i][j] = Math.min(Math.min(dp[i][j - 1], dp[i - 1][j - 1]), dp[i - 1][j]) + 1;
-
                     max = Math.max(max, dp[i][j]);
                 }
             }

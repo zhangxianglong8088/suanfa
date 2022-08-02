@@ -7,9 +7,9 @@ package tree;
  * @author: zhangxianglong
  * @date: 2022/7/23
  */
-public class Trie {
+public class TrieXXX {
 
-    public Trie() {
+    public TrieXXX() {
 
     }
 

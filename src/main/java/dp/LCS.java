@@ -48,8 +48,39 @@ public class LCS {
         String str1 = "1AB2345CD";
         String str2 = "12345EF";
 
-        String res = LCS(str1, str2);
+        String res = LCS2(str1, str2);
 
         System.out.println(res);
+    }
+
+
+    public static String LCS2(String str1, String str2) {
+        // write code here
+        int n1 = str1.length();
+        int n2 = str2.length();
+
+        // i结尾的 Str1 和j结尾的Str2的最长公共子串的长度
+        int[][] dp = new int[n1 + 1][n2 + 1];
+
+        int maxI = 0;
+        int maxJ = 0;
+        int maxLen = 0;
+
+        for (int i = 1; i <= n1; i++) {
+
+            for (int j = 1; j <= n2; j++) {
+
+                if (str1.charAt(i-1) == str2.charAt(j-1)) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                    if (dp[i][j] > maxLen) {
+                        maxI = i;
+                        maxJ = j;
+                        maxLen = dp[i][j];
+                    }
+                }
+            }
+
+        }
+        return str1.substring(maxI - maxLen,maxI );
     }
 }

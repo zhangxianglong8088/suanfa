@@ -2,7 +2,7 @@ package dp;
 
 /**
  * @description： 123. 买卖股票的最佳时机 III
- * 。你最多可以完成 两笔 交易。
+ * 。2次交易
  * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/
  * @author: zhangxianglong
  * @date: 2022/5/15

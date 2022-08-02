@@ -7,7 +7,7 @@ package list;
  * @author: zhangxianglong
  * @date: 2022/5/17
  */
-public class DeleteDuplicatesII {
+public class DeleteDuplicatesIIXXX {
 
     public static ListNode deleteDuplicates(ListNode head) {
         //空链表
@@ -49,6 +49,27 @@ public class DeleteDuplicatesII {
         node4.next = node5;
         node5.next = null;
 
-        ListNode res = deleteDuplicates(node1);
+        ListNode res = deleteDuplicates3(node1);
+    }
+
+    public static ListNode deleteDuplicates3(ListNode head) {
+        ListNode pre = new ListNode(-1);
+        ListNode cur = pre;
+        pre.next = head;
+
+        while (cur.next != null) {
+
+            if (cur.next.next != null && cur.next.val == cur.next.next.val) {
+
+                int tmp = cur.next.val;
+
+                while (cur.next != null && cur.next.val == tmp) {
+                    cur.next = cur.next.next;
+                }
+            } else {
+                cur = cur.next;
+            }
+        }
+        return pre.next;
     }
 }

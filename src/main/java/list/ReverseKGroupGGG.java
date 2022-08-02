@@ -8,7 +8,7 @@ package list;
  * @author: zhangxianglong
  * @date: 2022/5/13
  */
-public class ReverseKGroupXXX {
+public class ReverseKGroupGGG {
 
     public static ListNode reverseKGroup(ListNode head, int k) {
 
@@ -21,6 +21,7 @@ public class ReverseKGroupXXX {
 
         for (int i = 0; i < k - 1; i++) {
             end = end.next;
+            //如果不够k个节点 剩余的节点返回头节点
             if (end == null) {
                 return head;
             }
@@ -47,13 +48,13 @@ public class ReverseKGroupXXX {
         ListNode node3 = new ListNode(3);
         ListNode node4 = new ListNode(4);
         ListNode node5 = new ListNode(5);
-        ListNode node6 = new ListNode(6);
+//        ListNode node6 = new ListNode(6);
 
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
-        node5.next = node6;
+//        node5.next = node6;
 
         ListNode node = reverseKGroup(node1, 2);
     }
@@ -79,5 +80,4 @@ public class ReverseKGroupXXX {
         }
         return pre.next;
     }
-
 }

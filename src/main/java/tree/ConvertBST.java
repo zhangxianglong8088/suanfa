@@ -9,7 +9,7 @@ import common.TreeNode;
  * @author: zhangxianglong
  * @date: 2022/7/5
  */
-public class ConvertBSTGGG {
+public class ConvertBST {
 
     static int sum = 0;
 

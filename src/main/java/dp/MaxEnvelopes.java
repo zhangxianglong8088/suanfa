@@ -4,14 +4,16 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * @description：
+ * 俄罗斯信封套娃
+ *
+ * @description：https://www.nowcoder.com/practice/9bf77b5b018d4d24951c9a7edb40408f?tpId=117&tqId=37863&rp=1&ru=/exam/oj&qru=/exam/oj&sourceUrl=%2Fexam%2Foj%3Fpage%3D1%26pageSize%3D50%26search%3D%25E4%25BF%25A1%25E5%25B0%2581%26tab%3D%25E7%25AE%2597%25E6%25B3%2595%25E7%25AF%2587%26topicId%3D117&difficulty=undefined&judgeStatus=undefined&tags=&title=%E4%BF%A1%E5%B0%81
  * @author: zhangxianglong
  * @date: 2022/7/27
  */
 public class MaxEnvelopes {
 
 
-    public int maxEnvelopes(int[][] envelopes) {
+    public static int maxEnvelopes(int[][] envelopes) {
 
         int n = envelopes.length;
 
@@ -52,6 +54,11 @@ public class MaxEnvelopes {
             res = Math.max(res, dp[i]);
         }
         return res;
+    }
+
+    public static void main(String[] args) {
+        int[][] nums = new int[][]{{5, 4}, {6, 4}, {6, 7}, {2, 3}};
+        int res = maxEnvelopes(nums);
     }
 
 }

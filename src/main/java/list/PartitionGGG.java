@@ -69,7 +69,35 @@ public class PartitionGGG {
         node5.next = node6;
         node6.next = null;
 
-        partition(node1, 3);
+        partition2(node1, 3);
+
+    }
+
+
+    public static ListNode partition2(ListNode head, int x) {
+
+        ListNode smallPre = new ListNode(-1);
+        ListNode smallCur = smallPre;
+
+        ListNode largerPre = new ListNode(-1);
+        ListNode largerCur = largerPre;
+
+
+        while (head != null) {
+            if (head.val < x) {
+                smallCur.next = head;
+                smallCur = smallCur.next;
+                head = head.next;
+            } else {
+                largerCur.next = head;
+                largerCur = largerCur.next;
+                head = head.next;
+            }
+        }
+        largerCur.next = null;
+        smallCur.next = largerPre.next;
+
+        return smallPre.next;
 
     }
 }

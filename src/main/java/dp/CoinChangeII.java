@@ -40,6 +40,7 @@ public class CoinChangeII {
                     dp[i][j] = dp[i - 1][j];
                 } else {
                     //分为：选择coins[i] 的硬币和不选择 coins[i] 的硬币 将两种情况加起来
+                    //后半部分为什么是：p[i][j - coins[i - 1]]  允许使用第 i 个硬币的，所以说已经包含了重复使用硬币的情况
                     dp[i][j] = dp[i - 1][j] + dp[i][j - coins[i - 1]];
                 }
             }

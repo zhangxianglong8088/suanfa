@@ -32,6 +32,12 @@ public class DuplicateGGG {
     }
 
 
+    /**
+     * 排序 重复的在相邻位置
+     *
+     * @param nums
+     * @return
+     */
     static int duplicate2(int[] nums) {
         if (nums == null) {
             return -1;

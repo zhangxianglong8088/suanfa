@@ -10,7 +10,7 @@ import java.util.*;
  * @author: zhangxianglong
  * @date: 2022/6/26
  */
-public class PermuteUnique {
+public class PermuteUniqueGGG {
     static boolean[] used;
 
     public static List<List<Integer>> permuteUnique(int[] nums) {

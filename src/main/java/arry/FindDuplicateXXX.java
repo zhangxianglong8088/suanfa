@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @author: zhangxianglong
  * @date: 2022/5/26
  */
-public class FindDuplicate {
+public class FindDuplicateXXX {
 
     /**
      * 排序之后异或
@@ -31,20 +31,34 @@ public class FindDuplicate {
         return 0;
     }
 
+    /**
+     * 快慢指针思想
+     *
+     * @param nums
+     * @return
+     */
     public static int findDuplicate2(int[] nums) {
-        int slow = 0, fast = 0;
 
-        do {
-            slow = nums[slow];
+        //　1、定义快慢直至
+        int slow = 0;
+        int fast = 0;
+
+        //2、找到快慢指针相遇的位置
+        while (true) {
             fast = nums[nums[fast]];
-        } while (slow != fast);
-
-
-        slow = 0;
-
-        while (slow != fast) {
             slow = nums[slow];
-            fast = nums[fast];
+            if (slow == fast) {
+                break;
+            }
+        }
+
+        //3、快慢指针相遇的位置不一定是环的入口
+        //重新定义一个指针从数组头部开始遍历，slow指针也同步遍历，当finder和slow相等的时候，就找到了环的入口点
+        int finder = 0;
+
+        while (finder != slow) {
+            finder = nums[finder];
+            slow = nums[slow];
         }
 
         return slow;

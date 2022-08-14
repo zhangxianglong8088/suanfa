@@ -1,7 +1,7 @@
 package string;
 
 /**
- * @description：旋转字符串 https://www.nowcoder.com/practice/95cb356556cf430f912e7bdf1bc2ec8f?tpId=117&tqId=37839&rp=1&ru=/exam/oj&qru=/exam/oj&sourceUrl=%2Fexam%2Foj%3Fpage%3D3%26tab%3D%25E7%25AE%2597%25E6%25B3%2595%25E7%25AF%2587%26topicId%3D117&difficulty=undefined&judgeStatus=undefined&tags=&title=
+ * @description：旋转字符串 https://www.nowcoder.com/practice/80b6bb8797644c83bc50ac761b72981c?tpId=117&rp=1&ru=%2Fexam%2Foj&qru=%2Fexam%2Foj&sourceUrl=%2Fexam%2Foj%3Fpage%3D3%26tab%3D%25E7%25AE%2597%25E6%25B3%2595%25E7%25AF%2587%26topicId%3D117&difficulty=&judgeStatus=&tags=&title=%E6%97%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2&gioEnter=menu
  * @author: zhangxianglong
  * @date: 2022/7/29
  */

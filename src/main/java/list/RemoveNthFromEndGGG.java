@@ -51,6 +51,6 @@ public class RemoveNthFromEndGGG {
         node4.next = node5;
         node5.next = null;
 
-        removeNthFromEnd(node1, 3);
+        removeNthFromEnd(node1, 2);
     }
 }

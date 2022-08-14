@@ -1,7 +1,7 @@
 package string;
 
 /**
- * @description：判断一个字符串是否是回文字符串
+ * @description： 判断一个字符串是否是回文字符串
  * @author: zhangxianglong
  * @date: 2022/5/22
  */

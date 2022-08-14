@@ -1,11 +1,11 @@
 package arry;
 
 /**
- * @description：https://leetcode.cn/problems/sort-colors/solution/ren-zhe-suan-fa-quan-wang-zui-qing-xi-yi-pi8d/
+ * @description： https://leetcode.cn/problems/sort-colors/solution/ren-zhe-suan-fa-quan-wang-zui-qing-xi-yi-pi8d/
  * @author: zhangxianglong
  * @date: 2022/7/21
  */
-public class SortColors {
+public class SortColorsXXX {
     public static void sortColors(int[] nums) {
         int left = 0;
         int right = nums.length - 1;

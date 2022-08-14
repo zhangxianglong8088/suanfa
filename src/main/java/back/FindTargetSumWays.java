@@ -6,7 +6,7 @@ import java.util.Deque;
 /**
  * 494. 目标和
  *
- * @description：https://leetcode.cn/problems/target-sum/
+ * @description： https://leetcode.cn/problems/target-sum/
  * @author: zhangxianglong
  * @date: 2022/7/5
  */

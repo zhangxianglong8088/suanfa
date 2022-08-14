@@ -12,78 +12,71 @@ import java.util.*;
  * @date: 2022/6/26
  */
 public class CombinationSumII {
+
     public static void main(String[] args) {
+
         int[] arr = new int[]{10, 1, 2, 7, 6, 1, 5};
+
         List<List<Integer>> res = combinationSum2(arr, 8);
     }
 
-    static List<List<Integer>> lists = new ArrayList<>();
-    static Deque<Integer> deque = new ArrayDeque<>();
-    static int sum = 0;
-
-    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
-        //为了将重复的数字都放到一起，所以先进行排序
-        Arrays.sort(candidates);
-        //加标志数组，用来辅助判断同层节点是否已经遍历
-        boolean[] flag = new boolean[candidates.length];
-        backTracking(candidates, target, 0, flag);
-        return lists;
-    }
-
-    public static void backTracking(int[] arr, int target, int index, boolean[] flag) {
-        if (sum == target) {
-            lists.add(new ArrayList(deque));
-            return;
-        }
-        for (int i = index; i < arr.length && arr[i] + sum <= target; i++) {
-            //*** 组合的去重复 固定相同的元素在排列中的相对位置  如果前面的相邻相等元素没有用过，则跳过
-            if (i > 0 && arr[i] == arr[i - 1] && !flag[i - 1]) {
-                continue;
-            }
-            flag[i] = true;
-            sum += arr[i];
-            deque.push(arr[i]);
-            //每个节点仅能选择一次，所以从下一位开始
-            backTracking(arr, target, i + 1, flag);
-            int temp = deque.pop();
-            flag[i] = false;
-            sum -= temp;
-        }
-    }
-
-
     public static List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> res = new ArrayList();
-        Deque<Integer> path = new ArrayDeque();
-        boolean[] used = new boolean[candidates.length];
-        backtracing(res, path, candidates, 0, 0, target, used);
+
+        List<List<Integer>> res = new ArrayList<>();
+
+        ArrayDeque<Integer> path = new ArrayDeque<>();
+        //排序 目的是将相同的元素放到一起 进行去重复
+        Arrays.sort(candidates);
+
+        boolean[] flag = new boolean[candidates.length];
+
+        backtracing(res, path, candidates, target, 0, 0, flag);
+
         return res;
     }
 
-
-    static void backtracing(List<List<Integer>> res, Deque<Integer> path, int[] candidates, int index, int sum, int target, boolean[] used) {
+    /**
+     * 定义递归函数
+     *
+     * @param res
+     * @param path
+     * @param candidates
+     * @param target
+     * @param sum
+     * @param index
+     * @param flag
+     */
+    static void backtracing(List<List<Integer>> res, ArrayDeque<Integer> path, int[] candidates, int target, int sum, int index, boolean[] flag) {
 
         //递归终止条件
         if (sum == target) {
-            res.add(new ArrayList(path));
+            res.add(new ArrayList<>(path));
             return;
         }
 
-        //单层递归的逻辑
+        //单层递归逻辑
         for (int i = index; i < candidates.length; i++) {
-            if (sum + candidates[i] > target && !used[i] && candidates[i - 1] == candidates[i - 1]) {
+            //判断sum是否超过target
+            if (sum + candidates[i] > target) {
                 continue;
             }
 
-            used[i] = true;
+            //去重复逻辑
+            if (i > index && candidates[i - 1] == candidates[i] && !flag[i - 1]) {
+                continue;
+            }
+
             path.add(candidates[i]);
 
-            backtracing(res, path, candidates, i + 1, sum += candidates[i], target, used);
+            flag[i] = true;
 
+            //递归调用
+            backtracing(res, path, candidates, target, sum + candidates[i], i + 1, flag);
+
+            flag[i] = false;
             //回溯
             path.removeLast();
-            sum = sum - candidates[i];
-            used[i] = false;
+
         }
     }
 }

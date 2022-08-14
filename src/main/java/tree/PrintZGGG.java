@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * BM27 按之字形顺序打印二叉树
  *
- * @description：https://www.nowcoder.com/practice/91b69814117f4e8097390d107d2efbe0?tpId=295&tqId=23454&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
+ * @description： https://www.nowcoder.com/practice/91b69814117f4e8097390d107d2efbe0?tpId=295&tqId=23454&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=%2Fexam%2Foj
  * @author: zhangxianglong
  * @date: 2022/5/26
  */
@@ -81,43 +81,49 @@ public class PrintZGGG {
         node1.right = node8;
 
 
-        List<List<Integer>> levelOrder = printZ(node3);
+        ArrayList<ArrayList<Integer>> levelOrder = Print(node3);
 
     }
 
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
-        if(root==null){
-            return new ArrayList<>();
-        }
-        List<List<Integer>> res = new ArrayList<>();
+    public static ArrayList<ArrayList<Integer>> Print(TreeNode pRoot) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+
         Queue<TreeNode> queue = new ArrayDeque<>();
-        boolean flag= true;
 
-        queue.add(root);
+        queue.offer(pRoot);
 
-        while(!queue.isEmpty()){
+        boolean flag = true;
+
+        while (!queue.isEmpty()) {
+
+            ArrayList<Integer> sub = new ArrayList<>();
+
             int n = queue.size();
-            List<Integer> sub = new ArrayList<>();
-            for(int i = 0 ;i<n;i++){
-                TreeNode tmp = queue.poll();
-                if(tmp.left!=null){
-                    queue.add(tmp.left);
-                }
 
-                if(tmp.right!=null){
-                    queue.add(tmp.right);
-                }
+            for (int i = 0; i < n; i++) {
+
+                TreeNode tmp = queue.poll();
 
                 sub.add(tmp.val);
 
+                if (tmp.left != null) {
+                    queue.offer(tmp.left);
+                }
+
+                if (tmp.right != null) {
+                    queue.offer(tmp.right);
+                }
+
             }
-            flag=!flag;
-            if(flag){
+
+            if (flag) {
                 Collections.reverse(sub);
             }
+            flag = !flag;
             res.add(sub);
         }
+
         return res;
 
     }

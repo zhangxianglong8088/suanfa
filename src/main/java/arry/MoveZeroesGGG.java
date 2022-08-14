@@ -9,41 +9,8 @@ package arry;
  */
 public class MoveZeroesGGG {
 
+
     public static int[] moveZeroes(int[] nums) {
-
-
-        int left = 0;
-        int right = 0;
-
-        while (left < nums.length) {
-
-            if (nums[left] == 0) {
-
-                while (right < nums.length && nums[right] == 0) {
-                    right++;
-                }
-                if (right < nums.length) {
-                    int tmp = nums[left];
-                    nums[left] = nums[right];
-                    nums[right] = tmp;
-                }
-                left++;
-
-            } else {
-                left++;
-                right++;
-            }
-        }
-        return nums;
-    }
-
-    public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3};
-        nums = moveZeroes3(nums);
-
-    }
-
-    public static int[] moveZeroes3(int[] nums) {
         int n = nums.length;
         int left = 0;
         int right = 0;
@@ -69,5 +36,11 @@ public class MoveZeroesGGG {
         }
 
         return nums;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{1, 2, 3};
+        nums = moveZeroes(nums);
+
     }
 }

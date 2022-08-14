@@ -1,7 +1,9 @@
 package arry;
 
+import java.util.Arrays;
+
 /**
- * @description：https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/
+ * @description： https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/
  * @author: zhangxianglong
  * 给定一个按照升序排列的整数数组 nums，和一个目标值 target。找出给定目标值在数组中的开始位置和结束位置。
  * <p>
@@ -12,7 +14,7 @@ public class SearchRangeGGG {
 
     public static void main(String[] args) {
         int[] nums = new int[]{5, 7, 7, 8, 8, 10};
-        int[] result = searchRange3(nums, 6);
+        int[] result = searchRange(nums, 8);
     }
 
     public static int[] searchRange(int[] nums, int target) {
@@ -40,26 +42,4 @@ public class SearchRangeGGG {
 
     }
 
-    public static int[] searchRange3(int[] nums, int target) {
-        int[] res = new int[2];
-        int n = nums.length;
-        int left = 0;
-        int right = n - 1;
-
-        while (left <= right) {
-
-            while (nums[left] != target) {
-                left++;
-            }
-            res[0] = left;
-
-            while (nums[right] != target) {
-                right--;
-            }
-            res[1] = right;
-            break;
-        }
-        return res;
-
-    }
 }

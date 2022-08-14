@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * 42. 接雨水
  *
- * @description：https://leetcode.cn/problems/trapping-rain-water/comments/
+ * @description： https://leetcode.cn/problems/trapping-rain-water/comments/
  * @author: zhangxianglong
  * @date: 2022/6/27
  */

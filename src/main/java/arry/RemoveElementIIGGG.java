@@ -15,7 +15,7 @@ public class RemoveElementIIGGG {
      * @param val
      * @return
      */
-    public static int removeElement(int[] nums, int val) {
+    public static int removeElement1(int[] nums, int val) {
         int fast = 0;
         int slow = 0;
 
@@ -34,11 +34,6 @@ public class RemoveElementIIGGG {
     }
 
 
-    public static void main(String[] args) {
-        int[] nums = new int[]{0, 1, 2, 2, 3, 0, 4, 2};
-        int length = removeElement3(nums, 2);
-    }
-
     /***
      * 自己的理解思路
      * left和right同步往后走，如果找到了一个和目标元素相等的数，left不动，让right去找一个和target不想等的数来覆盖left的值
@@ -47,6 +42,27 @@ public class RemoveElementIIGGG {
      * @param val
      * @return
      */
+    public static int removeElement2(int[] nums, int val) {
+        int left = 0;
+        int right = 0;
+
+        while (right < nums.length) {
+            if (nums[right] != val) {
+                left++;
+                right++;
+            } else {
+                while (right < nums.length) {
+                    if (nums[right] != val) {
+                        nums[left] = nums[right];
+                        left++;
+                    }
+                    right++;
+                }
+            }
+        }
+        return left;
+    }
+
     public static int removeElement3(int[] nums, int val) {
         int left = 0;
         int right = 0;
@@ -66,5 +82,11 @@ public class RemoveElementIIGGG {
             }
         }
         return left;
+    }
+
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{0, 1, 2, 2, 3, 0, 4, 2};
+        int length = removeElement3(nums, 2);
     }
 }

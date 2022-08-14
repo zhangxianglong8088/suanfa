@@ -11,7 +11,7 @@ import java.util.List;
  * @author: zhangxianglong
  * @date: 2022/6/26
  */
-public class Partition {
+public class PartitionGGG {
     public static List<List<String>> partition(String s) {
         List<List<String>> res = new ArrayList<>();
         Deque<String> path = new ArrayDeque<>();
@@ -57,10 +57,9 @@ public class Partition {
     }
 
     public static void main(String[] args) {
-        String s = "aaa";
+        String s = "aab";
         List<List<String>> res = partition(s);
         System.out.println(res);
     }
-
 
 }

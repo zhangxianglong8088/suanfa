@@ -9,54 +9,68 @@ package math;
  */
 public class Multiply {
 
-    public static String multiply(String num1, String num2) {
-        if (num1.equals("0") || num2.equals("0")) {
-            return "0";
-        }
-        String ans = "0";
-        int m = num1.length(), n = num2.length();
-        for (int i = n - 1; i >= 0; i--) {
-            StringBuffer curr = new StringBuffer();
-            int add = 0;
-            for (int j = n - 1; j > i; j--) {
-                curr.append(0);
-            }
-            int y = num2.charAt(i) - '0';
-            for (int j = m - 1; j >= 0; j--) {
-                int x = num1.charAt(j) - '0';
-                int product = x * y + add;
-                curr.append(product % 10);
-                add = product / 10;
-            }
-            if (add != 0) {
-                curr.append(add % 10);
-            }
-            ans = addStrings(ans, curr.reverse().toString());
-        }
-        return ans;
-    }
-
-    public static String addStrings(String num1, String num2) {
-        int i = num1.length() - 1, j = num2.length() - 1, add = 0;
-        StringBuffer ans = new StringBuffer();
-        while (i >= 0 || j >= 0 || add != 0) {
-            int x = i >= 0 ? num1.charAt(i) - '0' : 0;
-            int y = j >= 0 ? num2.charAt(j) - '0' : 0;
-            int result = x + y + add;
-            ans.append(result % 10);
-            add = result / 10;
-            i--;
-            j--;
-        }
-        ans.reverse();
-        return ans.toString();
-    }
 
     public static void main(String[] args) {
-        String s1 = "1234";
-        String s2 = "567";
+        String s1 = "0";
+        String s2 = "0";
         String res = multiply(s1, s2);
         System.out.println(res);
+
+    }
+
+    /**
+     * 解法参考：https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Solution-with-Graph-Explanation
+     *
+     * @param num1
+     * @param num2
+     * @return
+     */
+
+    public static String multiply(String num1, String num2) {
+
+        //定义数组存储结果
+        int n1 = num1.length();
+        int n2 = num2.length();
+
+        //两个数相乘的结果最大的长度
+        int[] mul = new int[n1 + n2];
+
+        //双层循环遍历 num1和nums2
+        for (int i = n1 - 1; i >= 0; i--) {
+            for (int j = n2 - 1; j >= 0; j--) {
+
+                //首先i位置和j位置的数相乘
+                int bitmul = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
+
+                // 结果先加低位判断是否有新的进位
+                bitmul += mul[i + j + 1];
+                //给低位重新赋值
+                mul[i + j + 1] = bitmul % 10;
+                //给高位赋值
+                mul[i + j] += bitmul / 10;
+            }
+        }
+
+        //返回结果
+        StringBuilder s = new StringBuilder();
+
+        //是否第一次遇到0
+        boolean firstNoZero = false;
+
+        for (int j : mul) {
+            if (!firstNoZero && j == 0) {
+                continue;
+            }
+            firstNoZero = true;
+            s.append(j);
+
+        }
+        //如果最终一直没有遇到非0的数，那么结果就是0
+        if (!firstNoZero) {
+            return "0";
+        }
+
+        return s.toString();
 
     }
 }

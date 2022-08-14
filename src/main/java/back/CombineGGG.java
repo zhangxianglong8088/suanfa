@@ -8,7 +8,7 @@ import java.util.*;
  * @author: zhangxianglong
  * @date: 2022/5/29
  */
-public class Combine {
+public class CombineGGG {
 
     public static List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> res = new ArrayList<>();

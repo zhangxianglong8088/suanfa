@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 230. 二叉搜索树中第K小的元素
  *
- * @description：https://leetcode.cn/problems/kth-smallest-element-in-a-bst/
+ * @description： https://leetcode.cn/problems/kth-smallest-element-in-a-bst/
  * @author: zhangxianglong
  * @date: 2022/5/21
  */

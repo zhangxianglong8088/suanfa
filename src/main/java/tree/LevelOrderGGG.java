@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * 二叉树层序遍历
  *
- * @description：https://leetcode.cn/problems/binary-tree-level-order-traversal/
+ * @description： https://leetcode.cn/problems/binary-tree-level-order-traversal/
  * @author: zhangxianglong
  * @date: 2022/5/24
  */
@@ -69,7 +69,44 @@ public class LevelOrderGGG {
         node1.right = node8;
 
 
-        List<List<Integer>> list = levelOrder(node3);
+        List<List<Integer>> list = levelOrder4(node3);
+
+    }
+
+    public static List<List<Integer>> levelOrder4(TreeNode root) {
+
+        List<List<Integer>> res = new ArrayList<>();
+
+        Queue<TreeNode> queue = new ArrayDeque<>();
+
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+
+            int n = queue.size();
+
+            List<Integer> sub = new ArrayList<>();
+
+            for (int i = 0; i < n; i++) {
+
+                TreeNode tmp = queue.poll();
+
+                sub.add(tmp.val);
+
+                if (tmp.left != null) {
+                    queue.offer(tmp.left);
+                }
+
+                if (tmp.right != null) {
+                    queue.offer(tmp.right);
+                }
+            }
+
+            res.add(sub);
+
+        }
+
+        return res;
 
     }
 }

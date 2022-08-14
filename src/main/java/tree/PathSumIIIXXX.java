@@ -66,14 +66,21 @@ public class PathSumIIIXXX {
     /**
      * 前缀和思路
      */
+
+    //map的key存储当前前缀和，value存储 当前这个前缀和出现的次数
     static Map<Long, Integer> map = new HashMap<>();
+
     static int res = 0;
 
-    public static int pathSum3(TreeNode root, int targetSum) {
+    public static int pathSum2(TreeNode root, int targetSum) {
+
         map.put(0L, 1);
+
         dfs(root, 0, targetSum);
+
         return res;
     }
+
 
     public static void dfs(TreeNode root, long preSum, int targetSum) {
         if (root == null) {
@@ -96,4 +103,5 @@ public class PathSumIIIXXX {
             map.put(preSum, map.get(preSum) - 1);
         }
     }
+
 }

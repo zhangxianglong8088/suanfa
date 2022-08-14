@@ -40,9 +40,11 @@ public class FindContentChildren {
 
 
     public static void main(String[] args) {
+        //孩子数组
+        int[] g = new int[]{1, 2, 3};
 
-        int[] g = new int[]{1, 2};
-        int[] s = new int[]{1, 2, 3};
+        //饼干数组
+        int[] s = new int[]{1, 1};
         int res = findContentChildren(g, s);
 
         System.out.println(res);

@@ -3,7 +3,9 @@ package arry;
 import java.util.*;
 
 /**
- * @description：
+ * 剑指 Offer 40. 最小的k个数
+ *
+ * @description：https://leetcode.cn/problems/zui-xiao-de-kge-shu-lcof/
  * @author: zhangxianglong
  * @date: 2022/5/16
  */
@@ -122,8 +124,8 @@ public class GetLeastNumbersGGG {
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 4, 5, 6};
-        int k = 2;
-        int[] result = getLeastNumbers3(nums, k);
+        int[] nums = new int[]{0, 0, 0, 2, 0, 5};
+        int k = 0;
+        int[] result = getLeastNumbers(nums, k);
     }
 }

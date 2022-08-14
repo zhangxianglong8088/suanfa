@@ -12,7 +12,7 @@ import java.util.*;
  * @author: zhangxianglong
  * @date: 2022/6/26
  */
-public class SubsetsWithDup {
+public class SubsetsWithDupGGG {
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 2};

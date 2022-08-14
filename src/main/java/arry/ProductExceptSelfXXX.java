@@ -5,7 +5,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/7/22
  */
-public class ProductExceptSelfGGG {
+public class ProductExceptSelfXXX {
 
     public static int[] productExceptSelf(int[] nums) {
 

@@ -2,6 +2,7 @@ package tree;
 
 import common.TreeNode;
 
+import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -16,7 +17,7 @@ import java.util.Queue;
  */
 public class IsCompleteTree {
 
-    public boolean isCompleteTree(TreeNode root) {
+    public static boolean isCompleteTree(TreeNode root) {
 
         //标记第一次遇到了空节点
         boolean flag = false;
@@ -46,5 +47,26 @@ public class IsCompleteTree {
             queue.offer(nowNode.right);
         }
         return true;
+    }
+
+
+    public static void main(String[] args) {
+
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
+        TreeNode node5 = new TreeNode(5);
+
+        node1.left = node2;
+        node1.right = node3;
+
+        node2.left = node4;
+        node2.right = node5;
+
+        Boolean res = isCompleteTree(node1);
+
+        System.out.println(res);
+
     }
 }

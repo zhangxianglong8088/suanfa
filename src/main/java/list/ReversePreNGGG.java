@@ -1,7 +1,7 @@
 package list;
 
 /**
- * @description：反转链表的前N个节点
+ * @description： 反转链表的前N个节点
  * @author: zhangxianglong
  * @date: 2022/5/21
  */

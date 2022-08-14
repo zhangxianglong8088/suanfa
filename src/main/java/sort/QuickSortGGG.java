@@ -1,7 +1,7 @@
 package sort;
 
 /**
- * @description：快速排序
+ * @description： 快速排序
  * @author: zhangxianglong
  * @date: 2022/6/29
  */
@@ -16,13 +16,11 @@ public class QuickSortGGG {
         int pivot = nums[start];
 
         while (i < j) {
-            /**
-             * 注意这里的序号一定是先判断j 再判断i否则出错
-             */
-            while (i < j && nums[j] >= pivot) {
+            //这里选择左边的第一个数为 pivot 所有 需要先判断j
+            while (i < j && nums[j] > pivot) {
                 j--;
             }
-            while (i < j && nums[i] <= pivot) {
+            while (i < j && nums[i] < pivot) {
                 i++;
             }
 
@@ -31,8 +29,11 @@ public class QuickSortGGG {
                 swap(nums, i, j);
             }
         }
+
         swap(nums, start, i);
+
         quickSort(nums, start, i - 1);
+
         quickSort(nums, j + 1, end);
     }
 

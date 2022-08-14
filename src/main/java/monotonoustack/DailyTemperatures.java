@@ -18,7 +18,7 @@ public class DailyTemperatures {
      * @param temperatures
      * @return
      */
-    public static int[] dailyTemperatures(int[] temperatures) {
+    public static int[] dailyTemperatures1(int[] temperatures) {
         int[] tem = new int[temperatures.length];
 
         for (int i = 0; i < temperatures.length; i++) {
@@ -70,15 +70,8 @@ public class DailyTemperatures {
         return res;
     }
 
-    public static void main(String[] args) {
 
-        int[] tem = new int[]{73, 74, 75, 71, 69, 72, 76, 73};
-
-        int[] result = temperatures(tem);
-
-    }
-
-    public static int[] temperatures(int[] dailyTemperatures) {
+    public static int[] temperatures3(int[] dailyTemperatures) {
         //定义单调栈
 
         Stack<Integer> stack = new Stack<>();
@@ -102,5 +95,51 @@ public class DailyTemperatures {
         }
 
         return temp;
+    }
+
+
+    /**
+     * 自己理解的思路
+     *
+     * @param temperatures
+     * @return
+     */
+    public static int[] dailyTemperatures4(int[] temperatures) {
+
+        int[] answer = new int[temperatures.length];
+
+        int n = temperatures.length;
+
+        //定义从上到下单调递增stack
+        Stack<Integer> stack = new Stack<>();
+
+        //将第一个元素入栈
+        stack.push(0);
+
+        for (int i = 1; i < n; i++) {
+
+            //如果当前元素小于栈顶元素 直接入栈
+            if (temperatures[i] < temperatures[stack.peek()]) {
+                stack.push(i);
+            } else {
+                //如果当前元素一直大于栈顶元素 就不断的计算当前元素和栈顶元素的距离，否则当前元素入栈（栈为空了或者遇到一个比当前元素大的数）
+                while (!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
+                    int m = stack.pop();
+                    answer[m] = i - m;
+
+                }
+                stack.push(i);
+            }
+        }
+        return answer;
+    }
+
+
+    public static void main(String[] args) {
+
+        int[] tem = new int[]{73, 74, 75, 71, 69, 72, 76, 73};
+
+        int[] result = dailyTemperatures4(tem);
+
     }
 }

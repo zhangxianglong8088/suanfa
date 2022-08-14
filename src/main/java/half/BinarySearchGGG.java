@@ -7,7 +7,7 @@ package half;
  * @author: zhangxianglong
  * @date: 2022/5/21
  */
-public class BinarySearch {
+public class BinarySearchGGG {
 
 
     static int binarySearch(int[] nums, int target) {

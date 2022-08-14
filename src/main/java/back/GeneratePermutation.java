@@ -55,6 +55,7 @@ public class GeneratePermutation {
     public static void main(String[] args) {
         String s = "aba";
         String[] res = generatePermutation(s);
+        System.out.println(res);
 
     }
 }

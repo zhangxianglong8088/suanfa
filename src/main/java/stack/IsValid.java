@@ -49,12 +49,6 @@ public class IsValid {
         return true;
     }
 
-    public static void main(String[] args) {
-        String s = "{[]}";
-
-        System.out.println(isValid2(s));
-
-    }
 
     public static boolean isValid2(String s) {
         Stack<Character> stack = new Stack<>();
@@ -84,5 +78,48 @@ public class IsValid {
         } else {
             return false;
         }
+    }
+
+
+    public static boolean isValid3(String s) {
+
+        Stack<Character> stack = new Stack<>();
+        char[] ch = s.toCharArray();
+
+        for (int i = 0; i < ch.length; i++) {
+            if (ch[i] == '(' || ch[i] == '{' || ch[i] == '[') {
+                stack.push(ch[i]);
+            } else {
+
+                if (ch[i] == ')' && stack.peek() != '(') {
+                    return false;
+                }
+                if (ch[i] == '}' && stack.peek() != '{') {
+                    return false;
+                }
+
+                if (ch[i] == ']' && stack.peek() != '[') {
+                    return false;
+                }
+                stack.pop();
+
+            }
+
+
+        }
+        if (!stack.isEmpty()) {
+            return false;
+        }
+
+        return true;
+
+    }
+
+
+    public static void main(String[] args) {
+        String s = "{[]}";
+
+        System.out.println(isValid3(s));
+
     }
 }

@@ -1,10 +1,5 @@
 package pre;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
-
 /**
  * https://leetcode.cn/problems/subarray-sum-equals-k/
  *
@@ -43,7 +38,7 @@ public class SubarraySumXXX {
     }
 
     /**
-     * 前缀和+Hash表
+     * 前缀和
      * https://leetcode.cn/problems/subarray-sum-equals-k/solution/de-liao-yi-wen-jiang-qian-zhui-he-an-pai-yhyf/
      *
      * @param nums
@@ -52,7 +47,7 @@ public class SubarraySumXXX {
      */
     public static int subarraySum2(int[] nums, int k) {
 
-        //1、构建前缀和数组
+        //1、构建前缀和数组 前缀和数组的长度比愿数组长1
 
         int[] preSum = new int[nums.length + 1];
         for (int i = 0; i < nums.length; i++) {
@@ -74,81 +69,9 @@ public class SubarraySumXXX {
     }
 
 
-    /**
-     * 这个题无法用回溯算法作，因为不是组合问题，是连续子数组，如果是组合问题的话，无法排除重复
-     *
-     * @param nums
-     * @param k
-     * @return
-     */
-    public static int subarraySum3(int[] nums, int k) {
-
-        //定义结果集
-        List<List<Integer>> res = new ArrayList<>();
-        Deque<Integer> path = new ArrayDeque<>();
-        boolean[] used = new boolean[nums.length];
-
-        backtracing(res, path, nums, 0, 0, k, used);
-
-        return res.size();
-
-    }
-
-    static void backtracing(List<List<Integer>> res, Deque<Integer> path, int[] nums, int index, int sum, int k, boolean[] used) {
-        //递归终止条件
-        if (sum == k) {
-            res.add(new ArrayList<>(path));
-            return;
-        }
-
-        //单层递归的逻辑
-        for (int i = index; i < nums.length; i++) {
-            if (sum > k) {
-                continue;
-            }
-//            if (i > 1 && nums[i] == nums[i - 1] && !used[i]) {
-//                continue;
-//            }
-            sum += nums[i];
-            path.add(nums[i]);
-            used[i] = true;
-            backtracing(res, path, nums, i + 1, sum, k, used);
-            path.removeLast();
-            sum = sum - nums[i];
-            used[i] = false;
-        }
-    }
-
-    public static int subarraySum6(int[] nums, int k) {
-        int count = 0;
-
-        //推倒出前缀和数组
-        int[] preSum = new int[nums.length + 1];
-
-        preSum[0] = 0;
-
-        for (int i = 0; i < nums.length; i++) {
-            preSum[i + 1] = preSum[i] + nums[i];
-        }
-
-
-        for (int i = 0; i < preSum.length; i++) {
-
-            for (int j = i + 1; j < preSum.length; j++) {
-                if (preSum[j] - preSum[i] == k) {
-                    count++;
-                }
-
-
-            }
-        }
-        return count;
-    }
-
-
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 1, 1};
-        int res = subarraySum6(nums, 2);
+        int[] nums = new int[]{1, 2, 3};
+        int res = subarraySum2(nums, 3);
         System.out.println(res);
     }
 }

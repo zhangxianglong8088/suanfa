@@ -13,12 +13,10 @@ public class RemoveElementIGGG {
 
     /**
      * 删除数
-     *
-     * @param args
      */
 
 
-    public static int removeDuplicates(int[] nums) {
+    public static int removeDuplicates1(int[] nums) {
         int left = 0;
         int right = 1;
 
@@ -41,7 +39,7 @@ public class RemoveElementIGGG {
      * @param nums
      * @return
      */
-    public static int removeDuplicates3(int[] nums) {
+    public static int removeDuplicates2(int[] nums) {
         int left = 0;
         int right = 1;
 
@@ -72,7 +70,7 @@ public class RemoveElementIGGG {
      * @param nums
      * @return
      */
-    public static int removeDuplicates4(int[] nums) {
+    public static int removeDuplicates3(int[] nums) {
 
         int n = nums.length;
 
@@ -102,9 +100,10 @@ public class RemoveElementIGGG {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 1, 2, 3};
-        int result = removeDuplicates4(arr);
+        int[] arr = new int[]{1, 1, 2};
+        int result = removeDuplicates3(arr);
     }
+
 }
 
 

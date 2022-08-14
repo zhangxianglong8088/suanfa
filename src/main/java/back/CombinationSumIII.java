@@ -43,40 +43,6 @@ public class CombinationSumIII {
     public static void main(String[] args) {
         int k = 3;
         int n = 7;
-        List<List<Integer>> list = combinationSum4(k, n);
-    }
-
-    /**
-     * @param k
-     * @param n
-     * @return
-     */
-    public static List<List<Integer>> combinationSum4(int k, int n) {
-        List<List<Integer>> res = new ArrayList();
-        Deque<Integer> path = new ArrayDeque();
-        backtracing4(res, path, 1, n, 0, k);
-
-        return res;
-
-
-    }
-
-
-    static void backtracing4(List<List<Integer>> res, Deque<Integer> path, int index, int target, int sum, int k) {
-        //递归终止条件
-        if (sum == target && path.size() == k) {
-            res.add(new ArrayList(path));
-            return;
-        }
-
-        //单层递归逻辑
-        for (int i = index; i <= 9; i++) {
-            if (sum > target || path.size() >= k) {
-                break;
-            }
-            path.add(i);
-            backtracing4(res, path, i + 1, target, sum + i, k);
-            path.removeLast();
-        }
+        List<List<Integer>> list = combinationSum3(k, n);
     }
 }

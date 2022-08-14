@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 56. 合并区间
  *
- * @description：https://leetcode.cn/problems/merge-intervals/
+ * @description： https://leetcode.cn/problems/merge-intervals/
  * @author: zhangxianglong
  * @date: 2022/7/20
  */

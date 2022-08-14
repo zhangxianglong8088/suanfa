@@ -7,7 +7,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/7/29
  */
-public class PlusOne {
+public class PlusOneGGG {
 
     public static int[] plusOne(int[] nums) {
 

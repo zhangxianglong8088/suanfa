@@ -1,8 +1,6 @@
 package back;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
 
 /**
@@ -12,7 +10,7 @@ import java.util.List;
  * @author: zhangxianglong
  * @date: 2022/5/27
  */
-public class Permute {
+public class PermuteGGG {
     public static List<List<Integer>> permute(int[] nums) {
         if (nums.length == 0) {
             return new ArrayList<>();

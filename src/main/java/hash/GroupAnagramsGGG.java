@@ -6,7 +6,7 @@ import java.util.*;
  * 49. 字母异位词分组
  * 排序相同的字符串放到一起
  *
- * @description：https://leetcode.cn/problems/group-anagrams/
+ * @description： https://leetcode.cn/problems/group-anagrams/
  * @author: zhangxianglong
  * @date: 2022/5/24
  */

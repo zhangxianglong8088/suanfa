@@ -3,7 +3,7 @@ package tree;
 /**
  * 208. 实现 Trie (前缀树)
  *
- * @description：https://leetcode.cn/problems/implement-trie-prefix-tree/
+ * @description： https://leetcode.cn/problems/implement-trie-prefix-tree/
  * @author: zhangxianglong
  * @date: 2022/7/23
  */

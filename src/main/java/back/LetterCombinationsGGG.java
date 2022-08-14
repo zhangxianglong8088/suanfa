@@ -10,7 +10,7 @@ import java.util.List;
  * @author: zhangxianglong
  * @date: 2022/6/1
  */
-public class LetterCombinations {
+public class LetterCombinationsGGG {
 
 
     public static List<String> letterCombinations(String digits) {
@@ -50,7 +50,7 @@ public class LetterCombinations {
 
     public static List<String> letterCombinations3(String digits) {
         String[] numString = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        List<String> res = new ArrayList();
+        List<String> res = new ArrayList<>();
         StringBuilder path = new StringBuilder();
 
         backtracing(res, path, 0, numString, digits);
@@ -59,7 +59,7 @@ public class LetterCombinations {
     }
 
     //递归函数
-    static void backtracing(List<String> res, StringBuilder path, int n, String[] numString, String digits) {
+    static void backtracing(List<String> res, StringBuilder path, int index, String[] numString, String digits) {
 
         //递归函数终止条件
         if (path.length() == digits.length()) {
@@ -67,12 +67,16 @@ public class LetterCombinations {
             return;
         }
 
-        String str = numString[digits.charAt(n) - '0'];
+        String str = numString[digits.charAt(index) - '0'];
         //单层递归逻辑
 
         for (int i = 0; i < str.length(); i++) {
+
             path.append(str.charAt(i));
-            backtracing(res, path, n + 1, numString, digits);
+
+            //想想这里为什么是index+1
+            backtracing(res, path, index + 1, numString, digits);
+
             path.deleteCharAt(path.length() - 1);
         }
     }

@@ -6,7 +6,7 @@ import java.util.Stack;
  * 84. 柱状图中最大的矩形
  * https://leetcode.cn/problems/largest-rectangle-in-histogram/solution/dong-hua-yan-shi-dan-diao-zhan-84zhu-zhu-03w3/
  *
- * @description：https://leetcode.cn/problems/largest-rectangle-in-histogram/
+ * @description： https://leetcode.cn/problems/largest-rectangle-in-histogram/
  * @author: zhangxianglong
  * @date: 2022/6/27
  */

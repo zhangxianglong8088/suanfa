@@ -15,7 +15,7 @@ public class MinStack {
     public MinStack() {
         xStack = new LinkedList<Integer>();
         minStack = new LinkedList<Integer>();
-        minStack.push(Integer.MAX_VALUE);
+//        minStack.push(Integer.MAX_VALUE);
     }
 
     public void push(int val) {

@@ -1,11 +1,10 @@
 package greed;
 
 /**
- * 55. 跳跃游戏
- * 动态规划思想
- * https://leetcode.cn/problems/jump-game/solution/55-tiao-yue-you-xi-by-chen-wei-f-d5t9/
+ * 45. 跳跃游戏II
+ * 假设可以跳跃到最后，求跳跃到最后一步需要的最少的跳跃步数
  *
- * @description：https://leetcode.cn/problems/jump-game/
+ * @description： https://leetcode.cn/problems/jump-game-ii/
  * @author: zhangxianglong
  * @date: 2022/7/20
  */
@@ -18,47 +17,54 @@ public class JumpII {
      * @param nums
      * @return
      */
-    public static int jump(int[] nums) {
-        //当前位置
-        int index = 0;
+    public static int minJumpStep(int[] nums) {
+        int n = nums.length;
 
-        //应该选择的下一个位置
+        //当前所在位置
+        int curIndex = 0;
+
+        //跳跃到下一次的位置
         int nextIndex = 0;
 
-        //最少的跳跃次数
+        //最少的跳跃步数
         int steps = 0;
 
-        //index 和 nextIndex 之间的最大值
-        int max = 0;
-
         // 倒数第二位，只要到倒数第二位就可以跳导终点
-        while (index < nums.length - 1) {
-            int step = nums[index];
-            // 从index的下一步开始走
-            for (int i = index + 1; i < nums.length && i <= index + step; i++) {
+        while (curIndex < n - 1) {
+
+            int begin = curIndex + 1;
+
+            int end = curIndex + nums[curIndex];
+
+            //从begin 到end之间取能够跳跃到的最大位置，然后更新nextIndex 这个，最终赋值给cur
+            // 注意这里不是取 begin 到end 之间的最大值******
+            //表示可以覆盖到的最大位置
+            int maxCover = 0;
+
+            for (int i = begin; i <= end && i < n; i++) {
                 if (i == nums.length - 1) {
                     steps++; // 直接碰到了数组右边界
                     return steps;
                 }
-                // 从i 出发能到达最远的地方
-                int cover = i + nums[i];
 
-                if (cover > max) {
-                    max = cover;
-                    // 如果大于最远的地方，更新nextIndex
+                if (nums[i] + i > maxCover) {
+                    maxCover = nums[i] + i;
                     nextIndex = i;
+
                 }
             }
-            // 找到了下一个index
-            index = nextIndex;
+
+            curIndex = nextIndex;
             steps++;
         }
+
         return steps;
     }
 
+
     public static void main(String[] args) {
-        int[] nums = new int[]{3, 2, 1};
-        int res = jump(nums);
+        int[] nums = new int[]{2, 3, 1, 1, 4};
+        int res = minJumpStep(nums);
         System.out.println(res);
     }
 }

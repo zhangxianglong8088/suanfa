@@ -74,58 +74,56 @@ public class ThreeSumGGG {
         return res;
     }
 
-    public static void main(String[] args) {
-        int[] arr = new int[]{-1, 0, 1, 2, -1, -4};
-        ArrayList<ArrayList<Integer>> result = threeSum5(arr);
-    }
 
-    public static ArrayList<ArrayList<Integer>> threeSum5(int[] num) {
+    public static List<List<Integer>> threeSum6(int[] nums) {
 
-        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-        //排序
-        Arrays.sort(num);
+        List<List<Integer>> res = new ArrayList<>();
+        Arrays.sort(nums);
 
-        for (int i = 0; i < num.length; i++) {
+        if (nums[0] > 0) {
+            return res;
+        }
 
-            int left = i + 1;
-            int rigth = num.length - 1;
-
-            if (i > 0 && num[i - 1] == num[i]) {
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) {
                 continue;
             }
 
-            while (left < rigth) {
+            int left = i + 1;
+            int right = nums.length - 1;
 
-                int sum = num[i] + num[left] + num[rigth];
+
+            while (left < right) {
+
+                int sum = nums[i] + nums[left] + nums[right];
+
                 if (sum == 0) {
 
-                    ArrayList<Integer> subList = new ArrayList<>();
-                    subList.add((num[i]));
-                    subList.add(num[left]);
-                    subList.add(num[rigth]);
+                    res.add(Arrays.asList(nums[i], nums[left], nums[right]));
 
-                    res.add(subList);
-
-                    while (left < rigth && num[left] == num[left + 1]) {
+                    while (left < right && nums[left] == nums[left + 1]) {
                         left++;
                     }
 
-                    while (left < rigth && num[rigth] == num[rigth - 1]) {
-                        rigth--;
+                    while (left < right && nums[right] == nums[right - 1]) {
+                        right--;
                     }
-
                     left++;
-                    rigth--;
-
-                } else if (sum < 0) {
-                    left++;
+                    right--;
+                } else if (sum > 0) {
+                    right--;
                 } else {
-                    rigth--;
+                    left++;
                 }
-
             }
         }
 
         return res;
+
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{-1, 0, 1, 2, -1, -4};
+        List<List<Integer>> result = threeSum6(arr);
     }
 }

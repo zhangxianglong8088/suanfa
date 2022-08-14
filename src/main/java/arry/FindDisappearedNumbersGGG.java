@@ -5,11 +5,11 @@ import java.util.*;
 /**
  * 448. 找到所有数组中消失的数字
  *
- * @description：https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/submissions/
+ * @description： https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/submissions/
  * @author: zhangxianglong
  * @date: 2022/5/18
  */
-public class FindDisappearedNumbersHHH {
+public class FindDisappearedNumbersGGG {
 
     /**
      * 比较好的一个思路：
@@ -48,7 +48,12 @@ public class FindDisappearedNumbersHHH {
         return results;
     }
 
-
+    /**
+     * 通过set实现
+     *
+     * @param nums
+     * @return
+     */
     public static List<Integer> findDisappearedNumbers(int[] nums) {
 
         Set<Integer> set = new HashSet<>();

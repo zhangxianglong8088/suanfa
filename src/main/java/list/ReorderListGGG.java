@@ -12,69 +12,58 @@ public class ReorderListGGG {
 
 
     public static void reorderList(ListNode head) {
-        if (head == null) {
-            return;
-        }
-
+        //快慢指针找到中间位置
         ListNode mid = findMid(head);
 
-        //获取中间结点的后部分
-        ListNode head2 = mid.next;
-        mid.next = null;
+        //反转链表的后半部分
+        ListNode half = reverse(mid);
 
-        //前半部分的头
+        //后半部分间隔插入到前部分
+
+        ListNode next1;
+        ListNode next2;
+
         ListNode head1 = head;
-        ListNode next1 = null;
-        //后半部分的头
-        head2 = reverse(head2);
-        ListNode next2 = null;
+        ListNode head2 = half;
 
-        //后半部分间隔的插入到前半部分中
         while (head1 != null && head2 != null) {
             next1 = head1.next;
             next2 = head2.next;
 
             head1.next = head2;
-            //head1 往后移动
             head1 = next1;
 
             head2.next = head1;
-            //head2 往后移动
             head2 = next2;
+        }
+        if (head1 != null) {
+            head1.next = null;
         }
     }
 
-    /**
-     * 获取链表中间结点
-     *
-     * @param head
-     * @return
-     */
     static ListNode findMid(ListNode head) {
-        //获取链表的后半部分
-        ListNode slow = head;
         ListNode fast = head;
+        ListNode slow = head;
 
-        while (fast.next != null && fast.next.next != null) {
-            slow = slow.next;
+        while (fast != null && fast.next != null) {
             fast = fast.next.next;
+            slow = slow.next;
         }
+
         return slow;
     }
 
-    /**
-     * 获取链表中间结点
-     *
-     * @param head
-     * @return
-     */
     static ListNode reverse(ListNode head) {
-        //获取链表的后半部分
-        ListNode pre = null;
+        if (head == null) {
+            return null;
+        }
+
         ListNode cur = head;
+        ListNode pre = null;
+        ListNode next;
 
         while (cur != null) {
-            ListNode next = cur.next;
+            next = cur.next;
             cur.next = pre;
             pre = cur;
             cur = next;
@@ -95,66 +84,5 @@ public class ReorderListGGG {
 
         reorderList(node1);
 
-    }
-
-    public static void reorderList3(ListNode head) {
-        //1、找到链表中间的位置
-        ListNode slow = head;
-        ListNode fast = head;
-
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-        }
-
-        ListNode halfHead = slow;
-        //前半部分的头结点
-        ListNode head1 = head;
-
-        //2、反转链表的后半部分
-        ListNode head2 = reverse(halfHead);
-
-
-        //将链表的后半部分依次隔一个插入到前半部分链表中
-        ListNode next1;
-        ListNode next2;
-
-        while (head1 != null && head2 != null) {
-            next1 = head1.next;
-            next2 = head2.next;
-
-            head1.next = head2;
-            head1 = next1;
-
-            head2.next = head1;
-
-            head2 = next2;
-        }
-    }
-
-
-    public static void reorderList2(ListNode head) {
-
-        //找到链表的中间节点
-
-        ListNode half = findMid(head);
-
-        ListNode head1 = head;
-        ListNode head2 = reverse(half);
-
-        ListNode next1;
-        ListNode next2;
-
-        while (head1 != null && head2 != null) {
-
-            next1 = head1.next;
-            next2 = head2.next;
-
-            head1.next = head2;
-            head1 = next1;
-
-            head2.next = head1;
-            head2 = next2;
-        }
     }
 }

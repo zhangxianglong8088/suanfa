@@ -2,7 +2,7 @@ package list;
 
 
 /**
- * @description：https://leetcode.cn/problems/odd-even-linked-list/ 328. 奇偶链表
+ * @description： https://leetcode.cn/problems/odd-even-linked-list/ 328. 奇偶链表
  * @author: zhangxianglong
  * @date: 2022/6/12
  */
@@ -96,4 +96,5 @@ public class OddEvenListGGG {
 
         ListNode res = oddEvenList1(node1);
     }
+
 }

@@ -8,7 +8,7 @@ package list;
  * @author: zhangxianglong
  * @date: 2022/6/12
  */
-public class SortedListToBSTXXX {
+public class SortedListToBST {
 
     public static TreeNode sortedListToBST(ListNode head) {
         if (head == null) {

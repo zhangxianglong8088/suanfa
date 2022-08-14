@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
  * @author: zhangxianglong
  * @date: 2022/5/26
  */
-public class SortListGGG {
+public class SortListXXX {
 
     public static ListNode sortList1(ListNode head) {
 

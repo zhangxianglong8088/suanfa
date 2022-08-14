@@ -47,16 +47,12 @@ public class ReverseKGroupGGG {
         ListNode node2 = new ListNode(2);
         ListNode node3 = new ListNode(3);
         ListNode node4 = new ListNode(4);
-        ListNode node5 = new ListNode(5);
-//        ListNode node6 = new ListNode(6);
 
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
-        node4.next = node5;
-//        node5.next = node6;
 
-        ListNode node = reverseKGroup(node1, 2);
+        ListNode node = reverseKGroup2(node1, 3);
     }
 
     /**
@@ -79,5 +75,59 @@ public class ReverseKGroupGGG {
 
         }
         return pre.next;
+    }
+
+
+    public static ListNode reverseKGroup2(ListNode head, int k) {
+        if (head == null) {
+            return head;
+        }
+
+        //1、从头循环k次找到待反转的链表的头和尾部
+        ListNode tail = head;
+        for (int i = 0; i < k - 1; i++) {
+            if (tail == null) {
+                break;
+            }
+            tail = tail.next;
+        }
+        if (tail == null) {
+            return head;
+        }
+
+        //找到下一次反转链表的头
+        ListNode nextHead = tail.next;
+
+        ListNode reverseHead = reverse2(head, tail);
+
+        ListNode subHead = reverseKGroup2(nextHead, k);
+
+        head.next = subHead;
+
+        return reverseHead;
+
+    }
+
+
+    //反转链表
+    public static ListNode reverse2(ListNode head, ListNode tail) {
+        if (tail != null) {
+            tail.next = null;
+        }
+
+
+        ListNode cur = head;
+        ListNode pre = null;
+        ListNode next;
+
+        while (cur != null) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        return pre;
+
     }
 }

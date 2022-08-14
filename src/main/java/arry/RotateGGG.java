@@ -3,7 +3,7 @@ package arry;
 /**
  * 48. 旋转图像
  *
- * @description：https://leetcode.cn/problems/rotate-image/solution/xuan-zhuan-tu-xiang-by-leetcode-solution-vu3m/
+ * @description： https://leetcode.cn/problems/rotate-image/solution/xuan-zhuan-tu-xiang-by-leetcode-solution-vu3m/
  * @author: zhangxianglong
  * @date: 2022/7/20
  */

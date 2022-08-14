@@ -7,7 +7,7 @@ package arry;
  * @author: zhangxianglong
  * @date: 2022/7/27
  */
-public class RotateArray {
+public class RotateArrayGGG {
 
     public static int[] rotate(int n, int m, int[] a) {
         //**** 取余，因为每次长度为n的旋转数组相当于没有变化

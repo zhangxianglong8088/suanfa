@@ -65,6 +65,7 @@ public class MaxProfitIGGG {
         for (int i = 1; i < n; i++) {
             //j表示持有或者不持有股票
             dp[i][0] = Math.max(dp[i - 1][1] + prices[i], dp[i - 1][0]);
+            //思考这里为什么是 -prices[i] 因为 这个题目股票只能买卖一次
             dp[i][1] = Math.max(-prices[i], dp[i - 1][1]);
         }
         return dp[n - 1][0];

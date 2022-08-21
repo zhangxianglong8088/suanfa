@@ -11,9 +11,6 @@ package dp;
 public class IsSubsequence {
 
 
-    /**
-     * @return
-     */
     public static boolean isSubsequence(String text1, String text2) {
 
         // 先对dp数组做初始化操作
@@ -37,29 +34,8 @@ public class IsSubsequence {
     public static void main(String[] args) {
         String s = "nowef";
         String t = "nowcoder";
-        boolean res = isSubsequence2(s, t);
+        boolean res = isSubsequence(s, t);
         System.out.println(res);
     }
 
-    public static boolean isSubsequence2(String S, String T) {
-        // write code here
-        int n1 = S.length();
-        int n2 = T.length();
-
-        int[][] dp = new int[S.length() + 1][T.length() + 1];
-
-        for (int i = 1; i <= S.length(); i++) {
-
-            for (int j = 1; j <= T.length(); j++) {
-                if (S.charAt(i - 1) == T.charAt(j - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1] + 1;
-                } else {
-                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
-                }
-            }
-        }
-
-        return S.length() == dp[n1][n2];
-
-    }
 }

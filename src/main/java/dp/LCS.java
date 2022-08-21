@@ -44,15 +44,6 @@ public class LCS {
 
     }
 
-    public static void main(String[] args) {
-        String str1 = "1AB2345CD";
-        String str2 = "12345EF";
-
-        String res = LCS2(str1, str2);
-
-        System.out.println(res);
-    }
-
 
     public static String LCS2(String str1, String str2) {
         // write code here
@@ -70,7 +61,7 @@ public class LCS {
 
             for (int j = 1; j <= n2; j++) {
 
-                if (str1.charAt(i-1) == str2.charAt(j-1)) {
+                if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
                     dp[i][j] = dp[i - 1][j - 1] + 1;
                     if (dp[i][j] > maxLen) {
                         maxI = i;
@@ -81,6 +72,45 @@ public class LCS {
             }
 
         }
-        return str1.substring(maxI - maxLen,maxI );
+        return str1.substring(maxI - maxLen, maxI);
     }
+
+
+    public static String LCS3(String str1, String str2) {
+        int n1 = str1.length();
+        int n2 = str2.length();
+
+        int[][] dp = new int[n1 + 1][n2 + 1];
+
+        int maxLen = 0;
+        int maxI = 0;
+        int maxJ = 0;
+
+        for (int i = 1; i <= n1; i++) {
+
+            for (int j = 1; j <= n2; j++) {
+                if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                    if (maxLen < dp[i][j]) {
+                        maxI = i;
+                        maxJ = j;
+                        maxLen = dp[i][j];
+                    }
+                }
+            }
+        }
+
+        //最大长度，已经i的最大位置，j的最大位置
+        return str1.substring(maxI - maxLen, maxI);
+    }
+
+    public static void main(String[] args) {
+        String str1 = "1AB2345CD";
+        String str2 = "12345EF";
+
+        String res = LCS3(str1, str2);
+
+        System.out.println(res);
+    }
+
 }

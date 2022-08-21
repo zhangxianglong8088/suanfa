@@ -10,7 +10,7 @@ import java.util.*;
  * @author: zhangxianglong
  * @date: 2022/5/21
  */
-public class CoinChangeII {
+public class CoinChangeIIXXX {
 
     /**
      * 动态规划 完全背包问题

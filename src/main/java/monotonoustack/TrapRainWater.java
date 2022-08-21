@@ -1,6 +1,7 @@
 package monotonoustack;
 
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 /**
  * 给你一个 m x n 的矩阵，其中的值均为非负整数，代表二维高度图每个单元的高度，请计算图中形状最多能接多少体积的雨水。
@@ -73,5 +74,55 @@ public class TrapRainWater {
         int res = trapRainWater(nums);
 
         System.out.println(res);
+    }
+
+
+    public int trapRainWater2(int[][] heightMap) {
+
+        int res = 0;
+
+        int row = heightMap.length;
+        int col = heightMap[0].length;
+
+        //优先级队列方法
+
+        //定义优先级队列
+        Queue<int[]> queue = new PriorityQueue<>((a, b) -> (a[2] - b[2]));
+
+        //将矩阵的最外圈放入队列中
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (i == 0 || i == row - 1 || j == 0 || j == col - 1) {
+                    queue.offer(new int[]{i, j, heightMap[i][j]});
+                }
+            }
+        }
+
+        while (!queue.isEmpty()) {
+
+            int[] cur = queue.poll();
+
+            //获取当前节点的上下左右节点
+            int[] dir = new int[]{-1, 0, 1, 0, -1};
+
+            for (int i = 0; i < 4; i++) {
+                int nx = cur[0] + dir[i];
+                int ny = cur[1] + dir[i + 1];
+
+                if (heightMap[nx][ny] < cur[2]) {
+                    int tmp = cur[2] - heightMap[nx][ny];
+                    if (tmp > 0) {
+                        res += tmp;
+                    }
+                    queue.offer(new int[]{nx, ny, Math.max(cur[2], heightMap[nx][ny])});
+                }
+            }
+
+
+        }
+
+        return res;
+
     }
 }

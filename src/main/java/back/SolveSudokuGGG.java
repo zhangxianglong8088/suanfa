@@ -8,7 +8,7 @@ package back;
  * @author: zhangxianglong
  * @date: 2022/7/23
  */
-public class SolveSudoku {
+public class SolveSudokuGGG {
 
     /**
      * @param board

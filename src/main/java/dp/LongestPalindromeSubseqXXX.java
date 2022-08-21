@@ -11,7 +11,7 @@ package dp;
 public class LongestPalindromeSubseqXXX {
 
 
-    public static int longestPalindromeSubseq4(String s) {
+    public static int longestPalindromeSubseq1(String s) {
         //定义dp数组
         int n = s.length();
         //dp数组的含义 i到j之间回文字符串的长度
@@ -37,11 +37,44 @@ public class LongestPalindromeSubseqXXX {
         return dp[0][n - 1];
     }
 
+
     public static void main(String[] args) {
 
-        int len = longestPalindromeSubseq4("aaa");
+        int len = longestPalindromeSubseq3("cbbd");
 
         System.out.println(len);
+    }
+
+    public static int longestPalindromeSubseq3(String s) {
+
+        int n = s.length();
+
+        int[][] dp = new int[n + 1][n + 1];
+
+        for (int i = 0; i < n; i++) {
+
+            dp[i][i] = 1;
+        }
+
+        for (int i = 1; i <= n; i++) {
+
+            for (int j = 1; j < i; j++) {
+                if (s.charAt(i - 1) == s.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j + 1] + 2;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[j + 1][i]);
+                }
+            }
+        }
+
+        int max = 1;
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= n; j++) {
+                max = Math.max(dp[i][j], max);
+            }
+        }
+        return max;
+
     }
 
 }

@@ -43,31 +43,25 @@ public class CountSubstrings {
         return count;
     }
 
-    public static void main(String[] args) {
-        String s = "abc";
-        int res = countSubstrings2(s);
-        System.out.println(res);
-    }
-
 
     /**
      * 我的第二个思路 为什么不行*******
      * 状态转移方程
-     *
-     *    for (int i = 0; i < n; i++) {
-     *             char s1 = s.charAt(i);
-     *             for (int j = 0; j <= i; j++) {
-     *                 char s2 = s.charAt(j);
-     *                 if (i == j) {
-     *                     continue;
-     *                 }
-     *                 if (s1 == s2) {
-     *                    dp[i][j] = dp[i - 1][j + 1];//这里为什么不对  因为当i和j的距离相差1 的时候有问题 j比i就大了
-     *                 }else{
-     *                     dp[i][j]  = false;
-     *                 }
-     *             }
-     *         }
+     * <p>
+     * for (int i = 0; i < n; i++) {
+     * char s1 = s.charAt(i);
+     * for (int j = 0; j <= i; j++) {
+     * char s2 = s.charAt(j);
+     * if (i == j) {
+     * continue;
+     * }
+     * if (s1 == s2) {
+     * dp[i][j] = dp[i - 1][j + 1];//这里为什么不对  因为当i和j的距离相差1 的时候有问题 j比i就大了
+     * }else{
+     * dp[i][j]  = false;
+     * }
+     * }
+     * }
      *
      * @param s
      * @return
@@ -111,5 +105,49 @@ public class CountSubstrings {
         }
         return count;
     }
+
+
+    public static int countSubstrings3(String s) {
+
+        int n = s.length();
+        //dp[i][j] 表示ij之间是否为回文字符串
+        boolean[][] dp = new boolean[n][n];
+
+        for (int i = 0; i < n; i++) {
+            dp[i][i] = true;
+        }
+
+        for (int i = 0; i < n; i++) {
+
+            for (int j = 0; j <= i; j++) {
+                if (s.charAt(i) == s.charAt(j)) {
+                    if (i - j <= 2) {
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i - 1][j + 1];
+                    }
+
+                }
+            }
+        }
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (dp[i][j]) {
+                    res++;
+                }
+
+            }
+        }
+        return res;
+    }
+
+
+    public static void main(String[] args) {
+        String s = "aaa";
+        int res = countSubstrings3(s);
+        System.out.println(res);
+    }
+
 
 }

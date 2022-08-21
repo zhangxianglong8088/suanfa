@@ -41,32 +41,7 @@ public class LengthOfLIS {
 
     public static void main(String[] args) {
         int[] nums = new int[]{10, 9, 2, 5, 3, 7, 101, 18};
-        System.out.println(lengthOfLIS2(nums));
+        System.out.println(lengthOfLIS1(nums));
     }
 
-    public static int lengthOfLIS2(int[] nums) {
-
-        int n = nums.length;
-
-        //以nums[i] 为结尾的最长的递增子序列的长度
-        int[] dp = new int[n];
-
-        Arrays.fill(dp, 1);
-
-        for (int i = 1; i < n; i++) {
-            int max = Integer.MIN_VALUE;
-            for (int j = 0; j < i; j++) {
-                if (nums[j] < nums[i]) {
-                    max = Math.max(max, dp[j] + 1);
-                    dp[i] = max;
-                }
-            }
-        }
-
-        int res = 0;
-        for (int i = 0; i < dp.length; i++) {
-            res = Math.max(res, dp[i]);
-        }
-        return res;
-    }
 }

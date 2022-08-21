@@ -76,10 +76,6 @@ public class LongestPalindrome {
         return huinwe;
     }
 
-    public static void main(String[] args) {
-        String res = longestPalindrome4("babad");
-        System.out.println(res);
-    }
 
     public static String longestPalindrome3(String s) {
 
@@ -122,39 +118,10 @@ public class LongestPalindrome {
     }
 
 
-    public static String longestPalindrome4(String s) {
-
-        int n = s.length();
-
-        boolean[][] dp = new boolean[n][n];
-
-        for (int i = 0; i < n; i++) {
-
-            for (int j = 0; j <= i; j++) {
-
-                if (s.charAt(i) == s.charAt(j)) {
-                    if (i - j <= 2) {
-                        dp[i][j] = true;
-                    } else {
-                        dp[i][j] = dp[i - 1][j + 1];
-                    }
-
-                }
-            }
-        }
-
-        int maxLen = 0;
-        String huinwe = "";
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j <= i; j++) {
-                if (dp[i][j] && (i - j + 1) > maxLen) {
-                    maxLen = i - j + 1;
-                    huinwe = s.substring(j, i + 1);
-                }
-            }
-        }
-        return huinwe;
-
+    public static void main(String[] args) {
+        String res = longestPalindrome2("cbbd");
+        System.out.println(res);
     }
+
 
 }
